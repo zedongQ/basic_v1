@@ -1,4 +1,4 @@
-package org.ieforex.utils;
+package com.qzd.utils;
 
 /**
  * AES 128bit 加密解密工具类
@@ -15,7 +15,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.bcic.utils.base.StringUtils;
 import org.bcics.sso.common.encrypt.base64.Base64;
-import org.ieforex.exception.AESCryptException;
+import com.qzd.exception.AESCryptException;
 
 import com.alibaba.fastjson.JSON;
 

@@ -1,4 +1,4 @@
-package org.ieforex.utils;
+package com.qzd.utils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -12,7 +12,7 @@ import java.util.Date;
 
 import org.apache.log4j.Logger;
 
-import org.ieforex.utils.Constants;
+import com.qzd.utils.Constants;
 
 public class UploadPhoto {
 	private static final long serialVersionUID = -6905547426347632253L;

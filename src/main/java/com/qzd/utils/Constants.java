@@ -1,6 +1,6 @@
-package org.ieforex.utils;
+package com.qzd.utils;
 
-import org.ieforex.utils.ApplicationResource;
+import com.qzd.utils.ApplicationResource;
 
 
 /**

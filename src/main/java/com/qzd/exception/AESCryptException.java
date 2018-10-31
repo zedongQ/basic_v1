@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.ieforex.exception;
+package com.qzd.exception;
 
 
 /**

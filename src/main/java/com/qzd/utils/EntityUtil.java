@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.ieforex.utils;
+package com.qzd.utils;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;

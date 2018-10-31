@@ -1,4 +1,4 @@
-package org.ieforex.controller;
+package com.qzd.controller;
 
 import java.io.IOException;
 import java.util.Locale;

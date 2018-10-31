@@ -1,7 +1,4 @@
-/**
- * 
- */
-package org.ieforex.auth;
+package com.qzd.auth;
 
 import java.util.ArrayList;
 import java.util.List;

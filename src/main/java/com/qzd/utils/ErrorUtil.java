@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.ieforex.utils;
+package com.qzd.utils;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;

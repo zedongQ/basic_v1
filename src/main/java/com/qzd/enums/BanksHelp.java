@@ -1,4 +1,4 @@
-package org.ieforex.enums;
+package com.qzd.enums;
 
 /*
  * 银行卡图片名称（银行名与拼音一致）

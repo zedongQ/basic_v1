@@ -1,4 +1,4 @@
-package org.ieforex.utils;
+package com.qzd.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;

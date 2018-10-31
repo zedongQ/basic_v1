@@ -1,4 +1,4 @@
-package org.ieforex.utils;
+package com.qzd.utils;
 
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;

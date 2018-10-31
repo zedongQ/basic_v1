@@ -1,4 +1,4 @@
-package org.ieforex.utils;
+package com.qzd.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

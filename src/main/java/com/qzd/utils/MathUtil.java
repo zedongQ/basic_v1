@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.ieforex.utils;
+package com.qzd.utils;
 
 import java.math.BigDecimal;
 import java.util.Calendar;

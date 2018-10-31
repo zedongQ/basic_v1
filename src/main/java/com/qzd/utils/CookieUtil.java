@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.ieforex.utils;
+package com.qzd.utils;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;

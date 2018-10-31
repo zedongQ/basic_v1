@@ -1,10 +1,10 @@
-package org.ieforex.controller;
+package com.qzd.controller;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.ieforex.utils.Constants;
-import org.ieforex.utils.DownloadPhoto;
+import com.qzd.utils.Constants;
+import com.qzd.utils.DownloadPhoto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

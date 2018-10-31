@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.ieforex.language;
+package com.qzd.language;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
