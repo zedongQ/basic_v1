@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>首页</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="xx网站">
+    <meta name="keywords" content="xx网站">
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="format-detection" content="telephone=no,address=no,email=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="shortcut icon" type="image/x-icon" href="../static/images/pages/index/home_select.png" />
+    <link rel="stylesheet" href="../static/css/share/share.css" />
+    <link rel="stylesheet" href="../static/css/pages/index.css" />
+</head>
+<body>
+	<!-- loading -->
+	<img src="../static/images/share/loading.gif" class="loading">
+	<div class="out-box">	
+		<!-- home_page -->
+		<div class="home_page">
+			<!-- part1 -->
+			<div id="focus" class="focus">
+				<div class="hd">
+					<ul></ul>
+				</div>
+				<div class="bd">
+					<!-- data -->
+					<ul class="bannerList"></ul>
+				</div>
+			</div>
+			<!-- part2 -->
+			<ul class="home_list">
+				<li>
+					<a href="javascript:;" onclick="gotoSignIn()">
+						<img src="../static/images/pages/index/qiandaoyouli.png">
+					</a>
+					<span>签到有礼</span>
+				</li>
+				<li>
+					<a href="javascript:;" onclick = "gotoPerson()">
+						<img src="../static/images/pages/index/xinrenzhuanxiang.png">
+					</a>
+					<span>新人专享</span>
+				</li>
+				<li>
+					<a href="javascript:;" onclick = "gotoDraw()">
+						<img src="../static/images/pages/index/jifenduobao.png">
+					</a>
+					<span>积分夺宝</span>
+				</li>
+				<li>
+					<a href="javascript:;" onclick = "gotoInvite()" href="">
+						<img src="../static/images/pages/index/yaoqinghaoyou.png">
+					</a>
+					<span>邀请好友</span>
+				</li>
+			</ul>
+			<!-- part3 -->
+			<div class="noticeWidth">
+				<div class="home_notice ">
+					<div class="notice">
+						<img src="../static/images/pages/index/notice.png" class="icon">
+						<div id="hotNews">
+						 	<ul id="hotNewsUl">
+							<!-- data start-->
+							<div class="noticeList"></div>
+							<!-- data end-->
+							</ul>
+							<span class="seeTip" onclick="document.getElementById('tipPage').style.display = 'block';">点击查看</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			
+			<!-- part4 -->
+			<div class="home_activity">
+				<div class="activity">
+					<div class="activityContent">
+						<div class="redSign"></div>
+						<i class="tittle">优惠活动</i>	
+					</div>
+					<!-- data -->
+					<ul class="business businessList"></ul>
+					<!-- bottomLoading -->
+					<!-- <div class="bottomLoading">
+		   		 		<div class="bottomBox">
+			    			<img src="http://www.weichongming.com/quanbao/static/assets/images/mobile/loading.jpg">
+			    			<span>加载中...</span>
+						</div>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="tipPage" style="display: none;">
+		<div class="grayMask"></div>
+		<div class="tipText">
+			<b>风险提示：</b><img src="../static/images/pages/weChatImg/closeXX.png" onclick="document.getElementById('tipPage').style.display = 'none';" />
+			<p>金融产品保证金交易存在极高的风险，未必适合所有的投资者，请不要相信任何高额投资收益的诱导而贸然投资!在您决定投资杠杆类金融产品时，请务必考虑您的经验水平和承担风险的能力，由于投资导致的损失有可能超过存入的资金，因此，您不应该以不能承受损失的资金来投资！由于投资风险不仅来自于杠杆交易本身，同时也有可能来自于券商平台的不确定性，请仔细甄别，远离风险！所有投资者的交易帐户应仅限本人使用，不应交予第三方操作，任何接受第三方喊单、操盘、理财等投资和交易，由此导致的风险和亏损应自己承担，责任自负！</p>
+			<p>荔枝返现不隶属于任何券商平台，仅为向投资者提供信息咨询、降低投资成本的咨询类网站。荔枝返现不邀约客户投资任何杠杆类的金融产品，不接触投资者资金及账户信息，不代理任何交易操盘行为，不推荐券商平台，投资者自行选择券商平台，荔枝返现仅提供信息咨询，券商平台的任何行为均与荔枝返现无关！</p>
+			<p>投资者任何在荔枝返现进行任何咨询行为均代表接受和认可上述声明!</p>
+			<p>所有投资者均为自行选择且直接前往券商平台官网进行的（包括您的资料和资金）投资选择，荔枝返现不承担客户券商平台之间的交易争议及券商平台问题造成经济损失的责任。如果您不了解外汇、黄金等杠杆类金融产品市场的风险，请千万不要参与投资交易！</p>
+		</div>
+	</div>
+	<script type="text/javascript" src="../static/js/share/share.js"></script>
+	<script type="text/javascript" src="../static/js/pages/index.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			p.init()
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.ieforex.dao.ETradeAcctTaskMapper">
+
+	<select id="getAcctByCustomerId" resultType="org.ieforex.entity.ETradeAcctTask" parameterType="java.util.HashMap">
+		<if test="status == 0">
+			select a.trade_acct_id, null as trade_acct_task_id, a.dealer_id, a.holder_name, a.acct_no, '3' as check_status,a.create_date AS submit_date,null as reason_detail,
+			a.holder_email, b.chn_name as dealer_chn_name, b.name 
+			as dealer_en_name, b.logo_url as dealer_logo_url
+			from e_trade_acct a
+			left join e_dealer b ON a.dealer_id = b.dealer_id
+			where a.customer_id = #{customerId} AND a.data_status != '1'
+			union
+			select NULL AS trade_acct_id, a.trade_acct_task_id, a.dealer_id, a.holder_name, a.acct_no, a.check_status,a.submit_date,a.reason_detail,
+			a.holder_email, b.chn_name as dealer_chn_name, b.name 
+			as dealer_en_name, b.logo_url as dealer_logo_url
+			from e_trade_acct_task a
+			left join e_dealer b ON a.dealer_id = b.dealer_id
+			where a.customer_id = #{customerId} and (a.check_status = '0' or a.check_status = '1')
+			union
+			select NULL AS trade_acct_id, a.trade_acct_task_id, a.dealer_id, a.holder_name, a.acct_no, a.check_status,a.submit_date,a.reason_detail,
+			a.holder_email, b.chn_name as dealer_chn_name, b.name 
+			as dealer_en_name, b.logo_url as dealer_logo_url
+			from e_trade_acct_task a
+			left join e_dealer b ON a.dealer_id = b.dealer_id
+			left join e_trade_acct c on a.dealer_id = c.dealer_id and a.acct_no = c.acct_no
+			where a.customer_id = #{customerId} and a.check_status = '2' and (c.customer_id is null OR c.customer_id != 1)	AND c.data_status != '1'    	
+	    </if>
+		<if test="status == 1">
+			select a.trade_acct_id, null as trade_acct_task_id, a.dealer_id, a.holder_name, a.acct_no, '3' as check_status,a.acct_create_date AS submit_date,
+			a.holder_email, b.chn_name as dealer_chn_name, b.name 
+			as dealer_en_name, b.logo_url as dealer_logo_url
+			from e_trade_acct a
+			left join e_dealer b ON a.dealer_id = b.dealer_id
+			where a.customer_id = #{customerId} AND a.data_status != '1'
+		</if>
+		<if test="status == 2">
+			select NULL AS trade_acct_id, a.trade_acct_task_id, a.dealer_id, a.holder_name, a.acct_no, a.check_status,a.submit_date,a.reason_detail,
+			a.holder_email, b.chn_name as dealer_chn_name, b.name 
+			as dealer_en_name, b.logo_url as dealer_logo_url
+			from e_trade_acct_task a
+			left join e_dealer b ON a.dealer_id = b.dealer_id
+			where a.customer_id = #{customerId} and (a.check_status = '0' or a.check_status = '1')
+		</if>
+		<if test="status == 3">
+			select null as trade_acct_id, a.trade_acct_task_id, a.dealer_id, a.holder_name, a.acct_no, a.check_status,a.submit_date,a.reason_detail,
+			a.holder_email, b.chn_name as dealer_chn_name, b.name 
+			as dealer_en_name, b.logo_url as dealer_logo_url
+			from e_trade_acct_task a
+			left join e_dealer b ON a.dealer_id = b.dealer_id
+			left join e_trade_acct c on a.dealer_id = c.dealer_id and a.acct_no = c.acct_no
+			where a.customer_id = #{customerId} and a.check_status = '2' and (c.customer_id is null OR c.customer_id != 1) AND c.data_status != '1'
+		</if>
+		order by submit_date desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+	<select id="getByTaskId" resultType="org.ieforex.entity.ETradeAcctTask" parameterType="Long">
+		SELECT t.holder_name,t.acct_no,t.reason_detail,t.acct_create_date,t.submit_date,t.check_status,t.holder_email,t.dealer_id,d.chn_name as dealer_chn_name,d.name as dealer_en_name 
+	    FROM e_trade_acct_task t 
+		LEFT JOIN e_dealer d ON t.dealer_id=d.dealer_id
+		WHERE t.trade_acct_task_id = #{ tradeAcctTaskId }
+	</select>
+	
+	<update id="updateByTaskId" parameterType="org.ieforex.entity.ETradeAcctTask">
+		  update e_trade_acct_task 
+		<set> 
+			<if test="checkStatus != null">`check_status` = #{checkStatus},</if>
+			<if test="dealerId != null">`dealer_id` = #{dealerId},</if>
+			<if test="acctNo != null">`acct_no` = #{acctNo},</if>
+			<if test="holderEmail != null">`holder_email` = #{holderEmail},</if>
+			<if test="submitDate != null">`submit_date` = #{submitDate},</if>
+			<if test="holderName != null">`holder_name` = #{holderName}</if>
+		</set>
+		where trade_acct_task_id = #{tradeAcctTaskId}
+	</update>
+	
+	<insert id="save" parameterType="org.ieforex.entity.ETradeAcctTask">
+	
+		INSERT  INTO `e_trade_acct_task`(
+			`trade_acct_task_id`,
+			`customer_id`,
+			`dealer_id`,
+			`acct_no`,
+			`holder_name`,
+			`holder_email`,
+			`acct_create_date`,
+			`service_id`,
+			`check_user_id`,
+			`check_status`,
+			`submit_date`,
+			`reason_detail`,
+			`is_same_name`,
+			`is_agency`,
+			`reason_type`,
+			`data_source`,
+			`create_user_id`,
+			`create_date`) 
+		VALUES (
+			#{tradeAcctTaskId},
+			#{customerId},
+			#{dealerId},
+			#{acctNo},
+			#{holderName},
+			#{holderEmail},
+			#{acctCreateDate},
+			#{serviceId},
+			#{checkUserId},
+			#{checkStatus},
+			#{submitDate},
+			#{reasonDetail},
+			#{isSameName},
+			#{isAgency},
+			#{reasonType},
+			#{dataSource},
+			#{createUserId},
+			#{createDate}
+			);
+	
+	</insert>
+</mapper>

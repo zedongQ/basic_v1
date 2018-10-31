@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.ExternalRegisterMapper">
+	<resultMap id="ResultMap" type="org.ieforex.entity.ExternalRegister" >
+		<id column="register_id" property="registerId"/>
+		<result column="register_phone" property="registerPhone"/>
+		<result column="channel_source" property="channelSource"/>
+		<result column="identifying_code" property="identifyingCode"/>
+		<result column="create_date" property="createDate"/>
+		<result column="update_date" property="updateDate"/>
+	</resultMap>
+	
+	<insert id="insert" parameterType="org.ieforex.entity.ExternalRegister" useGeneratedKeys="true" keyProperty="registerId">
+		INSERT INTO `w_external_register` (`register_phone`, `identifying_code`, `channel_source`, `create_date`)
+			VALUES(#{registerPhone}, #{identifyingCode}, #{channelSource}, #{createDate}) 
+	</insert>
+	
+	<update id="update" parameterType="org.ieforex.entity.ExternalRegister">
+		update `w_external_register` set `identifying_code`=#{identifyingCode},`channel_source`=#{channelSource},`update_date`=#{updateDate} where `register_phone`=#{registerPhone} 
+	</update>
+	
+	<select id="getUserByPhone" resultType="org.ieforex.entity.ExternalRegister">
+		SELECT * FROM `w_external_register` WHERE register_phone = #{registerPhone} 
+	</select>
+	
+	<delete id="deleteByPhone" parameterType="String">
+		DELETE FROM `w_external_register` WHERE register_phone = #{registerPhone} 
+	</delete>
+</mapper>

@@ -1,0 +1,248 @@
+/*----------------------------�����˺Ź���*/
+#tab {
+	clear: both;
+	font-size: 0.3rem
+}
+
+#tab1 {
+	position: relative;
+	background-color: #2940a8;
+	height: 21rem
+}
+
+.imgBg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	width: 7.5rem;
+	height: 10rem;
+}
+
+.drawContainer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 2;
+	width: 7.5rem;
+}
+
+.prizeTit {
+	margin-right: 0.3rem;
+	padding-top: 0.3rem;
+	margin-bottom: 3.7rem;
+	font-size: 0.28rem;
+}
+
+.prizeTit a {
+	color: #ffffff;
+	float: right;
+	position: relative;
+	padding-right: 0.4rem;
+	cursor: pointer;
+}
+
+.prizeTit img {
+	width: 0.3rem;
+	margin-left: 0.1rem;
+	position: absolute;
+	top: 0.02rem;
+	right: 0;
+}
+
+.draw {
+	width: 6.88rem;
+	height: 6.94rem;
+	margin: 0 auto;
+	background: url("../../../images/pages/weChatImg/drawChange004.png")
+		no-repeat;
+	background-size: 6.88rem 6.94rem;
+}
+
+.myIntegrate {
+	font-size: 0.28rem;
+	color: #b1723d;
+	height: 0.6rem;
+	line-height: 0.6rem;
+	padding-top: 0.05rem;
+	text-align: center;
+}
+
+.myIntegrate span {
+	color: #fd4d4c;
+	margin-left: 0.1rem
+}
+
+#table {
+	width: 6.2rem;
+	margin: 0 auto;
+	margin-top: 0.1rem;
+	/*background: url("../../../images/pages/weChatImg/prizes-img.png")
+		no-repeat;*/
+	background: url("http://www.lzhi.com/showFile?url=activity/2017/11/1511947828524.png")
+		no-repeat;
+	background-size: 99% 100%;
+	background-position: 0.02rem 0.07rem;
+	height: 5.40rem;
+}
+/*.tabBody{width: 6.17rem;margin: 0 auto;height: 10rem;border:1px solid red;}*/
+.active .drawMask {
+	display: block
+}
+
+.drawMask {
+	width: 105%;
+	height: 102%;
+	position: absolute;
+	left: -0.05rem;
+	top: 0;
+	border-radius: 8px;
+	background-color: rgba(252, 211, 4, 0.5);
+	display: none;
+}
+
+.item {
+	width: 1.9rem;
+	height: 1.70rem;
+	border-radius: 8px;
+	/**background: url("../../../images/pages/weChatImg/drawChange005.png")no-repeat ;*/
+	background-size: 1.9rem 1.70rem;
+	margin: 0.08rem;
+	float: left;
+	position: relative;
+}
+
+.centerItem {
+	width: 1.9rem;
+	height: 1.70rem;
+	background: url("../../../images/pages/weChatImg/drawChange012.png")
+		no-repeat;
+	background-size: 1.9rem 1.70rem;
+}
+
+.centerItem a {
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	text-align: center;
+}
+
+.centerItem a:hover {
+	text-decoration: none;
+}
+
+.draw-btn span {
+	font-size: 0.24rem;
+	color: #fd4d4c;
+}
+
+.draw-btn .count_draw {
+	font-size: 0.28rem;
+	padding-top: 0.9rem;
+	display: inline-block;
+	text-align: center;
+	width: 100%;
+}
+
+.jf_hd {
+	width: 6.88rem;
+	margin: 0 auto;
+	padding-top: 0.9rem;
+}
+
+.jf_hd span {
+	width: 2rem;
+	height: 0.7rem;
+	line-height: 0.7rem;
+	background-color: #1a296b;
+	font-size: 0.3rem;
+	color: #ffffff;
+	display: block;
+	text-align: center;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.dealer_active {
+	clear: both;
+	padding-top: 0.5rem;
+}
+
+.tit_active {
+	font-size: 0.4rem;
+	color: #ffffff;
+	text-align: center;
+	margin-bottom: 0.4rem;
+}
+
+.block_dealer {
+	width: 100%;
+	height: 1.7rem;
+	background-color: #ffffff;
+	border-radius: 10px;
+	margin-bottom: 0.2rem;
+}
+
+/*ģ̬����ʽ*/
+.win_title {
+	width: 100%;
+	text-align: center;
+	padding-top: 1.35rem;
+}
+
+.win_title span {
+	font-size: 0.32rem;
+	color: #ffffff;;
+	font-weight: bold;
+	display: inline-block;
+	margin-left: 1rem;
+}
+
+.win_title img {
+	width: 0.25rem;
+	float: right;
+	margin-top: 0.7rem;
+	margin-right: 1rem;
+	cursor: pointer;
+}
+
+.win_Container {
+	width: 80%;
+	text-align: center;
+	font-size: 0.3rem;
+	color: #fd4d4c;
+	height: 1.5rem;
+	margin-left: 0.5rem;
+	position: relative;
+}
+
+.replace_win {
+	padding: 0.35rem 0 0.1rem 0;
+}
+
+.buttonSure {
+	width: 2.75rem;
+	height: 0.92rem;
+	background: url("../../../images/pages/weChatImg/drawChangeWin03.png")
+		no-repeat;
+	background-size: 2.75rem 0.92rem;
+	cursor: pointer;
+	line-height: 0.8rem;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 0.32rem;
+	color: #fd4d4c;
+}
+
+.kuFace {
+	width: 0.8rem;
+	position: absolute;
+	top: 0.1rem;
+	left: 0.1rem;
+	display: none;
+}
+
+.replace_shu {
+	padding-top: 0.2rem;
+	word-wrap: break-word;
+}

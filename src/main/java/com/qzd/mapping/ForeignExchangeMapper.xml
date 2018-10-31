@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.ForeignExchangeMapper">
+   
+   <resultMap type="org.ieforex.entity.ForeignExchange" id="list"></resultMap>
+   
+	<sql id="sql_where">
+	    <if test="categoryType != null and categoryType != '' ">
+			AND	category_type = #{categoryType}
+		</if>
+		<if test="status != null and status != '' ">
+			AND	status = #{status}
+		</if>
+		<if test="recommend != null and recommend != '' ">
+			AND recommend =#{recommend}
+		</if>
+		<!-- 特殊处理 -->
+		<if test="serviceId !=null and serviceId != '' ">
+			AND service_id !=#{serviceId}
+		</if>
+		
+	</sql>
+	
+	<select id="select" parameterType="java.util.HashMap" resultMap="list">
+		SELECT * FROM w_foreign_exchange_service
+		<where>
+			<include refid="sql_where" />
+		</where>
+		ORDER BY sort_no DESC,publish_date DESC
+		<if test="offset != null and limit != null">
+		LIMIT #{offset}, #{limit}
+		</if>
+	</select>
+	
+	<select id="selectById" resultType="org.ieforex.entity.ForeignExchange">
+		SELECT * FROM w_foreign_exchange_service WHERE service_id =#{serviceId}
+	</select>
+	
+	<select id="selectByTimes" parameterType="java.util.HashMap" resultMap="list">
+		SELECT * FROM w_foreign_exchange_service
+		<where>
+			<include refid="sql_where" />
+		</where>
+		ORDER BY times DESC
+		<if test="offset != null and limit != null">
+		LIMIT #{offset},#{limit}
+		</if>
+	</select>
+	
+	<select id="total" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM w_foreign_exchange_service
+		<where>
+			<include refid="sql_where" />
+		</where>
+	</select>
+	
+	<update id="updateTimes" parameterType="Long">
+		update w_foreign_exchange_service set 
+			times = IFNULL(times, 0) + 1 
+		where service_id = #{serviceId}
+	</update>	
+	
+</mapper>

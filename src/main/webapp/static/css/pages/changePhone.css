@@ -1,0 +1,84 @@
+body{
+	background-color: #f3f3f3;
+	background-size: 100%;	
+}
+.items_phone1{
+	width: 100%;
+	position: relative;
+}
+.phone1_top{
+	background-color: #FFF;
+	width: 100%;
+	height: 3.25rem;
+	margin-top: 0.65rem;
+	padding: 0 0.75rem;
+	border-bottom: solid 0.025rem #f3f3f3;
+	position: relative
+}
+.phone1_text{
+	font-size: 0.75rem;
+	position: absolute;
+    top: 0.65rem;
+}
+.phone1_number{
+	font-size: 0.75rem;
+	position: absolute;
+    top: 0.65rem;
+    left: 7rem;
+}
+.phone1_cue{
+	font-size: 0.6rem;
+	position: absolute;
+    top: 2rem;
+	opacity: 0.4;
+}
+.phone1_middle{
+	background-color: #FFF;
+	width: 100%;
+	height: 2.8rem;
+	/*padding: 0.65rem 0.75rem 0 0.75rem;*/
+	padding:0 0.75rem;
+	/*position: relative;*/
+}
+.middle_content{
+	padding-top: 0.65rem;
+	/*position: absolute;*/
+	width: 100%;
+	height: 1.5rem;
+}
+.middle_content .code{
+	font-size: 0.75rem;
+}
+.middle_content input{
+	font-size: 0.75rem;
+	border: 0;
+	text-align: center;
+	width: 10rem;
+	opacity: 0.7;
+}
+.middle_content .gain_code{
+	font-size: 0.75rem;
+	border-left: solid 0.025rem #f3f3f3;
+	padding-left: 0.5rem;
+	color: red;
+}
+
+.phone1_bottom{
+	margin-top: 2.2rem;
+	padding: 0 0.75rem;
+}
+.bt_return{
+	border-radius: 0.2rem; 
+	height: 2.25rem;
+	text-align: center;
+	background-color: #fd4d4c;
+	color: #fff6f6;
+	font: 400 0.65rem/2.25rem 'Microsoft Yahei';
+}
+
+#smscode{
+	font-size: 0.75rem;
+    border-left: solid 0.025rem #f3f3f3;
+    padding-left: 0.5rem;
+    color: #fd4d4c;
+}

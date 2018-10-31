@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.ActivityFlowingMapper">
+
+	<resultMap type="org.ieforex.entity.ActivityFlowing" id="list"></resultMap>
+
+	<!--新增-->
+	<insert id="insert" parameterType="org.ieforex.entity.ActivityFlowing">
+		insert into w_activity_flowing(
+			flowing_id,
+			activity_id,
+			customer_id,
+			prize_id,
+			customer_inf,
+			type,
+			prize_name,
+			prize_price,
+			insert_date
+		)values(
+			#{flowingId},
+			#{activityId},
+			#{customerId},
+			#{prizeId},
+			#{customerInf},
+			#{type},
+			#{prizeName},
+			#{prizePrice},
+			#{insertDate}
+		)
+	</insert>
+
+	<!--查询-->
+	<select id="select" resultMap="list">
+		SELECT * FROM w_activity_flowing WHERE activity_id =#{activityId} AND type !='4'
+		ORDER BY insert_date DESC,prize_price DESC
+	</select>
+	
+	<!-- 查询假的大奖 -->
+	<select id="selectBigPrize" resultMap="list">
+		SELECT * FROM w_activity_flowing WHERE activity_id is Null
+		ORDER BY prize_price DESC,insert_date DESC
+	</select>
+
+</mapper>

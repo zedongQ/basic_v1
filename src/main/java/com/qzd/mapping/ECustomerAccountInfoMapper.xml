@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.ECustomerAccountInfoMapper">
+
+	<select id="getBycustomerId" parameterType="java.util.HashMap" resultType="org.ieforex.entity.ECustomerAccountInfo">
+		SELECT a.basic_id, a.account_id,a.account_name,a.type,a.account_acct,a.account_acct_view,a.is_default,a.opening_bank, b.acct_name,eng_surname,eng_name,CONCAT(b.eng_name,b.eng_surname) AS en_name FROM e_customer_account_info a 
+		LEFT JOIN e_customer_account_basic b ON a.basic_id = b.basic_id
+		WHERE a.customer_id = #{ customerId } AND a.basic_id=#{ basicId }
+		<if test="payType!=null">
+			${ payType }
+		</if>
+		<if test="onepayType!=null and payType == null">
+			and type = #{ onepayType }
+		</if>
+		ORDER BY a.is_default DESC,a.account_id ASC
+		 <if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+	<select id="queryTotal" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from e_customer_account_info a
+		where a.customer_id = #{customerId} AND a.basic_id=#{ bacicId }
+	</select>
+	
+	<select id="getTotalByCustomerId" parameterType="Long" resultType="int">
+		select count(*) from e_customer_account_info a
+		where a.customer_id = #{customerId}
+	</select>
+	
+	<!-- 通过Id查询信息 -->
+	<select id="searchById" resultType="org.ieforex.entity.ECustomerAccountInfo">
+		select account_id,type,is_default,account_name,account_acct,bank_swift_code,bank_address,payee_address,opening_bank
+			from e_customer_account_info 
+		where account_id=#{accountId}
+	</select>
+	
+	<!-- 通过amountId查询账号收款方式等信息 -->
+	<select id="getcollectionById" resultType="org.ieforex.entity.ECustomerAccountInfo">
+		select * from e_customer_account_info 
+		where account_id=#{accountId} and customer_id = #{ customerId }
+	</select>
+	
+	<!-- 通过账号和类型查询信息 -->
+	<select id="searchByAcct" resultType="org.ieforex.entity.ECustomerAccountInfo">
+		select account_id,type,is_default,account_name,account_acct,bank_swift_code,bank_address,payee_address,opening_bank
+		from e_customer_account_info 
+		where type = #{type} and account_acct = #{accountAcct}
+	</select>
+	
+	<!-- 停用收款人基本账号 -->
+	<update id="updateByBasicId"  parameterType="org.ieforex.entity.ECustomerAccountInfo">
+		update e_customer_account_info 
+		<set>
+			`basic_id` = null,
+			<if test="updateDate != null">`update_date` = #{updateDate},</if>
+			<if test="updateUserId != null">`update_user_id` = #{updateUserId},</if>
+		</set>
+		where basic_id = #{basicId}
+	</update>	
+	
+	<!-- 解绑 -->
+	<update id="cancelBind" parameterType="org.ieforex.entity.ECustomerAccountInfo">
+		update e_customer_account_info set `customer_id` = null, `basic_id` = null,
+			<if test="updateDate != null">`update_date` = #{updateDate}</if>
+			<if test="updateUserId != null">,`update_user_id` = #{updateUserId}</if>
+		where account_id = #{accountId} and customer_id =#{ customerId }
+	</update>
+	
+	<!-- 清空该人默认收款方式 -->
+	<update id="cancelDefaultPay">
+		update e_customer_account_info set `is_default` = 0 where customer_id = #{customerId}
+	</update>
+	
+	<!-- 查询账号id -->
+	<select id="getAccountId" parameterType="java.util.HashMap" resultType="org.ieforex.entity.ECustomerAndInfoId">
+		select account_id,basic_id,data_status from e_customer_account_info where type = #{type} and account_acct = #{accountAcct} 
+	</select>
+	
+	<select id="getTypeByAcct" parameterType="java.util.HashMap" resultType="String">
+		SELECT ci.type FROM e_customer_account_info ci WHERE ci.account_acct = #{ accountAcct } and customer_id = #{customerId} limit 0, 1
+	</select>
+
+	<!--新增-->
+	<insert id="insert" parameterType="org.ieforex.entity.ECustomerAccountInfo">
+		insert into e_customer_account_info(
+			account_id,
+			customer_id,
+			account_name,
+			account_acct,
+			account_phone,
+			type,
+			opening_bank,
+			bank_address,
+			bank_swift_code,
+			data_status,
+			is_default,
+			data_source,
+			basic_id,
+			payee_address,
+			account_acct_view,
+			create_user_id,
+			create_date,
+			update_user_id,
+			update_date
+		)values(
+			#{accountId},
+			#{customerId},
+			#{accountName},
+			#{accountAcct},
+			#{accountPhone},
+			#{type},
+			#{openingBank},
+			#{bankAddress},
+			#{bankSwiftCode},
+			#{dataStatus},
+			#{isDefault},
+			#{dataSource},
+			#{basicId},
+			#{payeeAddress},
+			#{accountAcctView},
+			#{createUserId},
+			#{createDate},
+			#{updateUserId},
+			#{updateDate}
+		)
+	</insert>
+	
+	<!--删除-->
+	<delete id="deleteById">
+		delete from e_customer_account_info where account_id =#{accountId}
+	</delete>
+	
+	<!--更新-->
+	<update id="updateById" parameterType="org.ieforex.entity.ECustomerAccountInfo">
+		update e_customer_account_info
+		<set>
+			<if test="customerId != null">customer_id =#{customerId},</if>
+			<if test="accountName != null">account_name =#{accountName},</if>
+			<if test="accountAcct != null">account_acct =#{accountAcct},</if>
+			<if test="accountPhone != null">account_phone =#{accountPhone},</if>
+			<if test="type != null">type =#{type},</if>
+			<if test="openingBank != null">opening_bank =#{openingBank},</if>
+			<if test="bankAddress != null">bank_address =#{bankAddress},</if>
+			<if test="bankSwiftCode != null">bank_swift_code =#{bankSwiftCode},</if>
+			<if test="dataStatus != null">data_status =#{dataStatus},</if>
+			<if test="isDefault != null">is_default =#{isDefault},</if>
+			<if test="dataSource != null">data_source =#{dataSource},</if>
+			<if test="basicId != null">basic_id =#{basicId},</if>
+			<if test="payeeAddress != null">payee_address =#{payeeAddress},</if>
+			<if test="accountAcctView != null">account_acct_view =#{accountAcctView},</if>
+			<if test="createUserId != null">create_user_id =#{createUserId},</if>
+			<if test="createDate != null">create_date =#{createDate},</if>
+			<if test="updateUserId != null">update_user_id =#{updateUserId},</if>
+			<if test="updateDate != null">update_date =#{updateDate},</if>
+		</set>
+		where account_id =#{accountId}
+	</update>
+	
+	<!--更新部分-->
+	<update id="updatePartById" parameterType="java.util.Map">
+		update e_customer_account_info
+		<set>
+			<if test="accountId != null">account_id =#{accountId},</if>
+			<if test="customerId != null">customer_id =#{customerId},</if>
+			<if test="accountName != null">account_name =#{accountName},</if>
+			<if test="accountAcct != null">account_acct =#{accountAcct},</if>
+			<if test="accountPhone != null">account_phone =#{accountPhone},</if>
+			<if test="type != null">type =#{type},</if>
+			<if test="openingBank != null">opening_bank =#{openingBank},</if>
+			<if test="bankAddress != null">bank_address =#{bankAddress},</if>
+			<if test="bankSwiftCode != null">bank_swift_code =#{bankSwiftCode},</if>
+			<if test="dataStatus != null">data_status =#{dataStatus},</if>
+			<if test="isDefault != null">is_default =#{isDefault},</if>
+			<if test="dataSource != null">data_source =#{dataSource},</if>
+			<if test="basicId != null">basic_id =#{basicId},</if>
+			<if test="payeeAddress != null">payee_address =#{payeeAddress},</if>
+			<if test="accountAcctView != null">account_acct_view =#{accountAcctView},</if>
+			<if test="createUserId != null">create_user_id =#{createUserId},</if>
+			<if test="createDate != null">create_date =#{createDate},</if>
+			<if test="updateUserId != null">update_user_id =#{updateUserId},</if>
+			<if test="updateDate != null">update_date =#{updateDate},</if>
+		</set>
+		where account_id =#{accountId}
+	</update>	
+	
+	<!--查询-->
+	<select id="selectById" resultType="org.ieforex.entity.ECustomerAccountInfo">
+		select * from e_customer_account_info where account_id =#{accountId} 
+	</select>
+
+</mapper>

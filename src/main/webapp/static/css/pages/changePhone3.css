@@ -1,0 +1,45 @@
+body{
+	background-color: #f3f3f3;
+	background-size: 100%;	
+}
+.items_phone3{
+	width: 100%
+}
+.phone3_top{
+	background-color: #FFF;
+	width: 100%;
+	height: 10.75rem;
+}
+.phone3_img{
+	height: 3.5rem;
+	width: 2.2rem;
+	margin: 0 auto;
+	padding-top: 1.5rem;
+}
+.phone3_img img{
+	width: 100%;
+	height: 100%;
+}
+.pone_text{
+	text-align: center;
+	color:#666666;
+	font-size: 0.85rem;
+	margin-top: 1rem;	
+}
+.phone_number{
+	text-align: center;
+	font-size: 0.85rem;
+	margin-top: 0.75rem;	
+}
+.phone3_bottom{
+	margin-top: 2.2rem;
+	padding: 0 0.75rem;
+}
+.bt_return{
+	border-radius: 0.2rem; 
+	height: 2.25rem;
+	text-align: center;
+	background-color: #fd4d4c;
+	color: #fff6f6;
+	font: 400 0.65rem/2.25rem 'Microsoft Yahei';
+}

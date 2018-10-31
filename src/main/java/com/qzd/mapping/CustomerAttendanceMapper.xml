@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.CustomerAttendanceMapper">
+	<!-- 签到 -->
+	<update id="updateAttendance" parameterType="org.ieforex.entity.CustomerAttendance">
+		update customer_attendance
+		<set>
+			<if test="monday!=null and monday!=''">
+				monday=#{monday},
+			</if> 
+			<if test="saturday!=null and saturday!=''">
+				saturday=#{saturday},
+			</if>  
+			<if test="friday !=null and friday!=''">
+				 friday=#{friday},
+			</if> 
+			<if test="sunday!=null and sunday!=''">
+				 sunday=#{sunday},
+			</if> 
+			<if test="thursday!=null and thursday!=''">
+				 thursday=#{thursday},
+			</if> 
+			<if test="tuesday!=null and tuesday!=''">
+				 tuesday=#{tuesday},
+			</if> 
+			<if test="wednesday!=null and wednesday!=''">
+				 wednesday=#{wednesday},
+			</if> 
+			<if test="attendancdDate!=null and attendancdDate!=''">
+				 attendancd_date=#{attendancdDate}
+			</if> 
+		</set>
+		where customer_id=#{customerId}
+	</update>
+	<!-- 签到数据清空 -->
+	<update id="emptyAllDay" parameterType="Long">
+		update customer_attendance set monday=null,saturday=null,friday=null,sunday=null,
+		thursday=null,tuesday=null,wednesday=null where customer_id=#{customerId}
+	</update>
+	
+	<select id="getInfo" parameterType="hashMap" resultType="org.ieforex.entity.CustomerAttendance">
+		SELECT IFNULL(monday,"") AS monday,IFNULL(tuesday,"") AS tuesday,IFNULL(wednesday,"") AS wednesday,IFNULL(thursday,"") AS thursday,IFNULL(friday,"") AS friday,IFNULL(saturday,"") AS saturday,IFNULL(sunday,"") AS sunday ,attendancd_date,
+		<if test="toDay==1">
+			IFNULL(monday,"") AS has_attendaned,
+		</if>
+		<if test="toDay==2">
+			CONCAT(IFNULL(monday,"0"),IFNULL(tuesday,"")) AS has_attendaned,
+		</if>
+		<if test="toDay==3">
+			CONCAT(IFNULL(monday,"0"),IFNULL(tuesday,"0"),IFNULL(wednesday,"")) AS has_attendaned,
+		</if>
+		<if test="toDay==4">
+			CONCAT(IFNULL(monday,"0"),IFNULL(tuesday,"0"),IFNULL(wednesday,"0"),IFNULL(thursday,"")) AS has_attendaned,
+		</if>
+		<if test="toDay==5">
+			CONCAT(IFNULL(monday,"0"),IFNULL(tuesday,"0"),IFNULL(wednesday,"0"),IFNULL(thursday,"0"),IFNULL(friday,"")) AS has_attendaned,
+		</if>
+		<if test="toDay==6">
+			CONCAT(IFNULL(monday,"0"),IFNULL(tuesday,"0"),IFNULL(wednesday,"0"),IFNULL(thursday,"0"),IFNULL(friday,"0"),IFNULL(saturday,"")) AS has_attendaned,
+		</if>
+		<if test="toDay==0">
+			CONCAT(IFNULL(monday,"0"),IFNULL(tuesday,"0"),IFNULL(wednesday,"0"),IFNULL(thursday,"0"),IFNULL(friday,"0"),IFNULL(saturday,"0"),IFNULL(sunday,"")) AS has_attendaned,
+		</if>
+		(SELECT integral FROM e_integral_rule WHERE integral_channel = '3') AS  attendance_integral
+		FROM customer_attendance 
+		where customer_id=#{customerId}
+	</select>
+	
+	<insert id="saveAttendance" parameterType="org.ieforex.entity.CustomerAttendance">
+		insert into  customer_attendance
+		(
+			customer_id
+		) 
+		values
+		(
+			#{customerId}
+		)
+	</insert>
+</mapper>

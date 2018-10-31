@@ -1,0 +1,84 @@
+body{
+	background-color: #f3f3f3;
+	background-size: 100%;	
+}
+
+
+/*part1*/
+.set{
+	margin-top: 0.375rem;
+}
+.set_column{
+	width: 100%;
+	height: 4.4rem;
+	background:#FFF;
+	position: relative;
+}
+.set_columnContent{
+	overflow: hidden;
+	margin-left: 0.9rem;
+    position: relative;
+}
+.set_columnContent .firstColumnText{
+	padding-top: 1rem;
+}
+.firstColumnText .leftText{
+    font-size: 0.75rem;
+}
+.firstColumnText .rightText{
+	right: 1.25rem;
+    position: absolute;
+    font-size: 0.6rem;
+    color: red;
+    top: 1.875rem;
+}
+
+.set_columnContent .secondColumnText{
+	padding-top: 0.2rem;
+	position: relative;
+    height: 2rem;
+}
+.secondColumnText .leftText{
+	font-size: 0.65rem;
+}
+
+/*part2*/
+.trade_user{
+	width: 100%;
+	height: 11.1rem;
+	background:#FFF;
+	position: relative;
+	margin-top: 0.2rem;
+    font-size: 0.65rem;
+}
+.trade_user .binding{
+	padding-left: 0.9rem;
+    padding-top: 0.9rem;
+}
+.trade_user .bindingTime{
+	position: absolute;
+    right: 0.85rem;
+}
+.trade_user .remark{
+	padding-top: 1.75rem;
+}
+
+.reasonPlate{
+	width: 17.4rem;
+	height: 5.15rem;
+	border: solid 0.025rem #f3f3f3;	
+	margin: 0.375rem auto;
+	border-radius: 0.2rem;
+}
+.reasonPlate .reasonText{
+	padding-left: 0.6rem;
+    padding-top: 0.6rem;
+    line-height: 1rem;
+    opacity: 0.5;
+
+    -webkit-line-clamp:4; /* 设置超出多少行隐藏 */
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+    /* 设置 display 为 -webkit-box 或者 -webkit-inline-box 时为隐藏状态 */
+    display:-webkit-inline-box;
+}

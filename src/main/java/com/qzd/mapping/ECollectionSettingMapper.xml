@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.ECollectionSettingMapper">
+	<!-- 获取手续费计算数据 -->
+	<select id="getFeeByWay" parameterType="java.util.HashMap" resultType="org.ieforex.entity.ECollectionSetting">
+		SELECT a.fee_percent,a.fee,fee_way,a.rmb_exchange_rate,b.rmb_exchange,b.exchange_rate_type
+		FROM e_collection_setting a,(SELECT rmb_exchange,exchange_rate_type FROM e_collection_setting WHERE collection_way=#{ collectionWay } AND currency =  #{currency}) b
+		WHERE collection_way=#{ collectionWay } AND currency = #{currency}
+		<if test="wantAmount != null">
+			AND  ((max_amount IS NOT NULL AND #{wantAmount}>min_amount AND #{wantAmount} <![CDATA[<=]]>  max_amount) 
+			OR (max_amount IS NULL AND #{wantAmount}>min_amount))
+		</if>
+		ORDER BY update_date DESC ,create_date DESC 
+		limit 0,1
+	</select>
+	
+	<!-- 通过类型获取手续费计算方式 -->
+	<select id="getWayByType" parameterType="java.util.HashMap" resultType="String">
+		SELECT fee_way FROM e_collection_setting  
+		WHERE collection_way=#{ collectionWay } AND currency = #{currency}
+		<if test="wantAmount != null">
+			AND  ((max_amount IS NOT NULL AND #{wantAmount}>min_amount AND #{wantAmount} <![CDATA[<=]]>  max_amount) 
+			OR (max_amount IS NULL AND #{wantAmount}>min_amount))
+		</if>
+		ORDER BY update_date DESC ,create_date DESC 
+		limit 0,1
+	</select>
+	
+	<!-- 查询最大的按笔手续费 -->
+	<select id="getMaxFee" parameterType="java.util.HashMap" resultType="java.math.BigDecimal">
+		SELECT fee
+		FROM e_collection_setting 
+		WHERE collection_way=#{ collectionWay } AND currency = #{currency}
+		ORDER BY fee DESC 
+		LIMIT 0,1
+	</select>
+	
+	<!-- 查询最大的按比例手续费 -->
+	<select id="getMaxFeePercent" parameterType="java.util.HashMap" resultType="java.math.BigDecimal">
+		SELECT fee_percent
+		FROM e_collection_setting 
+		WHERE collection_way=#{ collectionWay } AND currency = #{currency}
+		ORDER BY fee_percent DESC 
+		LIMIT 0,1
+	</select>
+</mapper>

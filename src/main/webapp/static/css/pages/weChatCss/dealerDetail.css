@@ -1,0 +1,60 @@
+.headerBanner{  width:7.27rem;  height: 2.52rem;  background: url("../../../images/pages/weChatImg/dealer11.png") no-repeat ;  background-size:7.27rem 2.52rem; margin: 0 auto;  margin-top: 0.3rem;
+}
+.logoTitle{height: 0.7rem;line-height: 0.7rem;}
+.logoTitle img{width: 0.7rem;height: 0.7rem;border-radius: 50%;margin:0.5rem 0.15rem 0 0.6rem;float: left;}
+.logoTitle span{font-size: 0.3rem;margin-top: 0.5rem;float: left;color: #ffffff;font-weight: bold;}
+.jysModal{clear: both;}
+.jysModal li{width: 33.3%;text-align: center;float: left;padding-top: 0.2rem;}
+.jysModal li p{display: block;font-size: 0.3rem;color: #ffffff;margin-bottom: 0.1rem;}
+.jysModal li span{
+    color: #ffd1d1;display: block;font-size: 0.28rem;
+}
+.tabledata{padding: 0 0.3rem;border-bottom: 8px solid #f0f2f5;}
+.tabledata ul{margin-bottom: 0.25rem;}
+.tabledata ul li{line-height: 0.3rem;}
+.tabledata ul span{color: #999999;font-size: 0.28rem;display: inline-block;width: 3.2rem;}
+.tabledata ul i{color: #27313e;font-style:normal;font-size: 0.28rem;display: inline-block;}
+#tabNav ul li{width: 33.3%;text-align: center;float: left;height: 0.8rem;line-height: 0.8rem;color: #27313e;font-size: 0.3rem;cursor: pointer}
+#tabNav ul{border-bottom: 2px solid #f0f2f5;height: 0.8rem}
+#tabNav ul li.clickRed{color: #fd4d4c;border-bottom: 2px solid #fd4d4c}
+#tab{font-size: 0.3rem;}
+#tab2,#tab3{display: none;}
+#tab2{padding-bottom: 0.3rem;}
+
+
+/*
+模锟斤拷一锟斤拷锟斤拷锟截碉拷锟斤拷式*/
+.css-child-org-name{display: none;}
+.css-color-gree{
+    background-color: #F8FAFF;
+    margin-bottom: 0.3rem;
+}
+.oneBlock{padding: 0.3rem;line-height: 0.5rem;}
+.list-Summary{border-bottom: 4px solid #f0f2f5;padding: 0 0.3rem;}
+.titleActive::before {
+    margin-left: -0.2rem;
+    clear: both;
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0.35rem;
+    border-left: 3px solid #fd4d4c;
+    margin-right: 0.3rem;
+}
+.titleActive {
+    color: #27313e;
+    font-size: 0.4rem;
+    font-weight: bold;
+    display: inline-block;
+    padding-left: 0.3rem;
+}
+.css-org-name{height: 1rem;line-height: 1rem;}
+.css-org-name img{float: right;width: 0.5rem;margin-top: 0.3rem;cursor: pointer;}
+.twoBlock ul li{height: 1rem;line-height: 1rem;border-bottom: 2px solid #ffffff;padding-left: 0.3rem;}
+.twoBlock ul li span{float: left;}
+.twoBlock ul li i{float: right;width: 4rem;text-align:right;font-style: normal;word-wrap: break-word;padding-right: 0.3rem;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+/*模锟斤拷锟接帮拷氐锟斤拷锟绞�*/
+.stepArrow{padding: 0 0.3rem;font-size: 0.28rem;color: #999999;    }
+.stepArrow .titleBig {text-align: center;font-size: 0.34rem;color: #27313e;padding-top: 0.5rem;margin-bottom: 0.2rem}
+.titleBig img{width: 2rem;height: 0.14rem;}
+.direction_detail{line-height: 0.5rem;}

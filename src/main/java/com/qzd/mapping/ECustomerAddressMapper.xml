@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.ECustomerAddressMapper">
+
+	<!--新增-->
+	<insert id="save" parameterType="org.ieforex.entity.ECustomerAddress">
+		insert into e_customer_address(
+			address_id,
+			province,
+			city,
+			county,
+			address,
+			customer_id,
+			is_default,
+			name,
+			telephone
+		)values(
+			#{addressId},
+			#{province},
+			#{city},
+			#{county},
+			#{address},
+			#{customerId},
+			#{isDefault},
+			#{name},
+			#{telephone}
+		)
+	</insert>
+	
+	<!--删除-->
+	<delete id="deleteById">
+		delete from e_customer_address where address_id =#{addressId}
+	</delete>
+	
+	<!--更新-->
+	<update id="updateById" parameterType="org.ieforex.entity.ECustomerAddress">
+		update e_customer_address
+		<set>
+			<if test="addressId != null">address_id =#{addressId},</if>
+			<if test="province != null">province =#{province},</if>
+			<if test="city != null">city =#{city},</if>
+			<if test="county != null">county =#{county},</if>
+			<if test="address != null">address =#{address},</if>
+			<if test="customerId != null">customer_id =#{customerId},</if>
+			<if test="isDefault != null">is_default =#{isDefault},</if>
+			<if test="name != null">name =#{name},</if>
+			<if test="telephone != null">telephone =#{telephone},</if>
+		</set>
+		where address_id =#{addressId}
+	</update>
+	
+	<!-- 清空默认方式 -->
+	<update id="emptyDefault" parameterType="long">
+		UPDATE e_customer_address SET is_default = 0 where customer_id =#{customerId}
+	</update>
+	
+	<!--更新部分-->
+	<update id="updatePartById" parameterType="java.util.Map">
+		update e_customer_address
+		<set>
+			<if test="addressId != null">address_id =#{addressId},</if>
+			<if test="province != null">province =#{province},</if>
+			<if test="city != null">city =#{city},</if>
+			<if test="county != null">county =#{county},</if>
+			<if test="address != null">address =#{address},</if>
+			<if test="isDefault != null">is_default =#{isDefault},</if>
+			<if test="name != null">name =#{name},</if>
+			<if test="telephone != null">telephone =#{telephone},</if>
+		</set>
+		where address_id =#{addressId} and customer_id =#{customerId}
+	</update>	
+	
+	<!--根据地址Id查询-->
+	<select id="selectById" resultType="org.ieforex.entity.ECustomerAddress">
+		select * from e_customer_address where address_id =#{addressId}
+	</select>
+
+	<!--根据客户Id查询-->
+	<select id="selectByCustomerId" resultType="org.ieforex.entity.ECustomerAddress">
+		select * 
+		from e_customer_address 
+		where customer_id =#{customerId}
+		order by is_default desc
+	</select>
+	
+	<select id="addressCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM e_customer_address WHERE customer_id =#{customerId}
+	</select>
+	
+	<select id="defultAddress">
+		SELECT
+	</select>
+	
+</mapper>

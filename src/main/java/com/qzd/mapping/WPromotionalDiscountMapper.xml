@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.WPromotionalDiscountMapper">
+
+	<resultMap type="org.ieforex.entity.WPromotionalDiscount" id="promotionalList"></resultMap>
+	
+	<sql id="sql_where">
+		<if test="dealerId != null and dealerId != '' ">
+			AND	a.dealer_id = #{dealerId}
+		</if>
+		<if test="status != null and status != '' ">
+			AND	a.status = #{status}
+		</if>
+	</sql>
+
+	<!--查询-->
+	<select id="select" parameterType="java.util.HashMap" resultMap="promotionalList">
+		SELECT a.*,CASE WHEN DATE_FORMAT(a.end_date,'%Y-%m-%d') <![CDATA[>= DATE_FORMAT(NOW(),'%Y-%m-%d')]]> THEN 1 ELSE 2 END expired FROM w_promotional_discount a
+		<where>
+			<include refid="sql_where" />
+		</where>
+		ORDER BY expired ASC,a.start_date DESC
+		<if test="offset != null and limit != null">
+		LIMIT #{offset},#{limit}
+		</if>
+	</select>
+	
+	<select id="selectCount" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM w_promotional_discount a
+		<where>
+			<include refid="sql_where" />
+		</where>
+	</select>
+
+	<select id="queryTop" resultType="org.ieforex.entity.WPromotionalDiscount">
+		select * from w_promotional_discount where status=0 order by start_date desc LIMIT 0,6
+	</select>
+	
+	<select id="selectById" resultType="org.ieforex.entity.WPromotionalDiscount">
+		SELECT a.*,b.name,b.chn_name FROM w_promotional_discount a
+		LEFT JOIN e_dealer b ON a.dealer_id = b.dealer_id
+		WHERE a.promotional_id =#{promotionalId}
+	</select>
+	
+
+</mapper>

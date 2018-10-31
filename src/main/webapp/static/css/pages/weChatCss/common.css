@@ -1,0 +1,128 @@
+*{
+    margin:0;
+    padding:0;
+}
+a,img,button,input,textarea,div,span,ul,li,p{-webkit-tap-highlight-color:rgba(255,255,255,0);}
+body{
+    font-family:Helvetica,"Microsoft Yahei";
+    /* overflow-x: hidden;*/
+    color: #27313e;
+}
+table{
+    border-collapse:collapse;
+    border-spacing:0;
+}
+a{
+    text-decoration:none;
+}
+img,button{
+    border:none;
+    outline:none;
+}
+ol,ul{
+    list-style:none;
+}
+.lf{float:left;}
+.rt{  float: right;}
+.clear{
+    clear: both;
+}
+.hidden{display: none}
+.shows{display: block}
+*::placeholder{color:#999;}
+/*�������������ʱ���ҳ������*/
+#mengbans {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    opacity: 0;
+}
+#error  {
+    width: 97%;
+    position: absolute;
+    top: 20%;
+    left: 0;
+    z-index: 10000;
+    display: none;
+}
+#error > div {
+    width:5rem;
+    margin:0 auto;
+    line-height:0.8rem;
+    text-align: center;
+    color:#fff;
+    background-color: #666;
+    font-size: 0.3rem;
+    border-radius: 10px;
+}
+html{
+    width:100%;
+    font-size: 100px;
+   /* overflow-x: hidden;*/
+}
+
+/*---------------------------�ײ���λ------------------*/
+.footer_commont{
+    height: 0.94rem;
+    width: 100%;
+    background-color: #f9f9f9;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding-top: 0.15rem;
+    border-top: 1px solid #bcbcbc;
+}
+.bottom_footer li{float: left;width: 33.33%;text-align: center;}
+.bottom_footer li a{color: #999999;font-size: 16px;display: block;}
+.bottom_footer li a.active{color: #ff4c51}
+/******************************************�齱����ֶһ�ҳ�湫��ͷ��**********************************/
+.cashHeader{background-color: #ffffff;padding:0 0.8rem;font-size: 0.4rem;height: 1rem;margin-bottom: 0.05rem;}
+.cashHeader ul{height: 1rem}
+.cashHeader li{width: 2rem;text-align: center;height: 1rem;line-height: 1rem;cursor: pointer;}
+.clickRed{border-bottom: 2px solid #fd4d4c;color: #fd4d4c;}
+.cashHeader a{color:#343434 }
+/*ģ̬���в�����ͬǩ���ͳ齱*/
+.mo_title{position: relative;border: 1px solid #e3c7a4;border-top:none;}
+.jf_title{width: 2.24rem;height: 0.6rem;line-height: 0.6rem;margin: 0 auto;  text-align: center  ;
+    display: block;font-size: 0.4rem;color: #e3c7a4;margin-bottom: -0.3rem;}
+.mo_title i{width: 0.2rem;height: 0.2rem;background-color: #e3c7a4;border-radius: 50%;position: absolute;top:-0.1rem;}
+.mo_title b{width: 2.11rem;border-top:1px solid#e3c7a4;position: absolute;top:0;}
+.jf_text{font-size: 0.3rem;padding: 0.3rem;}
+.jf_text div{margin-top: 0.4rem;}
+/*���ֽ����ֲ�*/
+#dlg-win-change,#dlg-pointer-strategy,#dlg-active-explain,#dlg-draw-success{display: none;}
+.grayMask{width: 100%;height: 100%;position: fixed;top:0;left: 0; background:#000;  opacity:0.8; filter:alpha(opacity=80);z-index: 10;}
+.containersss{width: 100%;position: fixed;top:20%;left: 0;z-index: 11;}
+.winTit{font-size: 0.3rem;text-align: center;color: #ffffff;}
+.lunbo{ overflow: hidden;
+    width:5rem;
+    height:2rem;
+    margin: 0 auto;
+}
+#lunbo{
+    position: relative;
+    width:5rem;
+    font-size: 0.3rem;
+    padding-top: 0.02rem;
+
+}
+/*#lunbo ul{
+    position:absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: auto;
+}*/
+#lunbo li{
+    width:100%;
+    height: 0.48rem;
+    line-height: 0.48rem;
+    color:#999;
+}
+#lunbo span{float: left}
+#lunbo b{font-weight: normal;float: right;}
+
+

@@ -1,0 +1,137 @@
+body{
+	background-color: #f3f3f3;
+	background-size: 100%;	
+}
+ /*part1*/
+.items_phone1{
+	width: 100%;
+	position: relative;
+}
+.phone1_top{
+	background-color: #FFF;
+	width: 100%;
+	height: 3.25rem;
+	margin-top: 0.5rem;
+	padding: 0 0.75rem;
+	border-bottom: solid 0.025rem #bebebe;
+	position: relative
+}
+.phone1_top img{
+	position: absolute;
+	width: 5rem;
+	height: 1.6rem;
+	right: 2.5rem;
+}
+
+.topheight{
+	margin-top: 0.75rem;
+}
+.phone1_text{
+	font-size: 0.75rem;
+	position: absolute;
+    top: 0.65rem;
+}
+.phone1_number{
+	font-size: 0.75rem;
+	position: absolute;
+    top: 0.65rem;
+    left: 3.5rem;
+}
+.phone1_address{
+	font-size: 0.6rem;
+	position: absolute;
+    top: 2rem;
+	opacity: 0.4;
+}
+
+ /*part2*/
+.phone1_middle{
+	background-color: #FFF;
+	width: 100%;
+	height: 2.8rem;
+	padding:0 0.75rem;
+	position: relative;
+}
+.middle_content{
+	padding-top: 0.65rem;
+	width: 100%;
+	height: 1.5rem;
+}
+.middle_content img{
+	width: 1rem;
+	height: 0.85rem;
+	position: absolute;
+	margin-top: 0.25rem;
+}
+.middle_content .code{
+	font-size: 0.75rem;
+}
+.middle_content .code_second{
+	border: solid 0.025rem #f3f3f3;
+	padding: 0.3rem 1rem;
+	text-align: center;
+}
+.middle_content .edit_code{
+	font-size: 0.75rem;
+	border: solid 0.025rem #f3f3f3;
+	padding: 0.3rem 1rem;
+	text-align: center;
+	border-radius: 0.2rem;
+}
+.middle_content .edit_firstlifecode{
+	margin-left: 6.25rem;
+}
+.middle_content .edit_secondlifecode{
+	margin-left: 4.25rem;
+}
+
+ /*part3*/
+
+.address_bottom{
+	width: 100%;
+	height: 2.25rem;
+	background-color: #FFF;
+	position: fixed;
+	bottom: 0;
+}
+.add_address{
+	color: red;
+	font:400 0.75rem/2.25rem 'Microsoft Yahei';
+	text-align: center;
+	opacity: 0.7;
+	display: block;
+}
+
+
+/*part1*/
+.noaddress{
+	width: 100%;
+}
+.center_img{
+	right: 0;
+	left: 0;
+	top: -7rem;
+	bottom: 0;
+	margin: auto;
+	position: absolute;
+	width: 5rem;
+	height: 4.5rem;
+}
+
+ /*part2*/
+.address_bottom{
+	width: 100%;
+	height: 2.25rem;
+	background-color: #FFF;
+	position: fixed;
+	bottom: 0;
+	border-top: solid 0.025rem #f3f3f3;
+}
+.add_address{
+	color: red;
+	font:400 0.75rem/2.25rem 'Microsoft Yahei';
+	text-align: center;
+	opacity: 0.7;
+	display: block;
+}
+

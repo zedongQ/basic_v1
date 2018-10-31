@@ -1,0 +1,114 @@
+body{
+	background-color: #f3f3f3;
+	background-size: 100%;	
+}
+/*part1*/
+.topSelectTime{
+	width: 100%;
+	height: 2.15rem;
+	background:#FFF;
+	position: relative;
+	border-bottom: solid 0.025rem #f3f3f3;
+}
+.topSelectTime .shijian{
+	width: 1.25rem;
+	height: 1.25rem;
+	padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    position: absolute;	
+}
+.topSelectTime .timeText{
+	font:400 0.65rem/2.15rem 'Microsoft Yahei';	
+	padding-left: 2rem;
+}
+.topSelectTime .shuaixuan{
+	width: 3.25rem;
+	height: 1.25rem;
+	position: absolute;
+	right: 0.5rem;
+    top: 0.5rem;
+}
+
+
+
+/*part2*/
+.set{
+	margin-top: 0.5rem;
+}
+.set_column{
+	width: 100%;
+	height: 5.15rem;
+	background:#FFF;
+	position: relative;
+	border-bottom: solid 0.025rem #f3f3f3;
+}
+.set_columnContent{
+	overflow: hidden;
+}
+.set_column .icon{
+	width: 3rem;
+    height: 3rem;
+    margin: 1.15rem 0.75rem 1rem 0.65rem;
+    border-radius: 1.5rem;
+    float: left;
+}
+.set_columnContent .firstColumnText{
+	padding-top: 1.3rem;
+    position: relative;
+}
+.firstColumnText .leftText{
+    font-weight: 600;
+    font-size: 0.75rem;
+}
+.firstColumnText .rightText{
+	right: 1rem;
+    position: absolute;
+    font-size: 0.6rem;
+    color: red;
+    top: 1.3rem;
+}
+
+.set_columnContent .secondColumnText{
+	padding-top: 0.3rem;
+	position: relative;
+    height: 2rem;
+}
+.secondColumnText .leftText{
+	opacity: 0.8;
+	font-size: 0.6rem;
+}
+.secondColumnText .rightText{
+	right: 0.5rem;
+    position: absolute;
+    border: solid 0.025rem #e5e5e5;
+    font-size: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.2rem;
+    top: 0.2rem;
+    color: #666;
+}
+.secondColumnText .jiebang{
+    padding: 0.5rem 1.35rem;
+}
+/*part3*/
+
+.bindingUser{
+	width: 17.75rem;
+	height: 2.95rem;
+	background-color: #FFF;
+	margin: 2.15rem auto 0;
+	border-radius: 0.3rem;
+	position: relative;
+
+}
+.bindingUser .bangdingzhanghao{
+	width: 1.3rem;
+	height: 1.15rem;
+	position: absolute;
+	top: 0.85rem;
+    left: 6.05rem;
+}
+.bindingUser .bindingText{
+	font:400 0.65rem/2.95rem 'Microsoft Yahei';	
+	padding-left: 7.9rem;
+}

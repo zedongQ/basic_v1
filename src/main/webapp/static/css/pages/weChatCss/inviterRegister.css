@@ -1,0 +1,73 @@
+body {
+	margin: 0;
+}
+/*  #bg_div div:NTH-CHILD(2) input:NTH-CHILD(1){
+	z-index: 999;
+    position: relative;
+    top: -74.56%;
+    left: 10%;
+    width: 80%;
+    height: 13%;
+    border-radius: 10px;
+}  */
+ #registPhone{
+	z-index: 999;
+    position: relative;
+    top: -74.56%;
+    left: 10%;
+    width: 78%;
+    height: 15%;
+    border-radius:  0.1em;
+    font-size: 0.9rem;
+    padding-left: 2%;
+    font-family:  Microsoft YaHei;
+    border:1px  solid #999;
+    color: #333333;
+} 
+ #smsCode{
+    z-index: 999;
+    position: relative;
+    top: -69.56%;
+    left: 10%;
+    width: 78%;
+    height: 15%;
+    border-radius: 0.1em;
+    font-size: 0.9rem;
+    padding-left: 2%;
+    font-family: Microsoft YaHei;
+    border: 1px solid #999;
+    color: #333333;
+} 
+#re_btn{
+	z-index: 999;
+	position: relative;
+    top: -73%;
+    width: 80.5%;
+    left: 10%;
+}
+#sumit_btn{
+    position: relative;
+    width: 30%;
+    top: -83%;
+    height: 11%;
+    left: 58%;
+    z-index: 9999;
+    background-color: #ff6d00;
+    color: #fffbf5;
+    font-size: 0.7rem;
+    font-family: Microsoft YaHei;
+    border-radius: 0.1em;
+    border: none;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-transition: border .25s linear,color .25s linear,background-color .25s linear;
+    transition: border .25s linear,color .25s linear,background-color .25s linear;
+}
+#sendResult{
+    position: relative;
+    top: -71%;
+    right: 21%;
+    font-size: 0.8rem;
+    color: #999999;
+    font-family: Microsoft YaHei;
+    display: none;
+ }

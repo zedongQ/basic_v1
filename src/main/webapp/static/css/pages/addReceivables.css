@@ -1,0 +1,107 @@
+body{
+	background-color: #f3f3f3;
+	background-size: 100%;	
+}
+
+/*part1*/
+.add_receivables{
+	width: 100%;
+	height: 2.25rem;
+	background-color: #FFF;
+}
+.add_receivables .rmb{
+	font: 400 0.9rem/2.15rem 'Microsoft Yahei';
+    border-bottom: solid 0.15rem #fd4d4c;
+    display: block;
+    float: left;
+    margin-left: 1.4rem;
+    padding: 0 0.6rem;
+}
+.add_receivables .dollar{
+	font:400 0.9rem/2.1rem 'Microsoft Yahei';
+	margin-left: 5.55rem;
+	padding: 0.5rem 0;
+}
+
+/*part2*/
+.set_column{
+	height: 2rem;
+	width: 100%;
+	background:#FFF;
+	margin-top: 0.5rem;
+	position: relative;
+}
+.set_leftText{
+	font: 400 0.75rem/2rem 'Microsoft Yahei';
+	margin-left: 0.75rem;
+}
+.set_rightText{
+	font: 400 0.75rem/2rem 'Microsoft Yahei';
+	position: absolute;
+    right: 1.5rem;
+    opacity: 0.3;
+}
+.set_column .right_arrow{
+	width: 0.75rem;
+	height: 0.75rem;
+	right: 0.75rem;
+    top: 0.7rem;
+    position: absolute;
+    opacity: 0.4;
+}
+/*part3*/
+.bankCard_plate{
+	width: 100%;
+	margin-top: 0.75rem;
+	margin-bottom: 1.25rem;
+}
+.bankCard{
+	width: 16.65rem;
+	height: 9.15rem;
+	background-image: url(../../../static/images/pages/addReceivables/bankCard.png);
+	background-size: 16.65rem 9.15rem;
+	margin: 0 auto;
+}
+.bankCard .cardTop{
+	position: relative;
+    padding-left: 0.95rem;
+    padding-top: 0.65rem;
+    height: 1.75rem;
+}
+.bankCard .cardTop .imgSize{
+	float: left;
+    width: 1.75rem;
+    height: 1.75rem;
+}
+.bankCard .cardTop img{
+	width: 100%;
+}
+.bankCard .bankName{
+	font:400 0.9rem/1.75rem 'Microsoft Yahei';
+	position: absolute;
+    left: 4.25rem;	
+}
+.bankCard .cardKind{
+	font:400 0.75rem/1.75rem 'Microsoft Yahei';
+	position: absolute;
+    right: 0.75rem;
+}
+.bankCard .cardBottom{
+	padding-top: 3.25rem;
+    padding-left: 0.75rem;
+}
+.cardBottom .name{
+	display: block;
+    font-size: 0.75rem;
+}
+.cardBottom .number{
+	font-size: 0.9rem;
+    padding-top: 0.6rem;
+    display: inline-block;
+}
+.cardBottom .delete{
+	font-size: 0.75rem;
+    opacity: 0.8;
+    position: absolute;
+    right: 2.1rem;
+}

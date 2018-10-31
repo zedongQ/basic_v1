@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.DealerMapper">
+
+	<resultMap id="ResultMap" type="org.ieforex.entity.Dealer" >
+		<id column="dealer_id" property="dealerId"/>
+		<result column="dealer_info" property="dealerInfo"/>
+		<result column="rebate_standard" property="rebateStandard"/>
+		<result column="data_status" property="dataStatus"/>
+		<result column="logo_url" property="logoUrl"/>
+		<result column="logo_url2" property="logoUrl2"/>
+		<result column="is_home_page" property="isHomePage"/>
+		<result column="is_home_dc" property="isHomeDc"/>
+		<result column="home_page_sort" property="homePageSort"/>
+		<result column="default_sort" property="defaultSort"/>
+		<result column="invoice_no" property="invoiceNo"/>
+		<result column="address" property="address"/>
+		<result column="telephone" property="telephone"/>
+		<result column="pro_name" property="proName"/>
+		<result column="rebate_period_type" property="rebatePeriodType"/>
+		<result column="forex_ratio" property="forexRatio"/>
+		<result column="company_name" property="companyName"/>
+		<result column="gold_ratio" property="goldRatio"/>
+		<result column="silver_ratio" property="silverRatio"/>
+		<result column="crude_oil_ratio" property="crudeOilRatio"/>
+		<result column="position_limit" property="positionLimit"/>
+		<result column="pips_type" property="pipsType"/>
+		<result column="occident_pips" property="occidentPips"/>
+		<result column="gold_pips" property="goldPips"/>
+		<result column="crude_oil_pips" property="crudeOilPips"/>
+		<result column="cnh" property="cnh"/>
+		<result column="a_share_index" property="aShareIndex"/>
+		<result column="rollovers" property="rollovers"/>
+		<result column="platform_type" property="platformType"/>
+		<result column="platform_mode" property="platformMode"/>
+		<result column="min_money" property="minMoney"/>
+		<result column="max_leverage" property="maxLeverage"/>
+		<result column="trade_min_amount" property="tradeMinAmount"/>
+		<result column="max_business" property="maxBusiness"/>
+		<result column="explosionra" property="explosionra"/>
+		<result column="scalp" property="scalp"/>
+		<result column="hedging" property="hedging"/>
+		<result column="rmb_in_out" property="rmbInOut"/>
+		<result column="in_out_ways" property="inOutWays"/>
+		<result column="outfee" property="outfee"/>
+		<result column="infee" property="infee"/>
+		<result column="out_transfer_cycle" property="outTransferCycle"/>
+		<result column="in_transfer_cycle" property="inTransferCycle"/>
+		<result column="close_currency" property="closeCurrency"/>
+		<result column="founding_time" property="foundingTime"/>
+		<result column="language" property="language"/>
+		<result column="name" property="name"/>
+		<result column="chn_name" property="chnName"/>
+		<result column="website_url" property="websiteUrl"/>
+		<result column="create_user_id" property="createUserId"/>
+		<result column="create_date" property="createDate"/>
+		<result column="update_user_id" property="updateUserId"/>
+		<result column="update_date" property="updateDate"/>
+		<result column="customer_guide" property="customerGuide"/>
+		<result column="return_flow" property="returnFlow"/>
+		<result column="transfer_guide" property="transferGuide"/>
+		<result column="logo_url3" property="logoUrl3"/>
+		<result column="promote_url" property="promoteUrl"/>
+		<collection property="regulatoryOrg"  ofType="java.lang.String" javaType="String"
+		            column="dealer_id" select="getRegulatoryOrg"/>
+		<collection property="transactionType"  ofType="java.lang.String" javaType="String"
+		            column="dealer_id" select="getTransactionType"/>
+        <collection property="openUrl"  ofType="java.util.HashMap" javaType="ArrayList"
+		            column="dealer_id" select="getOpenUrl"/>
+		<collection property="promotional"  ofType="org.ieforex.entity.WPromotionalDiscount" javaType="ArrayList"
+		            column="dealer_id" select="getPromotional"/>
+	</resultMap>
+	<resultMap type="org.ieforex.entity.Dealer" id="dealerList">
+	</resultMap>
+	<sql id="sql_where">
+	    <if test="dealerId != null and dealerId != '' ">
+			AND dealer_id = #{dealerId}
+	    </if>
+		<if test="dataStatus != null and dataStatus != '' ">
+			AND data_status = #{dataStatus}
+		</if>
+		<if test="isHomePage != null and isHomePage != '' ">
+			AND is_home_page = #{isHomePage}
+		</if>
+		<if test="isHomeDc != null and isHomeDc != '' ">
+			AND is_home_dc = #{isHomeDc}
+		</if>
+	</sql>
+	
+	<!-- 首页交易商 -->
+	<select id="selectHome" parameterType="java.util.Map" resultMap="dealerList">
+		SELECT * FROM e_dealer
+		<where>
+			<include refid="sql_where" />	
+		</where>
+		ORDER BY home_page_sort DESC,default_sort DESC
+		<if test="offset != null and limit != null">
+		LIMIT #{offset}, #{limit}
+		</if>
+	</select>
+	<!-- 查看更多 -->
+	<select id="selectMore" parameterType="java.util.Map" resultMap="dealerList">
+		SELECT * FROM e_dealer
+		<where>
+			<include refid="sql_where" />	
+		</where>
+		ORDER BY default_sort DESC
+		<if test="offset != null and limit != null">
+		LIMIT #{offset}, #{limit}
+		</if>	
+	</select>
+	
+	<select id="queryEdealer" resultType="org.ieforex.entity.Dealer">
+       select * from e_dealer where data_status = '0'
+	</select>
+	
+	<select id="queryList" parameterType="java.util.HashMap" resultMap="ResultMap">
+		select * from 
+		<if test="accountGold != null and accountGold != ''">
+			(select a.* from e_dealer a left join `w_promotional_discount` b on a.dealer_id =b.dealer_id WHERE account_gold=#{accountGold} AND  #{nowDate} between b.start_date and b.end_date) AS c 
+		</if>
+		<if test="accountGold == null or accountGold == ''">
+			e_dealer c
+		</if>
+		where data_status = '0' 
+		<if test="dealerName != null and dealerName != ''">
+			and (c.name like CONCAT('%',#{dealerName},'%') or c.chn_name like CONCAT('%',#{dealerName},'%'))
+		</if>
+		<if test="dicId != null and dicId != ''">
+			and c.dealer_id in(select dealer_id from e_dealer_dic a left join e_dealer_dic_basic b on a.dic_id=b.dic_id where b.dic_id=#{dicId})
+		</if>
+		<if test="rmbInOut != null and rmbInOut != ''">
+			and c.rmb_in_out = #{rmbInOut}
+		</if>
+		<if test="rebatePeriodType != null and rebatePeriodType != ''">
+			and c.rebate_period_type = #{rebatePeriodType}
+		</if>
+		<if test="orderby == 'forex_ratio'">
+			order by c.forex_ratio
+		<if test="orderType!=null and orderType!=''">		 	
+			desc
+		</if>
+		</if>
+		<if test="orderby == 'min_money'">
+			order by c.min_money
+			<if test="orderType!=null and orderType!=''">		 	
+				desc
+			</if>
+		</if>
+		<if test="orderby == 'default_sort'">
+			order by c.default_sort
+		</if>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+	<select id="queryTotal" parameterType="java.util.HashMap" resultType="int">
+		select count(*) from 
+		<if test="nowDate != null and nowDate != ''">
+			(select a.* from e_dealer a left join `w_promotional_discount` b on a.dealer_id =b.dealer_id WHERE  #{nowDate} between b.start_date and b.end_date) AS c 
+		</if>
+		<if test="nowDate == null or nowDate == ''">
+			e_dealer c
+		</if>
+		where data_status = '0' 
+		<if test="dealerName != null and dealerName != ''">
+			and (c.name like CONCAT('%',#{dealerName},'%') or c.chn_name like CONCAT('%',#{dealerName},'%'))
+		</if>
+		<if test="dicId != null and dicId != ''">
+			and c.dealer_id in(select dealer_id from e_dealer_dic a left join e_dealer_dic_basic b on a.dic_id=b.dic_id where b.dic_id=#{dicId})
+		</if>
+		<if test="rmbInOut != null and rmbInOut != ''">
+			and c.rmb_in_out = #{rmbInOut}
+		</if>
+		<if test="rebatePeriodType != null and rebatePeriodType != ''">
+			and c.rebate_period_type = #{rebatePeriodType}
+		</if>
+	</select>
+	
+	<select id="queryRegulator" resultType="map">
+		select dic_id,show_name from e_dealer_dic_basic where parent_id =2
+	</select>
+	
+	<select id="queryDealerById" resultMap="ResultMap">
+		select * from e_dealer where dealer_id=#{dealerId}
+	</select>
+	
+	 <!--监管机制 -->
+    <select id="getRegulatoryOrg" resultType="string">
+		select GROUP_CONCAT(b.show_name) show_name from e_dealer_dic a
+			left join e_dealer_dic_basic b on a.dic_id = b.dic_id
+			left join e_dealer_dic_basic c on b.parent_id = c.dic_id
+		where a.dealer_id = #{dealerId} and b.is_use = '1' and c.dic_type = 'Z001' group by c.dic_id
+    </select>
+    <!--交易品种-->
+    <select id="getTransactionType" resultType="string">
+		select GROUP_CONCAT(b.show_name) show_name  from e_dealer_dic a
+			left join e_dealer_dic_basic b on a.dic_id = b.dic_id
+			left join e_dealer_dic_basic c on b.parent_id = c.dic_id
+		where a.dealer_id = #{dealerId} and b.is_use = '1' and c.dic_type = 'Z002' group by c.dic_id
+    </select>
+    
+    <select id="getOpenUrl" resultType="java.util.HashMap">
+    	select account_type,account_url from e_dealer_open_url where dealer_id=#{dealerId}
+    </select>
+	
+	<select id="getPromotional" resultType="org.ieforex.entity.WPromotionalDiscount">
+		select a.* from w_promotional_discount a where a.dealer_id = #{dealerId} and a.end_date>now() order by publish_date ;
+	</select>
+	
+	<select id="dealerCompare" parameterType="Long[]" resultMap="ResultMap">
+		select * from e_dealer where dealer_id in
+		<foreach collection="array" item="id" open="(" close=")" separator=",">
+			#{id}
+		</foreach>
+	</select>
+	
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.EWithdrawalMapper">
+
+	<select id="getWithdrawalNumOfTheDay" parameterType="java.lang.Long" resultType="int">
+		SELECT COUNT(*)
+		FROM e_withdrawal a
+		WHERE DATE_FORMAT(a.withdrawal_date,'%Y-%m-%d') = DATE_FORMAT(NOW(),'%Y-%m-%d')
+		AND a.customer_id=#{customerId}
+	</select>
+	
+	<select id="getWithdrawalForThreeDays" parameterType="java.lang.Long" resultType="int">
+		SELECT COUNT(a.withdrawal_id)*COUNT(b.withdrawal_id)
+		FROM e_withdrawal a 
+		LEFT JOIN e_withdrawal b ON a.customer_id=b.customer_id 
+				AND DATE_FORMAT(b.withdrawal_date,'%Y-%m-%d') = DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 2 DAY),'%Y-%m-%d')
+		WHERE a.customer_id=#{customerId} AND DATE_FORMAT(a.withdrawal_date,'%Y-%m-%d') = DATE_FORMAT(DATE_SUB(NOW(), INTERVAL 1 DAY),'%Y-%m-%d');
+	</select>
+	
+	<insert id="insertWithResult" useGeneratedKeys="true" keyProperty="withdrawalId" parameterType="org.ieforex.entity.EWithdrawal">
+		INSERT INTO `e_withdrawal` 
+		(`withdrawal_date`, `withdrawal_amount`, `withdrawal_currency`, `exchange_rate`,`withdrawal_way`, `withdrawal_fee`, `holder_name`, 
+		`payee_name`, `payee_card_no`,`payee_email`, `payee_phone`, `payee_address`, `payee_bank_name`, `payee_bank_acct_no`, `payee_alipay_acct_no`, 
+		`payee_eng_name`, `payee_mb_acct_no`, `payee_tt_bank_name`,`payee_tt_bank_acct_no`, `payee_tt_bank_swift_code`, `payee_tt_address`, `payee_paypal_no`, 
+		`create_user_id`, `create_date`, `update_user_id`, `update_date`, `status`, `memo`, `check_date`,`check_user_id`, `check_first_date`, `check_first_user_id`, 
+		`check_second_date`,`check_second_user_id`, `customer_id`, `login_phone`, `login_email`, `withdrawal_type`, `withdrawal_type_desc`, `withdrawal_advise`, 
+		`withdrawal_amount_currency`, `payment_amount`, `payment_currency`, `payment_date`, `withdrawal_no`, `amount_rmb`)
+		VALUES
+		(#{withdrawalDate}, #{withdrawalAmount}, #{withdrawalCurrency},#{exchangeRate}, #{withdrawalWay}, #{withdrawalFee}, #{holderName}, #{payeeName}, 
+		#{payeeCardNo}, #{payeeEmail}, #{payeePhone}, #{payeeAddress}, #{payeeBankName}, #{payeeBankAcctNo}, #{payeeAlipayAcctNo}, #{payeeEngName}, 
+		#{payeeMbAcctNo}, #{payeeTtBankName}, #{payeeTtBankAcctNo}, #{payeeTtBankSwiftCode}, #{payeeTtAddress}, #{payeePaypalNo}, #{createUserId}, 
+		#{createDate}, #{updateUserId}, #{updateDate}, #{status}, #{memo},#{checkDate}, #{checkUserId}, #{checkFirstDate}, #{checkFirstUserId}, 
+		#{checkSecondDate}, #{checkSecondUserId}, #{customerId}, #{loginPhone}, #{loginEmail}, #{withdrawalType}, #{withdrawalTypeDesc}, #{withdrawalAdvise}, 
+		#{withdrawalAmountCurrency}, #{paymentAmount}, #{paymentCurrency}, #{paymentDate}, #{withdrawalNo}, #{amountRmb})
+	</insert>
+	<select id="getTypeByAcct" resultType="String">
+	
+		SELECT ci.type FROM e_customer_account_info ci WHERE ci.account_acct = #{ accountAcct }
+	
+	</select>
+	
+	<select id="getWithdrawalNo" parameterType="String" resultType="int">
+		SELECT IFNULL(CAST(SUBSTRING(MAX(withdrawal_no), 13) AS SIGNED INTEGER)+1,1) AS withdrawal_no 
+		FROM e_withdrawal WHERE withdrawal_no LIKE CONCAT(#{ withdrawalNo },'%')
+	</select>
+	
+</mapper>

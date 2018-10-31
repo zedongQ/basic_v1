@@ -1,0 +1,88 @@
+body{
+	background-color: #f3f3f3;
+	background-size: 100%;	
+}
+.top_cue{
+	width: 100%;
+	opacity: 0.3;
+	margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+.top_cue .cuePassword{
+	font-size: 0.65rem;
+	padding-left:0.75rem;
+}
+.items_phone2{
+	width: 100%;
+	position: relative;
+}
+
+/*phone2_top*/
+.phone2_top{
+	background-color: #FFF;
+	width: 100%;
+	height: 2.8rem;
+	margin-top: 0.65rem;
+	border-bottom: solid 0.025rem #f3f3f3;
+}
+.top_content{
+	padding-top: 0.65rem;
+    height: 1.5rem;
+    width: 100%;
+}
+.top_content .code{
+	font-size: 0.75rem;
+	padding-left:0.75rem;
+}
+.top_content input{
+	font-size: 0.75rem;
+	border: 0;
+	text-align: center;
+	width: 9rem;
+}
+
+/*phone2_middle*/
+.middle_cue{
+	width: 100%;
+	opacity: 0.3;
+	margin-top: 1rem;
+    margin-bottom: 0.75rem;
+}
+.middle_cue .cueMail{
+	font-size: 0.65rem;
+	padding-left:0.75rem;
+}
+.phone2_middle{
+	background-color: #FFF;
+	width: 100%;
+	height: 2.8rem;
+}
+.middle_content{
+	padding-top: 0.65rem;
+	width: 100%;
+	height: 1.5rem;
+}
+.middle_content .code{
+	font-size: 0.75rem;
+	padding-left:0.75rem;
+}
+.middle_content input{
+	font-size: 0.75rem;
+	border: 0;
+	text-align: center;
+	width: 10rem;
+}
+
+/*phone2_bottom*/
+.phone2_bottom{
+	margin-top: 2.2rem;
+	padding: 0 0.75rem;
+}
+.bt_return{
+	border-radius: 0.2rem; 
+	height: 2.25rem;
+	text-align: center;
+	background-color: #e5e5e5;
+	color: #fff6f6;
+	font: 400 0.65rem/2.25rem 'Microsoft Yahei';
+}

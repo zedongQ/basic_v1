@@ -1,0 +1,662 @@
+body{
+	word-break: break-all;
+    line-height: 1.5;
+    color: #333;
+    font-family: "微软雅黑";
+    font-size: 12px;
+}
+
+ul,ul li{
+	padding: 0;margin: 0;
+	list-style: none;
+}
+.wrap{
+	width: 1347px;
+    margin: 0 auto;
+}
+/*行情中心左侧模板开始**************************************/
+.wrap_left{
+	width: 962px;
+    float: left;
+   /*border: 1px solid #00f;*/
+   /*margin: 0 auto;*/
+   /*height: 1000px;*/
+  margin: 0;
+  padding: 0;
+}
+/*头部5个方框---begin*/
+.currency_exchange{
+	width: 100%; 
+	height: 110px;
+	/*padding-top: 20px;*/
+	padding-bottom: 50px;
+	border-bottom: 1px solid #ccc;   
+}
+.currency_exchange ul.cur_list{
+	width: 100%;
+}
+ul.cur_list li.cur_li{
+	float: left;
+	width: 104px;
+	height: 90px;
+	padding: 20px 18px;
+	padding-bottom:20px;
+	margin-right: 18px;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+ul.cur_list li:last-child{
+	margin-right: 0px;
+}
+.cur_li .cur_two_name{
+	font-size: 16px;
+}
+.cur_li .cur_exg{
+	font-size: 12px;
+	color: #ccc;
+}
+.cur_li .cur_range{
+	font-size: 26px;
+	font-weight: bold;
+}
+.cur_li .cur_up_down span{
+	font-size: 12px;
+	display: inline-block;
+	height: 15px;
+	line-height: 15px;
+	font-weight: bold;
+}
+.cur_li .cur_up_down span.slipt{
+	height: 15px;
+	width: 0px;
+	font-size: 14px;
+	/*border-left: 2px solid #ddd;*/
+	margin-left: 3px;
+	margin-right: 3px;
+	line-height: 15px;
+	color: #a5a9af;
+	font-weight: 400;
+}
+/*头部5个方框---over*/
+.hqzx_mode{
+	width: 100%;
+	margin-top: 25px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #d6d6d6;
+	clear: both;
+}
+.mode_head{
+	height: 35px;
+	font-size: 24px;
+	line-height: 30px;
+	margin-bottom: 20px;
+}
+.mode_head em{
+	background: #015cab;;
+    width: 4px;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    margin-right: 10px;
+    float: left;
+}
+.mode_head a{
+	text-decoration: none;
+	color: #000;
+}
+.mode_head .hd_tit_left{
+	float: left;
+	font-weight: bold;	
+}
+.mode_head .hd_tit_left span{
+	padding-left: 10px;
+}
+.mode_head .hd_tit_right{
+	float: right;
+	color: #ccc;
+	font-size: 18px;
+	margin-right: 5px;
+}
+.hqzx_mode ul,.hqzx_mode ul li{
+	padding: 0;margin: 0;
+	list-style: none;
+	width: 100%;
+}
+.hqzx_mode ul li{
+	height: 40px;
+	line-height: 40px;
+	width: 100%;
+	text-align: center;
+}
+
+/*表头*/
+.hqzx_mode ul li.hqzx_list-tit{
+	font-size: 12px;
+	font-weight: bold;
+	border-top:1px solid #ccc;
+	margin-bottom: 3px;
+	/*border-left:1px solid #ccc;*/
+	/*border-bottom:1px solid #ccc;*/
+}
+.hqzx_list .hqzx_list-tit div.t_left{
+	float: left;
+	width: 240px;
+}
+.hqzx_list .hqzx_list-tit div.t_left span{
+	margin-left: -140px;
+	text-align: left;
+}
+.hqzx_list .hqzx_list-tit div.t_right{
+	float: right;
+	width: 544px;
+}
+.hqzx_list .hqzx_list-tit div.t_right span{
+	float: right;
+	text-align: center;
+	width: 76px;
+}
+
+/*表的每一行*/
+.hqzx_mode ul li.hqzx_list-li{
+	/*background: #F7F7F7;*/
+	font-size: 12px;
+	font-weight: normal;
+	margin-bottom: 3px;
+}
+/*奇数行背景变色*/
+.hqzx_mode ul li:nth-child(odd){
+	background: #FAFAFA;
+}
+/*表头行单独背景颜色*/
+.hqzx_mode ul li:first-child{
+	background: #F7F7F7;
+}
+.hqzx_list .hqzx_list-li div.t_left{
+	float: left;
+	width: 240px;
+}
+.hqzx_list .hqzx_list-li div.t_left span{
+	/*margin-left: -100px;*/
+	text-align: left;
+	float: left;
+	padding-left: 20px;
+}
+.hqzx_list .hqzx_list-li div.t_left span.name_english{
+	padding-left: 10px;
+}
+.hqzx_list .hqzx_list-li div.t_right{
+	float: right;
+	width: 544px;
+}
+.hqzx_list .hqzx_list-li div.t_right span{
+	float: right;
+	text-align: center;
+	width: 72px;
+	margin: 0px 2px 0px 2px;
+	border-radius: 3px;
+}
+/*涨跌，涨跌幅字体颜色：公有*/
+.zdf_green,.zd_green{color: #0db876;}
+.zdf_red,.zd_red{color: #dd292c;}
+/*涨跌时加背景颜色*/
+.up_rate{background: #CFF1E3;}
+.downs_rate{background: #F5D7D7;}
+/*12号加粗*/
+.size12_blod{font-weight: bold;}
+/*英文名称变灰色字体*/
+.name_english{color: #ccc;}
+/*行情中心左侧模板结束************************************/
+
+/*行情中心右侧侧模板开始**************************************/
+.wrap_right{
+    width:355px;
+    float: right;
+}
+/*<!-- 切换图表->*/
+.data_chart{
+    width:352px;
+    padding: 0;
+    margin: 0;
+}
+.selected{
+    border-top: 3px solid #3897e6;
+    background-color:#ffffff!important;
+    color:#b81b24 ;
+    text-decoration:underline;
+    text-decoration-color: #b81b22;
+}
+.hide{
+    display: none;
+}
+.data_chart ul{
+    margin: 0;padding: 0;
+    list-style: none;
+    color: #333333;
+    clear: both;
+    list-style: none;
+    overflow:hidden;
+}
+.data_chart ul li{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    /*display: inline-block;*/
+    height:40px;
+    width: 88px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #f7f7f7;
+	font-size:14px;
+    /*padding: 8px 7.45%;*/
+    /*padding: 8px 25px;*/
+   /*width: 23%;*/
+   float:left;
+}
+.data_chart ul li:hover{
+	cursor: pointer;
+}
+.data_chart div{
+    width: 100%;
+    height:132px;
+}
+.data_chart table{
+    margin:4%;
+	width:92%;
+    border-collapse:collapse;
+}
+.data_chart table tr {
+   border-bottom: 1px solid #e3e3e3;
+}
+.data_chart table tr:hover,
+.data_chart table tr.hover
+{
+	background-color: #f7f7f7;
+}
+.data_chart table tr:last-child{
+    border-bottom: 1px solid transparent;
+}
+.data_chart table tr td {
+	font-size: 12px;
+    /*width: 28%;*/
+   /*  width: 80px; */
+    padding: 10px 0px 10px 10px;
+
+}
+.cursorP{cursor:pointer;}
+.txt-blue{color: #337CBD;}
+.txt-green{color: #0db876;font-weight: bold;}
+.data_chart table tr .txt-red{color: #b81b24;font-weight: bold;padding-left:5px;}
+/*.txt-bold{font-weight: bold;}*/
+/*货币换算*/
+.currencytTranslation{
+    width:100%;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    margin-bottom: 20px;
+}
+.currencytTranslation>p{
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+#usd,#rmb{
+    /*width: 40%;*/
+    width: 140px;
+    height:30px ;
+    line-height: 30px;
+    /*text-align: center;*/
+    margin: 30px 0;
+    background-color: #f7f7f7;
+    border: 1px solid #a5a9af;
+	outline: none;
+	cursor: pointer;
+	/*text-indent: 40px;*/
+	-webkit-align-content: center;
+}
+
+.currencytTranslation .translate>fieldset{
+    padding:20px;
+    /*border: 1px solid #ccc;*/
+    border: 0px;
+    position: relative;
+}
+.currencytTranslation .translate>fieldset>span{
+  /*padding: 20px;*/
+  display: inline-block;
+  width: 10px;
+  height: 20px;
+}
+.currencytTranslation .translate label{
+   position: absolute;
+}
+.currencytTranslation .translate>fieldset input{
+    width: 230px;
+    height: 35px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    border: 1px solid #a5a9af;
+    padding-left:10px ;
+    outline: none;
+}
+.currencytTranslation .translate>fieldset a{
+    position: absolute;
+    right:29px;
+    /*top:0px;*/
+    margin-top: -1px;
+   
+    
+}
+/*数据速递*/
+.dataExpress{
+    width: 100%;
+    margin-bottom: 25px;
+}
+.dataExpress div{
+    width: 100%;
+    padding: 12px 0;
+    border-bottom: 1px solid #ccc;
+}
+.dataExpress .dataHead .s1{
+    border-left:4px solid #005bac;
+    font-weight: bold;
+    font-size:18px;
+    padding-left: 15px;
+}
+.dataExpress .dataHead .s2{
+   float:right;
+}
+.dataExpress .dataHead .s2 a{
+    text-decoration: none;
+    color: #a3a3a3;
+}
+.dataExpress ul{
+    list-style: none;
+}
+.dataExpress ul li:first-child{
+    /*font-weight: bold;*/
+    color: #333333;
+}
+.dataExpress ul li:last-child{
+    color:#a5a9af ;
+    font-size: 10px;
+    margin-top: 2px;
+}
+/*财经日历*/
+.finance_Calendar{
+	width: 332px;
+	padding: 15px 10px 15px 10px;
+	clear: both;
+	margin-bottom: 20px;
+	/*background: #E3E3E3;*/
+	height: auto;
+	border: 1px solid #ccc;
+}
+.finance_Calendar ul,.finance_Calendar ul li{
+	padding: 0;margin: 0;
+	list-style: none;
+	width: 100%;
+	/*height: 40px;*/
+}
+.fc_head{
+	height: 40px;
+	line-height: 40px;
+	width: 100%;
+	padding-bottom: 10px;
+}
+.fc_head p.fc_left{
+	display: inline-block;
+	width:280px;
+	font-size: 24px;
+	margin: 0;padding: 0;
+	font-weight: bold;
+}
+.fc_head p.fc_left>span{
+	color: #ccc;
+	font-size: 16px;
+	padding-left: 10px;
+	font-weight: normal;
+}
+.fc_head a.fc_right{
+	display: inline-block;
+	text-decoration: none;
+	color: #bbb;
+}
+.fc_list li.fc_list-tit{
+	border-bottom: 1px solid #ccc;
+	border-top: 1px solid #ccc;
+	padding: 10px 0px;
+	background: #F7F7F7;
+}
+.fc_list li.fc_list-tit span{
+	padding: 10px 13px;
+	font-size: 16px;
+}
+.fc_list li.fc_list-li{
+	height: 30px;
+	width: 100%;
+	padding: 10px 0px;
+	border-bottom: 1px solid #ccc;
+}
+.fc_list li.fc_list-li:last-child{
+	/*border-bottom:none;*/
+}
+.fc_list li.fc_list-li span{
+	font-size: 12px;
+	display: inline-block;
+	/*width: 24%;*/
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+	
+}
+.fc_list li.fc_list-li span.fc_date{
+	color: #fff;
+	background: #337CBD;
+	width: 50px;
+	/*padding: 10px 16px;*/
+}
+.fc_list li.fc_list-li span.fc_gj{
+	color: #337CBD;
+	width: 70px;
+	/*padding: 10px 6px;*/
+	/*background: #DD292C;*/
+}
+.fc_list li.fc_list-li span.fc_exponent{
+	color: #000;
+	width: 130px;
+	/*padding: 10px 4px;*/
+	/*background: #DD292C;*/
+}
+.fc_list li.fc_list-li span.fc_result{
+	width: 50px;
+	font-weight: bold;
+	/*color: #000;*/
+}
+/*财经结果字体颜色*/
+.fc_up{color: #0db876;}
+.fc_down{color: #000;}
+/*图片广告*/
+.pic_advert{
+	width: 100%;
+	height: 162px;
+	margin: 0 auto;
+	padding: 0;
+	margin-bottom: 20px;
+}
+/*市场假期*/
+.market_holidays{
+	width: 332px;
+	padding: 15px 10px 10px 10px;
+	clear: both;
+	margin-bottom: 20px;
+	/*background: #E3E3E3;*/
+	height: auto;
+	border: 1px solid #ccc;
+}
+.market_holidays ul,.market_holidays ul li{
+	padding: 0;margin: 0;
+	list-style: none;
+	width: 100%;
+	/*height: 40px;*/
+}
+.mh_head{
+	height: 40px;
+	line-height: 40px;
+	width: 100%;
+	padding-bottom: 10px;
+}
+.mh_head p.mh_left{
+	display: inline-block;
+	width:280px;
+	font-size: 24px;
+	margin: 0;padding: 0;
+	font-weight: bold;
+}
+.mh_head a.mh_right{
+	display: inline-block;
+	text-decoration: none;
+	color: #bbb;
+}
+.mh_list li.mh_list-tit{
+	/*border-bottom: 1px solid #ccc;*/
+	/*border-top: 1px solid #ccc;*/
+	padding: 10px 0px;
+	background: #F7F7F7;
+}
+.mh_list li.mh_list-tit span{
+	padding: 10px 36px;
+	/*width: 30%;*/
+	font-size: 16px;
+}
+.mh_list li.mh_list-li{
+	height: 30px;
+	width: 100%;
+	padding: 10px 0px;
+	border-bottom: 1px solid #ccc;
+}
+/*最后一行不要下横线*/
+.mh_list li:last-child{
+	border-bottom:none;
+}
+.mh_list li.mh_list-li span{
+	font-size: 12px;
+	display: inline-block;
+	width: 31%;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+.mh_list li.mh_list-li span.mh_date{
+	/*color: #fff;*/
+	/*background: #337CBD;*/
+	/*width: 90px;*/
+}
+.mh_list li.mh_list-li span.mh_week{
+	/*color: #337CBD;*/
+	/*width: 126px;*/
+}
+.mh_list li.mh_list-li span.mh_range{
+	color: #337CBD;
+	/*width: 80px;*/
+	font-weight: bold;
+}
+/*利率水平*/
+.rates_level{
+	width: 332px;
+	padding: 15px 10px 10px 10px;
+	clear: both;
+	margin-bottom: 20px;
+	/*background: #E3E3E3;*/
+	height: auto;
+	border: 1px solid #ccc;
+}
+.rates_level ul,.rates_level ul li{
+	padding: 0;margin: 0;
+	list-style: none;
+	width: 100%;
+	/*height: 40px;*/
+}
+.rl_head{
+	height: 40px;
+	line-height: 40px;
+	width: 100%;
+	padding-bottom: 10px;
+}
+.rl_head p.rl_left{
+	display: inline-block;
+	width:280px;
+	font-size: 24px;
+	margin: 0;padding: 0;
+	font-weight: bold;
+}
+.rl_head p.rl_left>span{
+	color: #ccc;
+	font-size: 16px;
+	padding-left: 10px;
+	font-weight: normal;
+}
+.rl_head a.rl_right{
+	display: inline-block;
+	text-decoration: none;
+	color: #bbb;
+}
+.rl_list li.rl_list-tit{
+	/*border-bottom: 1px solid #ccc;*/
+	/*border-top: 1px solid #ccc;*/
+	padding: 10px 0px;
+	background: #F7F7F7;
+}
+.rl_list li.rl_list-tit span{
+	padding: 10px 13px;
+	font-size: 16px;
+}
+.rl_list li.rl_list-li{
+	height: 30px;
+	width: 100%;
+	padding: 10px 0px;
+	border-bottom: 1px solid #ccc;
+}
+/*最后一行不要下横线*/
+.rl_list li:last-child{
+	border-bottom:none;
+}
+.rl_list li.rl_list-li span{
+	font-size: 12px;
+	display: inline-block;
+	/*width: 24%;*/
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	margin: 0px;
+	padding: 0px;
+	
+}
+.rl_list li.rl_list-li span.rl_bank{
+	color: #337CBD;
+	/*background: #337CBD;*/
+	width: 50px;
+	/*padding: 10px 16px;*/
+}
+.rl_list li.rl_list-li span.rl_rates{
+	color: #f00;
+	width: 100px;
+	font-weight: bold;
+	/*background: #DD292C;*/
+}
+.rl_list li.rl_list-li span.rl_meetdate{
+	color: #000;
+	width: 80px;
+	/*padding: 10px 4px;*/
+	/*background: #A3A3A3;*/
+}
+.rl_list li.rl_list-li span.rl_expected{
+	width: 70px;
+	/*font-weight: bold;*/
+	/*color: #000;*/
+	/*background: #CFF1E3;*/
+}
+/*行情中心右侧侧模板结束**************************************/

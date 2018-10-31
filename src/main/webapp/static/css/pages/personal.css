@@ -1,0 +1,270 @@
+.personal_page{
+	width: 100%;
+}
+/*part1*/
+.user_plate{
+	width: 100%;
+	height: 5rem;
+	background-image:url(../../../static/images/pages/personal/bkTop1.png);
+}
+.user_plate .userContent{
+	position: relative;
+	width: 100%;	
+	height: 2.5rem; 
+}
+.user_plate .userFigure{
+	width: 2rem;
+	height: 2rem;
+	border-radius: 1rem;
+	position: absolute;
+    top: 0.5rem;
+    left: 0.75rem;
+}
+.user_plate .uesrNumber{
+	position: absolute;
+    left: 3rem;
+    top: 1rem;
+    font-size: 0.75rem;
+    color: #FFF;
+}
+.user_plate .btQianDao{
+	font-size: 0.75rem;
+	color: #FFF;
+	border:solid 0.025rem #FFF;
+	padding: 0.5rem 1.2rem;
+	position: absolute;
+    top: 0.5rem;
+    right:0.9rem;
+    border-radius: 0.2rem;
+}
+/*part2*/
+
+.balance_plate{
+	background-size:17.25rem 5.25rem;
+	width: 17.25rem;
+	height: 5.25rem;
+	background-image:url(../../../static/images/pages/personal/bkTop2.png);
+	margin: -2rem auto;
+	position: relative;	
+	font-size: 0.75rem;
+}
+.balance_plate .balanceContent{
+	width: 15.25rem;
+	margin: 0 auto;
+	line-height: 1.2rem;
+}
+.balanceContent .balance{
+	padding-top: 1rem;
+	font-weight: 600;
+    font-family: monospace;
+    opacity: 0.7;
+}
+.balanceContent .meiYuanNumber{
+	color: red;
+	font-size:1rem;
+}
+.balanceContent .meiYuan{
+	color: #788b9e;
+}
+.balanceContent .btTiXian{
+	color: #FFF;
+    background-color: #ef3232;
+    padding: 0.35rem 1.2rem;
+    position: absolute;
+    top: 1.25rem;
+    right: 1.3rem;
+    border-radius: 0.2rem;
+}
+/*part3*/
+
+.asset_plate{
+	font-weight: 600;
+    opacity: 0.7;
+    font-size: 0.8rem;
+    margin: 3.5rem 0 0.5rem 0.75rem;
+}
+.assetList{
+	padding: 0 0.5rem;
+	overflow: hidden;
+}
+.assetList .leftList{
+	width: 8.5rem;
+	height: 3.5rem;
+	background-color: #fcfcfc;
+	float: left;
+	margin-top: 0.65rem;
+	position: relative;
+	overflow: hidden;
+}
+.assetList .rightList{
+	width: 8.5rem;
+	height: 3.5rem;
+	background-color: #fcfcfc;
+	margin-left: 9.3rem;
+    margin-top: 0.65rem;
+	position: relative;
+}
+.assetList .yugufanxian{
+	width: 1.1rem;
+	height: 1rem;
+    position: absolute;
+	top: 1rem;
+    left: 0.5rem;
+}
+.assetList .tuijianfeileiji{
+	width: 1.25rem;
+	height: 1rem;
+    position: absolute;
+	top: 1rem;
+    left: 0.5rem;
+}
+.assetList .jiaoyifeileiji{
+	width: 0.8rem;
+	height: 1rem;
+    position: absolute;
+	top: 1rem;
+    left: 0.6rem;
+}
+.assetList .chenggongtixian{
+	width: 1rem;
+	height: 1rem;
+    position: absolute;
+	top: 1rem;
+    left: 0.6rem;
+}
+.assetList .jifen{
+	width: 1.25rem;
+	height: 1rem;
+    position: absolute;
+	top: 1rem;
+    left: 0.5rem;
+}
+.assetList .assetText{
+	width: 6rem;
+    height: 2rem;
+    overflow: hidden;
+    top: 0.9rem;
+    line-height: 1rem;
+    font-size: 0.6rem;
+    left: 2.5rem;
+    position: absolute;
+}
+.assetList .assetText .meiYuan{
+	color: red;
+    opacity: 0.7;
+    display: block;
+}
+/*part4*/
+
+.bannerGo{
+	width: 100%;
+    height: 4.5rem;
+    padding: 1rem 0;
+}	
+
+/*part5*/
+.set_plate{
+	padding: 0 0.75rem;
+	overflow: hidden;
+	width: 100%;
+	height: 10rem;
+	position: relative;
+}
+.set_plate .setRightPlate{
+	width: 100%;
+	padding-left: 2rem;
+	position: relative;
+}
+.set_plate .jiaoyizhanghao{
+	width: 1rem;
+	height: 1rem;
+	position: absolute;
+    top: 1rem;
+    left: 0;
+}
+.set_plate .zhanghushezhi{
+	width: 0.9rem;
+	height: 1rem;
+	position: absolute;
+    top: 1rem;
+    left: 0;
+}
+.set_plate .xitongxiaoxi{
+	width: 1rem;
+	height: 0.75rem;
+	position: absolute;
+    top: 1rem;
+    left: 0;
+}
+.set_plate .setLi{
+	width: 100%;
+	height: 1rem;
+	padding: 1rem 0;
+    border-bottom: solid 0.025rem #f3f3f3;
+    position: relative;
+}
+.set_plate .setRightPlate .removeBorderBottom{
+	border-bottom: solid 0.025rem #fff;
+}
+.set_plate .setLi .right_arrow{
+	top: 1.175rem;
+	width: 0.4rem;
+    height: 0.65rem;
+    position: absolute;
+    right: 3.5rem;
+}
+.set_plate .setLi .setLi_text{
+	font:400 0.65rem/1rem 'Microsoft Yahei';
+	position: absolute;
+}
+/*part6*/
+
+.bkBottom{
+	width: 100%;
+	height: 1.25rem;
+	background-color: #f3f5f8;
+	bottom: 0;
+}
+
+
+
+
+
+.bottom_menu{
+	background-color: #f3f3f3;
+	background-size: 100%;
+	position: fixed;
+	bottom: 0;
+	height: 2.5rem;
+	width: 100%;
+}
+.bottom_menu .menu{
+	width:33.3%;
+	height: 2.5rem;
+	float: left;
+	text-align: center;
+	font-size: 0.6rem;
+	font-family: 'Microsoft Yahei' !important;
+}
+.bottom_menu img{
+	width: 1rem;
+	height: 1rem;
+	margin:0 auto;
+	text-align: center;
+	padding-bottom: 0.15rem;
+}
+/*.bottom_menu a{
+	text-decoration: none;
+}*/
+.bottom_menu .menu_m{
+	margin: 0.4rem 0;
+}
+
+.bottom_menu .bottom_selectText{
+	color: red;
+}
+.box>.tab>div{
+    font-family: Helvetica,"Microsoft Yahei";
+    letter-spacing:1px;
+    font-size: 16px;
+}

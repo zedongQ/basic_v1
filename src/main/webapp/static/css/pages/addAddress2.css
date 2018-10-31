@@ -1,0 +1,31 @@
+ /*part1*/
+.noaddress{
+	width: 100%;
+}
+.center_img{
+	right: 0;
+	left: 0;
+	top: -7rem;
+	bottom: 0;
+	margin: auto;
+	position: absolute;
+	width: 5rem;
+	height: 4.5rem;
+}
+
+ /*part2*/
+.address_bottom{
+	width: 100%;
+	height: 2.25rem;
+	background-color: #FFF;
+	position: fixed;
+	bottom: 0;
+	border-top: solid 0.025rem #f3f3f3;
+}
+.add_address{
+	color: red;
+	font:400 0.75rem/2.25rem 'Microsoft Yahei';
+	text-align: center;
+	opacity: 0.7;
+	display: block;
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.ActivityPrizeMapper">
+	
+	<resultMap type="org.ieforex.entity.ActivityPrize" id="list"></resultMap>
+	
+	<!--查询-->
+	<select id="activityPrize" resultMap="list">
+		SELECT * FROM w_activity_prize WHERE activity_id =#{activityId}
+		AND prize_amount > 0 ORDER BY sort_no ASC
+	</select>
+	
+	<select id="selectById" resultType="org.ieforex.entity.ActivityPrize">
+		SELECT * FROM w_activity_prize WHERE prize_id =#{prizeId} 
+		AND prize_amount > 0
+	</select>
+	
+	<select id="selectByType" parameterType="java.util.HashMap" resultType="org.ieforex.entity.ActivityPrize">
+		SELECT * FROM w_activity_prize WHERE activity_id =#{activityId} AND prize_type =#{prizeType}	
+		LIMIT 0,1
+	</select>
+	
+	<update id="updateAmount" parameterType="org.ieforex.entity.ActivityPrize">
+		UPDATE w_activity_prize
+		<set>
+			<if test="prizeAmount != null">
+			`prize_amount` = IFNULL(prize_amount, 0) + #{prizeAmount}
+			</if>
+		</set>
+		WHERE prize_id =#{prizeId}
+	</update>
+
+</mapper>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.WAllCustomerFundFlowingMapper">
+
+	<!--新增-->
+	<insert id="insert" parameterType="org.ieforex.entity.WAllCustomerFundFlowing">
+		insert into w_all_customer_fund_flowing(
+			flowing_id,
+			customer_id,
+			operate_date,
+			operate_user_id,
+			flowing_no,
+			dealer_id,
+			dealer_name,
+			acct_no,
+			trade_type,
+			amount,
+			status,
+			describes,
+			update_date,
+			update_user_id,
+			object_id,
+			payee_name,
+			withdrawal_way,
+			withdrawal_amount_currency,
+			withdrawal_fee,
+			withdrawal_currency
+		)values(
+			#{flowingId},
+			#{customerId},
+			#{operateDate},
+			#{operateUserId},
+			#{flowingNo},
+			#{dealerId},
+			#{dealerName},
+			#{acctNo},
+			#{tradeType},
+			#{amount},
+			#{status},
+			#{describes},
+			#{updateDate},
+			#{updateUserId},
+			#{objectId},
+			#{payeeName},
+			#{withdrawalWay},
+			#{withdrawalAmountCurrency},
+			#{withdrawalFee},
+			#{withdrawalCurrency}
+		)
+	</insert>
+	
+	<!--删除-->
+	<delete id="deleteById">
+		delete from w_all_customer_fund_flowing where flowing_id =#{flowingId}
+	</delete>
+	
+	<!--更新-->
+	<update id="updateById" parameterType="org.ieforex.entity.WAllCustomerFundFlowing">
+		update w_all_customer_fund_flowing
+		<set>
+			<if test="flowingId != null">flowing_id =#{flowingId},</if>
+			<if test="customerId != null">customer_id =#{customerId},</if>
+			<if test="operateDate != null">operate_date =#{operateDate},</if>
+			<if test="operateUserId != null">operate_user_id =#{operateUserId},</if>
+			<if test="flowingNo != null">flowing_no =#{flowingNo},</if>
+			<if test="dealerId != null">dealer_id =#{dealerId},</if>
+			<if test="dealerName != null">dealer_name =#{dealerName},</if>
+			<if test="acctNo != null">acct_no =#{acctNo},</if>
+			<if test="tradeType != null">trade_type =#{tradeType},</if>
+			<if test="amount != null">amount =#{amount},</if>
+			<if test="status != null">status =#{status},</if>
+			<if test="describes != null">describes =#{describes},</if>
+			<if test="updateDate != null">update_date =#{updateDate},</if>
+			<if test="updateUserId != null">update_user_id =#{updateUserId},</if>
+			<if test="objectId != null">object_id =#{objectId},</if>
+			<if test="payeeName != null">payee_name =#{payeeName},</if>
+			<if test="withdrawalWay != null">withdrawal_way =#{withdrawalWay},</if>
+		</set>
+		where flowing_id =#{flowingId}
+	</update>
+	
+	<!--更新部分-->
+	<update id="updatePartById" parameterType="java.util.Map">
+		update w_all_customer_fund_flowing
+		<set>
+			<if test="flowingId != null">flowing_id =#{flowingId},</if>
+			<if test="customerId != null">customer_id =#{customerId},</if>
+			<if test="operateDate != null">operate_date =#{operateDate},</if>
+			<if test="operateUserId != null">operate_user_id =#{operateUserId},</if>
+			<if test="flowingNo != null">flowing_no =#{flowingNo},</if>
+			<if test="dealerId != null">dealer_id =#{dealerId},</if>
+			<if test="dealerName != null">dealer_name =#{dealerName},</if>
+			<if test="acctNo != null">acct_no =#{acctNo},</if>
+			<if test="tradeType != null">trade_type =#{tradeType},</if>
+			<if test="amount != null">amount =#{amount},</if>
+			<if test="status != null">status =#{status},</if>
+			<if test="describes != null">describes =#{describes},</if>
+			<if test="updateDate != null">update_date =#{updateDate},</if>
+			<if test="updateUserId != null">update_user_id =#{updateUserId},</if>
+			<if test="objectId != null">object_id =#{objectId},</if>
+			<if test="payeeName != null">payee_name =#{payeeName},</if>
+			<if test="withdrawalWay != null">withdrawal_way =#{withdrawalWay},</if>
+		</set>
+		where flowing_id =#{flowingId}
+	</update>	
+	
+	<!--查询-->
+	<select id="selectById" resultType="org.ieforex.entity.WAllCustomerFundFlowing">
+		select * from w_all_customer_fund_flowing where flowing_id =#{flowingId}
+	</select>
+
+	<!-- 列表的搜索，带条件、排序规则、分页等信息 -->
+	<select id="queryList" parameterType="java.util.HashMap" resultType="org.ieforex.entity.WAllCustomerFundFlowing">
+		 SELECT a.customer_id,a.flowing_id,a.flowing_no,a.payee_name,a.dealer_id,a.dealer_name,a.acct_no,a.trade_type,a.amount,a.status,a.describes,a.object_id,a.withdrawal_way,DATE_FORMAT(a.operate_date,'%Y-%m-%d %H:%i:%s') AS operate_date_view ,
+ 		 CONCAT(b.eng_name,b.eng_surname) AS payee_eng_name
+		 FROM w_all_customer_fund_flowing a
+		 LEFT JOIN e_customer_account_basic b ON  a.customer_id = b.customer_id
+ 			<where>
+				<if test="searchCondition != null">
+					<foreach collection="searchCondition" index="key" item="value" separator=" and ">
+					  <if test="key == 'customerId' and value != ''">
+					  		a.customer_id = #{value}
+					  </if>
+					  <if test="key == 'dealerId' and value != ''">
+					  		a.dealer_id = #{value}
+					  </if>
+					  <if test="key == 'tradingAccount' and value != ''">
+					  		a.acct_no like CONCAT('%',#{value},'%')
+					  </if>
+					   <if test="key == 'tradeType' and value != ''">
+					  		a.trade_type in (${ value })
+					  </if>
+					  <if test="key == 'status' and value != ''">
+					  		a.status in (${ value })
+					  </if>
+					   <if test="key == 'tradeTypeSimple' and value != ''">
+					  		a.trade_type = #{ value }
+					  </if>
+					  <if test="key == 'statusSimple' and value != ''">
+					  		a.status = #{ value }
+					  </if>
+					</foreach>
+				</if>
+				and (a.status != 0 OR a.status IS NULL)
+				<if test="starttime != null and starttime !='' and endtime != null and endtime !=''">
+					<if test="searchCondition!=null">
+						and
+					</if>
+					DATE_FORMAT(a.operate_date,'%Y-%m-%d') >= #{ starttime } AND DATE_FORMAT(a.operate_date,'%Y-%m-%d') <![CDATA[<=]]>#{ endtime }
+				</if>
+			</where>
+			order by a.operate_date desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	<select id="queryTotal" resultType="int">
+		select count(*) from w_all_customer_fund_flowing a
+		<if test="moneyType == 'rebate'">
+			LEFT JOIN e_rebate_result c ON a.object_id = c.rebate_result_id
+		</if>	
+		<where>
+			<if test="searchCondition != null">
+				<foreach collection="searchCondition" index="key" item="value" separator=" and ">
+				  <if test="key == 'customerId' and value != ''">
+				  		a.customer_id = #{value}
+				  </if>
+				  <if test="key == 'dealerId' and value != ''">
+				  		a.dealer_id = #{value}
+				  </if>
+				  <if test="key == 'tradingAccount' and value != ''">
+				  		a.acct_no like CONCAT('%',#{value},'%')
+				  </if>
+				   <if test="key == 'tradeType' and value != ''">
+				  		a.trade_type in (${ value })
+				  </if>
+				  <if test="key == 'currency' and value != ''">
+				  		a.withdrawal_currency = #{value}
+				  </if>
+				  <if test="key == 'status' and value != ''">
+				  		a.status in (${ value })
+				  </if>
+				   <if test="key == 'tradeTypeSimple' and value != ''">
+				  		a.trade_type = #{ value }
+				  </if>
+				  <if test="key == 'statusSimple' and value != ''">
+				  		a.status = #{ value }
+				  </if>
+				</foreach>
+			</if>
+			<if test="moneyType == 'money'">
+				and (a.status != 0 OR a.status IS NULL)
+			</if>
+			<if test="starttime != null and starttime !='' and endtime != null and endtime !=''">
+				<if test="searchCondition!=null">
+					and
+				</if>
+				<if test="moneyType == 'rebate'">
+					c.start_date_view <![CDATA[>=]]> #{ starttime } AND c.end_date_view <![CDATA[<=]]>#{ endtime }
+				</if>
+				<if test="moneyType != 'rebate'">
+					DATE_FORMAT(a.operate_date,'%Y-%m-%d') >= #{ starttime } AND DATE_FORMAT(a.operate_date,'%Y-%m-%d') <![CDATA[<=]]>#{ endtime }
+				</if>
+			</if>
+		</where>
+	</select>
+	<!-- 反现 -->
+	<select id="getRebateById" parameterType="Long" resultType="org.ieforex.entity.WAllCustomerFundFlowing">
+		SELECT DATE_FORMAT(c.start_date,'%Y-%m-%d') AS start_date_view,DATE_FORMAT(c.end_date,'%Y-%m-%d') AS end_date_view,a.trade_type,a.amount,a.acct_no,a.dealer_name,a.status 
+		FROM w_all_customer_fund_flowing a 
+		LEFT JOIN e_rebate_result c ON a.object_id = c.rebate_result_id
+		<where>
+			<if test="searchCondition != null">
+				<foreach collection="searchCondition" index="key" item="value" separator=" and ">
+				  <if test="key == 'customerId' and value != ''">
+				  		a.customer_id = #{value}
+				  </if>
+				  <if test="key == 'dealerId' and value != ''">
+				  		a.dealer_id = #{value}
+				  </if>
+				  <if test="key == 'status' and value != ''">
+				  		a.status in (${ value })
+				  </if>
+				  <if test="key == 'statusSimple' and value != ''">
+				  		a.status = #{ value }
+				  </if>
+				</foreach>
+			</if>
+			<if test="starttime != null and starttime !='' and endtime != null and endtime !=''">
+				<if test="searchCondition!=null">
+					and
+				</if>
+				c.start_date <![CDATA[>=]]> #{ starttime } AND c.end_date <![CDATA[<=]]>#{ endtime }
+			</if>
+		</where>
+		ORDER BY c.start_date DESC 
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+		
+	</select>
+	<!-- 提现 -->
+	<select id="getWithdrawalById"  parameterType="java.util.HashMap" resultType="org.ieforex.entity.WAllCustomerFundFlowing">
+		SELECT DATE_FORMAT(operate_date,'%Y-%m-%d %H:%i:%s') AS operate_date_view,a.operate_date,a.trade_type,a.amount,
+		a.status,a.acct_no,a.withdrawal_way,a.describes,a.withdrawal_amount_currency,a.withdrawal_fee,a.withdrawal_currency 
+		FROM w_all_customer_fund_flowing a
+		<where>
+			<if test="searchCondition != null">
+				<foreach collection="searchCondition" index="key" item="value" separator=" and ">
+				  <if test="key == 'customerId' and value != ''">
+				  		a.customer_id = #{value}
+				  </if>		
+				  <if test="key == 'currency' and value != ''">
+				  		a.withdrawal_currency = #{value}
+				  </if>
+				  <if test="key == 'status' and value != ''">
+				  		a.status in (${ value })
+				  </if>
+				  <if test="key == 'statusSimple' and value != ''">
+				  		a.status = #{ value }
+				  </if>
+				</foreach>
+			</if>
+			<if test="starttime != null and starttime !='' and endtime != null and endtime !=''">
+				<if test="searchCondition!=null">
+					and
+				</if>
+				DATE_FORMAT(a.operate_date,'%Y-%m-%d') >= #{ starttime } AND DATE_FORMAT(a.operate_date,'%Y-%m-%d') <![CDATA[<=]]>#{ endtime }
+			</if>
+		</where>
+			order by operate_date_view desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+</mapper>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.GoodsFlowingMapper">
+
+	<!--新增-->
+	<insert id="insert" parameterType="org.ieforex.entity.GoodsFlowing">
+		insert into w_goods_flowing(
+			flowing_id,
+			customer_id,
+			activity_id,
+			goods_id,
+			status,
+			insert_date,
+			update_user_id,
+			update_date,
+			receiver,
+			receive_address,
+			contact,
+			remark
+		)values(
+			#{flowingId},
+			#{customerId},
+			#{activityId},
+			#{goodsId},
+			#{status},
+			#{insertDate},
+			#{updateUserId},
+			#{updateDate},
+			#{receiver},
+			#{receiveAddress},
+			#{contact},
+			#{remark}
+		)
+	</insert>
+	
+	<!--查询-->
+	<select id="selectById" resultType="org.ieforex.entity.GoodsFlowing">
+		select * from w_goods_flowing where flowing_id =#{flowingId}
+	</select>
+
+</mapper>

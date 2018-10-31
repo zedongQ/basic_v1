@@ -1,0 +1,71 @@
+body{
+	background-color: #f3f3f3;
+	background-size: 100%;	
+}
+/*part1*/
+.add_receivablesTopText{
+	width: 100%;
+}
+.add_receivablesTopText .topText{
+    font-size: 0.75rem;
+    padding:1.7rem 0 0.875rem 0.85rem;
+}
+.topText .cardKind{
+	padding-left: 0.5rem;
+}
+.topText .nameColumn{
+	padding-top: 0.75rem;
+}
+.topText .nameColumn .name{
+	padding-left: 2rem;
+}
+
+/*part2*/
+
+.set_column{
+	height: 2.5rem;
+	width: 100%;
+	background:#FFF;
+	margin-top: 0.65rem;
+	position: relative;
+}
+.set_column .set_leftText{
+	font: 400 0.75rem/2.5rem 'Microsoft Yahei';
+	margin-left: 0.75rem;
+}
+.set_column .set_leftText input{
+	border: 0;
+    width: 13rem;
+}
+.set_column .set_rightText{
+	font: 400 0.75rem/2.5rem 'Microsoft Yahei';
+	position: absolute;
+    right: 1.8rem;
+    opacity: 0.2;
+}
+.set_column .right_arrow{
+	width: 0.75rem;
+	height: 0.75rem;
+	right: 0.75rem;
+    top: 0.85rem;
+    position: absolute;
+    opacity: 0.3;
+}
+
+/*part3*/
+.items_phone2{
+	width: 100%;
+	position: relative;
+}
+.phone2_bottom{
+	margin-top: 2.2rem;
+	padding: 0 0.65rem;
+}
+.bt_return{
+	border-radius: 0.2rem; 
+	height: 2.25rem;
+	text-align: center;
+	background-color: #e5e5e5;
+	color: #fff6f6;
+	font: 400 0.65rem/2.25rem 'Microsoft Yahei';
+}

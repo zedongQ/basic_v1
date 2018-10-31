@@ -1,0 +1,258 @@
+.header_top{position: fixed;top:0;border-bottom: 2px solid #f0f2f5;width: 100%;padding:0.2rem 0; background-color: #ffffff;z-index: 2000; }
+.screeing{margin: 0 0.3rem;position: relative;}
+.screeing i{position: absolute;top:0.15rem;left: 0.5rem;border: 1px solid #dddddd;height: 0.3rem;}
+.screeing .firstimgchoose{width: 0.31rem;height: 0.37rem;cursor: pointer;}
+.floatScree{float: left;height: 0.6rem;line-height: 0.3rem;margin-right: 0.5rem}
+.floatLogo{float: left;height: 0.6rem;line-height: 0.3rem;}
+.screeing input{
+    width: 5rem;
+    height: 0.6rem;
+    border: none;
+    padding-left: 0.1rem;
+    position: relative;
+    top: -2px;
+}
+.screeing input::placeholder{
+    color: #CCCCCC !important;
+    font: 400 0.26rem/0.6rem "Microsoft Yahei" !important;
+}
+/*banner����-start--------------------------------------*/
+.bannerSlide{padding-top: 1.4rem;border-bottom: 3px solid #f0f2f5;}
+.slider-wrap {
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.slider-list {
+    display: -webkit-box;
+    width: 100%;
+    height: 100%;
+}
+
+.slider-item {
+    width: 100%;
+    list-style: none;
+}
+
+.slider-item a {
+    display: block;
+}
+
+.slider-item img {
+    width: 100%;
+    border-radius: 8px;
+    height: 2.84rem;
+}
+
+.transitionable {
+    -webkit-transition: all 0.3s ease-in-out;
+}
+
+.slider-page {
+    width: 100%;
+    position: absolute;
+    bottom: -0.85rem;
+    left: 0;
+    text-align: center;
+}
+
+.slider-page ul {
+    display: inline-block;
+    text-align: center;
+}
+
+.slider-page ul li {
+    display: inline-block;
+    vertical-align: top;
+    width: 6px;
+    height: 6px;
+    margin: 0 5px;
+    border-radius: 50%;
+    background: #dddddd;
+}
+
+.slider-page ul li.active {
+    background:#fd4d4c
+}
+
+.img-wrap {
+    width: 100%;
+    height: 100%;
+    background: url("../../../images/pages/weChatImg/loading.gif") no-repeat center center;
+}
+
+/*banner����-end--------------------------------------*/
+.dealerList{padding-bottom: 1.24rem;}
+.jysList{border-bottom: 3px solid #f0f2f5;}
+.usePadding{padding: 0 0.3rem;}
+.smallTit{height: 1.1rem;line-height: 1.1rem;}
+.smallTit img{width: 0.7rem;height: 0.7rem;border-radius: 50%;}
+.smallTit span{vertical-align: middle;font-size: 0.34rem;color: #27313e;display: inline-block;margin-top: -0.2rem;margin-left: 0.1rem;}
+.smallTit a{margin-top: 0.2rem;text-align: center;color: #ff980c;font-size: 0.26rem;vertical-align: middle;width: 1.6rem;height: 0.5rem;line-height:0.5rem;background-color: #fff9eb;border-radius: 15px;}
+.dataList{width: 100%;}
+.dataList li{width: 33.3%; float: left; }
+.dataList li div{font-size:0.3rem;color: #999; }
+.dataList li p{font-style: normal;font-size: 0.34rem;color: #27313e;display: block;line-height: 1rem;}
+.dataList li p.specialRed{color: #fd4d4c}
+.dataList li b{font-size: 0.6rem;font-weight: normal;}
+.bottomLIMG{position: relative;border-top: 1px solid #f0f2f5;clear: both;}
+.bottomLIMG img{width: 0.25rem;height: 0.28rem;position: absolute;top:0.42rem;left: 0;}
+.bottomLIMG span{vertical-align: middle;font-size: 0.3rem;color: #999;display: inline-block;margin-top: -0.2rem;margin-left: 0.45rem;width: 4rem;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.bottomLIMG a{margin-top: 0.2rem;text-align: center;color: #ffffff;font-size: 0.26rem;vertical-align: middle;
+    width: 2.45rem;height: 0.82rem;line-height:0.7rem;background: url("../../../images/pages/weChatImg/dealer004.png")no-repeat center;background-size: 2.45rem 0.82rem;
+}
+
+/*ģ̬��*/
+#mask{
+    display: none;
+}
+#maskLayer{
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+    position: absolute !important;
+    left: 0px;
+    top: 0px;
+    z-index: 1000;
+}
+#userRead{
+    position: fixed;
+    top: 1.05rem;
+    left:0;
+    z-index: 1500;
+    width: 5.67rem;
+    height: 100%;
+}
+.bgColor{
+    width: 5.67rem;
+    height: 90%; 
+    background-color: #ffffff;
+    border-top: 1px solid #000;
+    position: relative;
+}
+.search{
+    border-bottom:1px solid #b1b0b0;
+    position: relative;
+    line-height: 0.6rem;
+}
+.search input{
+    width: 4.5rem;
+    height: 0.7rem;
+    border: 0;
+    border-radius: 0.4rem;
+    background: #e9edee;
+    font-size: 0.32rem;
+    margin: 0.2rem 0.4rem 0.2rem 0.4rem;
+    padding-left: 1rem;
+    cursor:auto;
+}
+.clearContent{
+    cursor: pointer;
+    font-size:0.35rem;
+}
+.searchImage{
+    height: 0.4rem;
+    position: absolute;
+    top: 0.4rem;
+    left: 0.7rem;
+}
+span.select{
+    display:block;
+    font-size:0.4rem;
+    color:#010101;
+    margin: 0.3rem 0 0rem 0.8rem;
+}
+.tradeTime div{
+    line-height:0.5rem;
+}
+. i,.tradeAccount i,.peopleMoney i,.openGold i{
+    display:inline-block;
+    background:transparent;
+    border:0.15rem solid transparent;
+    border-left-color: #fd4d4c;
+    width: 0;
+    margin-left:0.3rem;
+}
+.tradeTime div span,.tradeAccount span,.peopleMoney span{
+    color:#27313e;
+    font-size:0.35rem;
+    display:inline-block;
+    margin-left:0.15rem;
+}
+.tradeAccount img{
+    height: 0.2rem;
+    margin-right: 0.33rem;
+    margin-top: 0.2rem;
+    cursor: pointer;
+}
+.accountList{
+    display: none;
+}
+.timeSelect,.accountList{
+    width:100%;
+    overflow: hidden;
+}
+.timeSelect li,.accountList li{
+    width: 25%;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    height: 0.9rem;
+    line-height: 0.6rem;
+}
+div.marginLeft{
+    margin-left: 0.15rem;
+    overflow: hidden;
+    width: 95.5%;
+    margin-top: 0.15rem;
+}
+.tradeAccount,.peopleMoney{
+    line-height: 0.1rem;
+    margin-top: 0.3rem;
+}
+.timeSelect li span,#dealerList li span{
+    display: inline-block;
+    font-size: 0.33rem;
+    color: #999;
+    border: 1px solid #bdbdbd;
+    border-radius: 0.1rem;
+    width: 1.15rem;
+    line-height: 0.6rem;
+}
+.timeSelect li.hover span,#dealerList li.hover span{
+    background-color: #fd4d4c;
+    color: #ffffff;
+    border:1px solid #fd4d4c;
+}
+.lastChoose{margin-left: 0.6rem;margin-top: 0.1rem;height: 0.5rem;}
+.lastChoose b{font-weight: normal;  font-size: 0.33rem;  color: #999;margin-left: -0.2rem;}
+
+.reSet{
+    position:absolute;
+    bottom:-0.1rem;
+    left:0;
+    width:5.67rem;
+    overflow: hidden;
+}
+.reSet div{width: 50%;
+    height:1rem;
+    line-height: 1rem;
+    text-align: center;
+    font-size:0.38rem;
+    cursor: pointer;}
+.resetButton{
+    color: #999;
+    background:#eee;
+}
+.selectButton{
+    background:#ff8c21;
+    color:#fff;
+}
+.footer_commont>span{
+    font-family: Helvetica,"Microsoft Yahei";
+}

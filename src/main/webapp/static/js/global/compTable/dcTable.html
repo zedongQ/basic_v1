@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="UTF-8">
+<meta http-equiv=”X-UA-Compatible” content=”IE=8″>
+<title>外汇交易商实时点差对比表格</title>
+<script src="js/initData.js"></script>
+<link rel="stylesheet" href="css/diancha.css?version=0.1" />
+<style>
+.rightbox {
+	display: inline-table;
+}
+</style>
+</head>
+<body class="mynewbody">
+	<div id="cpTableContainer" style="width: 100%;">
+		<!-- 必须要用style设置宽度-->
+		<div class="gaps2"></div>
+		<div class="tableName">
+			<span id="jysid" class="halftitle">TeraFX</span> Real-Time Spreads Comparison
+		</div>
+		<div id="dc1" class="subTitle">
+			
+		</div>
+		<div id="gobackurl" class="moreDealer">
+			
+		</div>
+		<div class="tableBox">
+			<div class="gaps2"></div>
+			<table class="tDetails" id="tableLeft">
+				<tr>
+					<th class="oneTh">货币对子</th>
+					<th class="twoTh">买入价</th>
+					<th class="threeTh">卖出价</th>
+					<th class="fourTh">点差</th>
+				</tr>
+			</table>
+			<table class="tDetails" id="tableRight">
+				<tr>
+					<th class="oneTh">货币对子</th>
+					<th class="twoTh">买入价</th>
+					<th class="threeTh">卖出价</th>
+					<th class="fourTh">点差</th>
+				</tr>
+			</table>
+			<div class="bottomSide">This function is provided by ieforex.com</div>
+		</div>
+		<div class="gaps3"></div>
+	</div>
+</body>
+</html>

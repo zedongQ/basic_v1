@@ -1,0 +1,29 @@
+body{
+	background-color: #f3f3f3;
+	background-size: 100%;	
+}
+.set_column{
+	height: 2.75rem;
+	width: 100%;
+	background:#FFF;
+	margin-top: 0.35rem;
+	position: relative;
+}
+.set_column img{
+	width: 1.1rem;
+    height: 1rem;
+    margin: 0.85rem 0.5rem 0.75rem 1rem;
+    float: left;
+}
+.set_text{
+	font: 400 0.75rem/2.75rem 'Microsoft Yahei';
+    float: left;
+}
+.set_column .right_arrow{
+	width: 0.75rem;
+	height: 0.75rem;
+	right: 0.75rem;
+    top: 0.2rem;
+    position: absolute;
+    opacity: 0.4;
+}    

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.ECustomerAccountBasicMapper">
+
+	<!--新增-->
+	<insert id="insert" parameterType="org.ieforex.entity.ECustomerAccountBasic">
+		insert into e_customer_account_basic(
+			basic_id,
+			customer_id,
+			account_phone,
+			acct_name,
+			user_qq,
+			account_email,
+			eng_surname,
+			eng_name,
+			bank_address,
+			data_status,
+			data_source,
+			card_no,
+			is_default,
+			card_no_type,
+			nationality,
+			create_user_id,
+			create_date,
+			update_user_id,
+			update_date
+		)values(
+			#{basicId},
+			#{customerId},
+			#{accountPhone},
+			#{acctName},
+			#{userQq},
+			#{accountEmail},
+			#{engSurname},
+			#{engName},
+			#{bankAddress},
+			#{dataStatus},
+			#{dataSource},
+			#{cardNo},
+			#{isDefault},
+			#{cardNoType},
+			#{nationality},
+			#{createUserId},
+			#{createDate},
+			#{updateUserId},
+			#{updateDate}
+		)
+	</insert>
+	
+	<!--删除-->
+	<delete id="deleteById">
+		delete from e_customer_account_basic where basic_id =#{basicId}
+	</delete>
+	
+	<!--更新-->
+	<update id="updateById" parameterType="org.ieforex.entity.ECustomerAccountBasic">
+		update e_customer_account_basic
+		<set>
+			<if test="basicId != null">basic_id =#{basicId},</if>
+			<if test="customerId != null">customer_id =#{customerId},</if>
+			<if test="accountPhone != null">account_phone =#{accountPhone},</if>
+			<if test="acctName != null">acct_name =#{acctName},</if>
+			<if test="userQq != null">user_qq =#{userQq},</if>
+			<if test="accountEmail != null">account_email =#{accountEmail},</if>
+			<if test="engSurname != null">eng_surname =#{engSurname},</if>
+			<if test="engName != null">eng_name =#{engName},</if>
+			<if test="bankAddress != null">bank_address =#{bankAddress},</if>
+			<if test="dataStatus != null">data_status =#{dataStatus},</if>
+			<if test="dataSource != null">data_source =#{dataSource},</if>
+			<if test="cardNo != null">card_no =#{cardNo},</if>
+			<if test="isDefault != null">is_default =#{isDefault},</if>
+			<if test="cardNoType != null">card_no_type =#{cardNoType},</if>
+			<if test="nationality != null">nationality =#{nationality},</if>
+			<if test="createUserId != null">create_user_id =#{createUserId},</if>
+			<if test="createDate != null">create_date =#{createDate},</if>
+			<if test="updateUserId != null">update_user_id =#{updateUserId},</if>
+			<if test="updateDate != null">update_date =#{updateDate},</if>
+		</set>
+		where basic_id =#{basicId}
+	</update>
+	<!--根据customerid更新-->
+	<update id="updateByCustomerId" parameterType="org.ieforex.entity.ECustomerAccountBasic">
+		update e_customer_account_basic
+		<set>
+			<if test="accountPhone != null">account_phone =#{accountPhone},</if>
+			<if test="acctName != null">acct_name =#{acctName},</if>
+			<if test="userQq != null">user_qq =#{userQq},</if>
+			<if test="accountEmail != null">account_email =#{accountEmail},</if>
+			<if test="engSurname != null">eng_surname =#{engSurname},</if>
+			<if test="engName != null">eng_name =#{engName},</if>
+			<if test="bankAddress != null">bank_address =#{bankAddress},</if>
+			<if test="dataStatus != null">data_status =#{dataStatus},</if>
+			<if test="dataSource != null">data_source =#{dataSource},</if>
+			<if test="cardNo != null">card_no =#{cardNo},</if>
+			<if test="isDefault != null">is_default =#{isDefault},</if>
+			<if test="cardNoType != null">card_no_type =#{cardNoType},</if>
+			<if test="nationality != null">nationality =#{nationality},</if>
+			<if test="createUserId != null">create_user_id =#{createUserId},</if>
+			<if test="createDate != null">create_date =#{createDate},</if>
+			<if test="updateUserId != null">update_user_id =#{updateUserId},</if>
+			<if test="updateDate != null">update_date =#{updateDate},</if>
+		</set>
+		where customer_id =#{customerId}
+	</update>
+	
+	<!--更新部分-->
+	<update id="updatePartById" parameterType="java.util.Map">
+		update e_customer_account_basic
+		<set>
+			<if test="basicId != null">basic_id =#{basicId},</if>
+			<if test="customerId != null">customer_id =#{customerId},</if>
+			<if test="accountPhone != null">account_phone =#{accountPhone},</if>
+			<if test="acctName != null">acct_name =#{acctName},</if>
+			<if test="userQq != null">user_qq =#{userQq},</if>
+			<if test="accountEmail != null">account_email =#{accountEmail},</if>
+			<if test="engSurname != null">eng_surname =#{engSurname},</if>
+			<if test="engName != null">eng_name =#{engName},</if>
+			<if test="bankAddress != null">bank_address =#{bankAddress},</if>
+			<if test="dataStatus != null">data_status =#{dataStatus},</if>
+			<if test="dataSource != null">data_source =#{dataSource},</if>
+			<if test="cardNo != null">card_no =#{cardNo},</if>
+			<if test="isDefault != null">is_default =#{isDefault},</if>
+			<if test="cardNoType != null">card_no_type =#{cardNoType},</if>
+			<if test="nationality != null">nationality =#{nationality},</if>
+			<if test="createUserId != null">create_user_id =#{createUserId},</if>
+			<if test="createDate != null">create_date =#{createDate},</if>
+			<if test="updateUserId != null">update_user_id =#{updateUserId},</if>
+			<if test="updateDate != null">update_date =#{updateDate},</if>
+		</set>
+		where basic_id =#{basicId}
+	</update>	
+	
+	<!--查询-->
+	<select id="selectById" resultType="org.ieforex.entity.ECustomerAccountBasic">
+		select * from e_customer_account_basic where basic_id =#{basicId}
+	</select>
+	
+		<!--通过customerId查询-->
+	<select id="searchByCustomerId" resultType="org.ieforex.entity.ECustomerAccountBasic">
+		select basic_id,account_phone,acct_name,user_qq,account_email,eng_surname,eng_name,card_no,nationality
+		from e_customer_account_basic
+		where customer_id = #{customerId} and data_status = 0
+	</select>
+	
+		<!--通过customerId查询basicId-->
+	<select id="getBacicIdbyCustomerId"  resultType="java.util.HashMap">
+		select basic_id as basicId,CONCAT(eng_surname," ",eng_name) AS enName, acct_name as acctName,is_default as isDefault
+		from e_customer_account_basic 
+		where customer_id = #{customerId} and data_status = 0
+	</select>
+</mapper>

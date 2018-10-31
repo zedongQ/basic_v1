@@ -1,0 +1,60 @@
+body{
+	background-color: #f3f3f3;
+	background-size: 100%;	
+}
+.set_column{
+	height: 2.75rem;
+	width: 100%;
+	background:#FFF;
+	margin-top: 0.5rem;
+	position: relative;
+}
+.set_columnNext{
+	height: 2.75rem;
+	width: 100%;
+	background:#FFF;
+	border:solid 0.025rem #f3f3f3;
+	position: relative;
+}
+
+.set_leftText{
+	font: 400 0.75rem/2.75rem 'Microsoft Yahei';
+	margin-left: 0.75rem;
+}
+.set_rightText{
+	font: 400 0.75rem/2.75rem 'Microsoft Yahei';
+	position: absolute;
+    right: 1.5rem;
+    opacity: 0.3;
+}
+.set_column .right_arrow{
+	width: 0.75rem;
+	height: 0.75rem;
+	right: 0.75rem;
+    top: 1rem;
+    position: absolute;
+    opacity: 0.4;
+}
+.set_columnNext .right_arrow{
+	width: 0.75rem;
+	height: 0.75rem;
+	right: 0.75rem;
+    top: 1rem;
+    position: absolute;
+    opacity: 0.4;
+}        
+
+/*phone2_bottom*/
+.phone2_bottom{
+	padding: 0 0.75rem;
+    padding-top: 2rem;
+}
+.bt_return{
+	border-radius: 0.2rem; 
+	height: 2.25rem;
+	text-align: center;
+	background-color: #fd4d4c;
+	color: #fff6f6;
+	font: 400 0.65rem/2.25rem 'Microsoft Yahei';
+}
+

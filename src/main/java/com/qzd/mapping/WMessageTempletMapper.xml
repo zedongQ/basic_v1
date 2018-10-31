@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.WMessageTempletMapper">
+    <!-- 数据表w_message_templet所有字段名称及类型 -->
+	<resultMap id="WMessageTempletBase" type="org.ieforex.entity.WMessageTemplet" >
+		<id column="templet_id" property="templetId"/>
+		<result column="templet_category" property="templetCategory"/>
+		<result column="templet_type" property="templetType"/>
+		<result column="templet_key" property="templetKey"/>
+		<result column="title" property="title"/>
+		<result column="content" property="content"/>
+		<result column="create_user_id" property="createUserId"/>
+		<result column="create_date" property="createDate"/>
+		<result column="update_user_id" property="updateUserId"/>
+		<result column="update_date" property="updateDate"/>
+	</resultMap>
+	<resultMap id="WMessageTempletResult" type="org.ieforex.entity.WMessageTemplet" extends="WMessageTempletBase"  >  
+	</resultMap>
+	
+	<select id="queryMessageTemplet" parameterType="java.lang.String" resultType="org.ieforex.entity.WMessageTemplet">
+		select title,content from w_message_templet where templet_key=#{templetKey}
+	</select>
+
+</mapper>

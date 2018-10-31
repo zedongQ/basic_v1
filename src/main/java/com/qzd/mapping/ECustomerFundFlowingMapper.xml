@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.ECustomerFundFlowingMapper">
+
+	<!--新增-->
+	<insert id="insert" parameterType="org.ieforex.entity.ECustomerFundFlowing">
+		insert into e_customer_fund_flowing(
+			flowing_id,
+			customer_id,
+			dealer_name,
+			acct_no,
+			trade_type,
+			amount,
+			describes,
+			update_user_id,
+			update_date
+		)values(
+			#{flowingId},
+			#{customerId},
+			#{dealerName},
+			#{acctNo},
+			#{tradeType},
+			#{amount},
+			#{describes},
+			#{updateUserId},
+			#{updateDate}
+		)
+	</insert>
+	
+	<!--删除-->
+	<delete id="deleteById">
+		delete from e_customer_fund_flowing where flowing_id =#{flowingId}
+	</delete>
+	
+	<!--更新-->
+	<update id="updateById" parameterType="org.ieforex.entity.ECustomerFundFlowing">
+		update e_customer_fund_flowing
+		<set>
+			<if test="flowingId != null">flowing_id =#{flowingId},</if>
+			<if test="customerId != null">customer_id =#{customerId},</if>
+			<if test="dealerName != null">dealer_name =#{dealerName},</if>
+			<if test="acctNo != null">acct_no =#{acctNo},</if>
+			<if test="tradeType != null">trade_type =#{tradeType},</if>
+			<if test="amount != null">amount =#{amount},</if>
+			<if test="describes != null">describes =#{describes},</if>
+			<if test="updateUserId != null">update_user_id =#{updateUserId},</if>
+			<if test="updateDate != null">update_date =#{updateDate},</if>
+		</set>
+		where flowing_id =#{flowingId}
+	</update>
+	
+	<!--更新部分-->
+	<update id="updatePartById" parameterType="java.util.Map">
+		update e_customer_fund_flowing
+		<set>
+			<if test="flowingId != null">flowing_id =#{flowingId},</if>
+			<if test="customerId != null">customer_id =#{customerId},</if>
+			<if test="dealerName != null">dealer_name =#{dealerName},</if>
+			<if test="acctNo != null">acct_no =#{acctNo},</if>
+			<if test="tradeType != null">trade_type =#{tradeType},</if>
+			<if test="amount != null">amount =#{amount},</if>
+			<if test="describes != null">describes =#{describes},</if>
+			<if test="updateUserId != null">update_user_id =#{updateUserId},</if>
+			<if test="updateDate != null">update_date =#{updateDate},</if>
+		</set>
+		where flowing_id =#{flowingId}
+	</update>	
+	
+	<!--查询-->
+	<select id="selectById" resultType="org.ieforex.entity.ECustomerFundFlowing">
+		select * from e_customer_fund_flowing where flowing_id =#{flowingId}
+	</select>
+
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.HelpCenterCategoryMapper">
+
+	<resultMap id="HelpCenterCategoryList" type="org.ieforex.entity.HelpCenterCategory"></resultMap>
+	
+	<sql id="sql_where">
+		<if test="categoryId != null and categoryId != '' ">
+			 a.category_id= #{categoryId}
+		</if>
+		<if test="categoryName != null and categoryName != '' ">
+			and a.category_name  like concat("%",#{searchCondition.categoryName},"%")
+		</if>
+		<if test="createUserId != null and createUserId != '' ">
+			and a.create_user_id= #{createUserId}
+		</if>
+		<if test="createDate != null and createDate != '' ">
+			and a.create_date= #{createDate}
+		</if>
+		<if test="sortNo != null and sortNo != '' ">
+			and a.sort_no= #{sortNo}
+		</if>	
+		<if test="updateUserId != null and updateUserId != '' ">
+			and a.update_user_id= #{updateUserId}
+		</if>		
+		<if test="updateDate != null and updateDate != '' ">
+			and a.update_date= #{updateDate}
+		</if>	
+	</sql>
+	
+	<select id="select" resultMap="HelpCenterCategoryList">
+		SELECT category_id,category_name FROM w_help_center_category ORDER BY sort_no DESC
+	</select>
+
+</mapper>

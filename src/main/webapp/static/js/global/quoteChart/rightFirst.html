@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link rel="stylesheet" type="text/css" href="css/hqzx_mode.css" />
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/queryUtil.js" ></script>
+<script type="text/javascript" src="js/Map.js" ></script>
+<script type="text/javascript">
+var arrMap=new Array();
+var dMap;
+function useTe(){
+	$.ajax({
+		type: "GET",
+		dataType: "json",
+		url: "../../quotechart/gettokenl.do?mc=000&sv=000&av=000&mt=pc",
+		success: function (data) {
+			var ws = new WebSocket("ws://aliquote.fxhub.cn:5001");
+            ws.onopen = function() {
+                var msg = "c:0&"+data;
+                ws.send(msg);
+            }
+            ws.onmessage = function(e) {
+            	var msg = e.data.split("&");
+            	if(msg[0].indexOf("0") > 0){
+            		var msg = "c:2&EURUSD,GBPUSD,AUDUSD,USDCHF,USDCAD,USDCNH";
+                    ws.send(msg);
+            	}
+				else if(msg[0].indexOf("2") > 0){
+					arrMap=getUpdate(msg);
+					var ul = document.querySelector("#mainContent");
+					var lis = ul.querySelectorAll("tr");
+					if(lis.length > 2) {
+						for(var i=lis.length-1;i>=0;i--){
+							lis[i].remove();
+						}
+					}
+					updateTr(data);
+            	}
+            }
+		},
+		error:function(data){
+			
+		}
+	});
+}
+$().ready( function() {
+$('.btn').click(function () {
+        $('.tabContent').addClass('hide');
+        $('.btn').removeClass('selected');
+        var tabID = $(this).data('id');
+        $('#' + tabID).removeClass('hide');
+        $(this).addClass("selected");
+    });
+	$.ajax({
+		type: "GET",
+		dataType: "json",
+		url: "../../quotechart/gettokenl.do?mc=000&sv=000&av=000&mt=pc",
+		success: function (data) {
+			var ws = new WebSocket("ws://aliquote.fxhub.cn:5001");
+            ws.onopen = function() {
+                var msg = "c:0&"+data;
+                ws.send(msg);
+            }
+            ws.onmessage = function(e) {
+            	var msg = e.data.split("&");
+            	if(msg[0].indexOf("0") > 0){
+            		var msg = "c:14&EURUSD,GBPUSD,AUDUSD,USDCHF,USDCAD,USDCNH";
+                    ws.send(msg);
+            	}
+				else if(msg[0].indexOf("14") > 0){
+					arrMap=getData(msg);
+					dMap=data;
+					updateTr(data);
+       
+					ws=null;
+					useTe();
+            	}
+            }
+		},
+		error:function(data){
+			
+		}
+	});
+
+});
+function tss(product,productName){
+	//successGetToken(dMap,product,productName);
+	init(product,productName);
+	}
+
+</script>
+</head>
+<body>
+<div class="data_chart">
+         <ul>
+         	 <li class="btn selected" data-id="chartDiv4" onclick="dianjiUpdate('EURUSD,GBPUSD,AUDUSD,USDCHF,USDCAD,USDCNH');setFirstLine();">外汇</li>
+             <li class="btn" data-id="chartDiv4" onclick="dianjiUpdate('USSPX500,USTECH100,US30,Euro50,US2000USD,UK100');setFirstLine();">指数</li>
+             <li class="btn" data-id="chartDiv4" onclick="dianjiUpdate('BrentOil,Cocoa,Corn,Cotton,NaturalGas,WTI');setFirstLine();">期货</li>
+             <li class="btn" data-id="chartDiv4" onclick="dianjiUpdate('GER10YBond,UK10YBGBP,USB02YUSD,USB05YUSD,USB10YUSD,JPN10yBond');setFirstLine();">债券</li>
+         </ul>
+         <div id="chartDiv4"  style="background:url(imgs/loading.gif) no-repeat center center;margin:0 auto;margin-top:5px;" class="tabContent">
+         </div>
+         <div style="background:url(imgs/loading.gif) no-repeat center center;height:264px;width:350px;">
+         	<div style="width:100%;height:12px;margin-top:8px;">
+         		<span style="margin-left:38px;font-size:13px;">名称</span>
+         		<span style="margin-left:51px;font-size:13px;">卖出价</span>
+         		<span style="margin-left:43px;font-size:13px;">涨跌</span>
+         		<span style="margin-left:43px;font-size:13px;">涨跌幅</span>
+         	</div>
+         		<table style="background-color: white;">
+            		<tbody id="mainContent"></tbody>
+         		</table>
+         	</div>
+     </div>
+	 </body>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/smallChart-util.js"></script>
+	<script src="js/smallChart-ChCanvas.js"></script>
+	<script src="js/smallChart-ChLine.js"></script>
+	<script src = "js/smallChart-xiantu.js"></script>
+	<script src = "js/smallChart-ChChart.js"></script>
+	<script src = "js/smallChart-ChLine.js"></script>
+	<script src = "js/smallChart-ChCircle.js"></script>
+</html>

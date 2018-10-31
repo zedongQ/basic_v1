@@ -1,0 +1,139 @@
+.inviter{position: relative}
+.inviterBg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.inviter img{display: block}
+.inviterContent{position: absolute;top:0 ;left:0;z-index: 2;padding-bottom: 2.2rem;}
+
+/*Notice Roll*/
+.inviteroverDiv{
+   height:0.7rem;
+    position: relative;
+    margin-top: 0.5rem;
+}
+.invitermaskOver{
+    line-height: 2.82rem;
+    background-color: #000;
+    filter: alpha(opacity=60);
+    -moz-opacity: 0.6;
+    opacity: 0.6;
+    height:100%;
+    padding: 0 0.3rem;
+    position: relative;
+    z-index: 10;
+    border-radius: 0.35rem;
+    width: 6.8rem;
+}
+#hotNews {
+    
+}
+#hotNews ul{
+   color: #fff;
+    font-size: 0.26rem;
+    z-index: 100;
+    width: 90%;
+    top: 0.13rem;
+    left: 0.3rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: absolute;
+    height: 24px;
+}
+#hotNews ul li{
+    height: 24px;
+    line-height: 24px;
+    float: left;
+    display: inline;
+    color: #fff;
+    z-index: 111;
+}
+#hotNews ul li a{
+    text-decoration: none;
+    color: #ccc;
+    z-index: 112;
+}
+
+
+.inviterRank{
+    margin-top: 19rem ;
+    width: 6.9rem;
+    padding:0 0.3rem;
+}
+#tabNav ul li{width: 50%;text-align: center;
+    font-size: 0.34rem;float: left;height: 1rem;line-height: 1rem;
+    cursor: pointer;color: #a40a0b;border-bottom:none;margin-bottom: 0.05rem;}
+#tabNav ul li.clickRed{color: #fd4d4c;}
+#tab{clear: both;padding-left: 0.1rem;}
+#tab2{display: none;}
+#tab1,#tab2{font-size: 0.32rem;}
+.tableTitle{color: #999999;padding-bottom: 0.1rem;}
+.tableTitle span{display: inline-block;width: 33.3%;text-align: center;}
+.stare li:nth-of-type(odd),.stareLunbo li:nth-of-type(odd){background-color: #f9f9f9}
+
+.haomaoNotice {
+    height: 3rem;
+}
+.newDivhidden{
+    height: 3rem;
+    overflow: hidden;
+    color: #27313e;
+}
+.stare{ position: relative;}
+.stareLunbo{position: relative;}
+.noticeElem {
+    height: 0.6rem;
+    box-sizing: border-box;
+    font-size: 0.25rem;
+    line-height: 0.6rem;
+}
+.noticeElem span{display: inline-block;width: 33.3%;text-align: center;}
+.lunboBox{
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+/*�ײ��������밴ť*/
+.bottomButton{position: fixed;bottom: 0;width: 100%;height: 1.2rem;background-color: #ffffff;z-index: 200;font-size: 0.4rem;}
+.bottomButton .buttonBlock{height: 100%;  line-height: 1.2rem;cursor: pointer;text-align: center;}
+.buttonBlock img{width: 0.55rem;vertical-align: middle;}
+#fxInviter,#mdmInviter{display: none;}
+.modalGray{
+    background-color: #000;
+    filter: alpha(opacity=60);
+    -moz-opacity: 0.6;
+    opacity: 0.6;
+    width: 100%;height:100%;
+    position: fixed;
+    z-index: 1000;
+}
+.fxModalContainer{
+    font-size: 0.3rem;
+    color: #27313e;
+    width: 5.55rem;height: 1.24rem;
+    background: url("../../../images/pages/weChatImg/inviter10.png")no-repeat center;
+    background-size: 5.55rem 1.24rem;
+    position: fixed;
+    top:0rem;
+    padding-left: 0.6rem;
+    right:0rem ;
+    z-index: 1100;
+    line-height: 1.55rem;
+}
+.mdmModalContainer{
+    font-size: 0.3rem;
+    color: #27313e;
+    width: 100%;height: 8.4rem;
+    position: fixed;
+    bottom: 0rem;
+    right:0rem ;
+    z-index: 1100;
+    background-color: #ffffff;
+    text-align: center;
+}
+.mdmModalContainer img{width: 5.02rem}
+#quxiao{width: 6rem;height: 0.8rem;text-align: center;
+    color: #fd4d4c;border:1px solid #fd4d4c;margin: 0 auto;line-height: 0.8rem;font-size: 0.34rem;cursor: pointer;}

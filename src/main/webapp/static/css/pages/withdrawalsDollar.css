@@ -1,0 +1,214 @@
+body{
+	background-color: #f3f3f3;
+	background-size: 100%;	
+}
+/*part1*/
+.withdrawalsTop{
+	width: 100%;
+}
+.withdrawalsTop .withdrawalsContent{
+	width: 100%;
+	height:2.2rem;
+	padding-left:0.5rem;
+	font: 400 0.65rem/2.2rem 'Microsoft Yahei';
+	position: relative;
+	background-color: #FFF;
+	border-bottom: solid 0.025rem #f3f3f3;
+}
+.withdrawalsTop .left_arrow{
+	padding-top: 0.5rem;
+	width: 1rem;
+	height: 1rem;
+}
+.withdrawalsTop .returnText{
+	position: absolute;
+}
+.withdrawalsTop .record{
+	position: absolute;
+	right: 1.2rem;
+	font-weight: 600;
+}
+
+/*part2*/
+.withdrawalsShow{
+	width: 100%;
+	height: 6.5rem;
+	background-color: #FFF;
+	text-align: center;
+    position: relative;
+}
+.withdrawalsShow .Text{
+	font-size: 0.75rem;
+    padding-top: 1.35rem;
+    color: #666666;
+}
+.withdrawalsShow .dollar{
+	font-size: 1.4rem;
+    color: #fd4d4c;
+    font-weight: 600;
+    padding-top: 0.6rem;
+}
+.withdrawalsShow .rate{
+	font-size: 0.6rem;
+    position: absolute;
+    right: 2.2rem;
+    top: 3.7rem;
+    visibility: hidden;
+}
+.withdrawalsShow .rate .rateNow{
+	opacity: 0.3;
+}
+.withdrawalsShow .rmb{
+	font-size: 0.75rem;
+    padding-top: 0.4rem;
+    visibility: hidden;
+}
+.withdrawalsShow .rmb .rmbText{
+    color: #666666;
+}
+.withdrawalsShow .rmb .rmbColor{
+	color: #fd4d4c;
+}
+
+
+/*part3*/
+.selectColumn{
+	width: 100%;
+	height: 1.9rem;
+	background-color: #FFF;
+	margin-top: 0.375rem;
+}
+.selectColumn .rmb {
+	font: 400 0.9rem/1.9rem 'Microsoft Yahei';
+    display: block;
+    float: left;
+    margin-left: 2.6rem;
+}
+.selectColumn .rmbClick{
+	font: 400 0.9rem/1.8rem 'Microsoft Yahei';
+    display: block;
+    float: left;
+    color: #fd4d4c;
+    border-bottom: solid 0.2rem #fd4d4c;
+    padding: 0 3rem;
+}
+.selectColumn .dollar{
+	font:400 0.9rem/1.9rem 'Microsoft Yahei';
+	margin-left: 10.25rem;
+    padding: 0 3rem;
+    display: block;
+}
+.selectColumn .dollarClick{
+	margin-left: 10.25rem;
+    padding: 0 3rem;
+    display: block;
+   	color: #fd4d4c;
+	border-bottom: solid 0.2rem #fd4d4c;
+	font:400 0.9rem/1.8rem 'Microsoft Yahei';
+}
+
+/*part4*/
+.set_column{
+	height: 2.5rem;
+	width: 100%;
+	background:#FFF;
+	margin-top: 0.375rem;
+	position: relative;
+	border-bottom: solid 0.025rem #f3f3f3;
+}
+.set_column input{
+	font-size: 0.75rem;
+    border: 0;
+    width: 12rem;
+    text-align: center;
+}
+.set_leftText{
+	font: 400 0.75rem/2.5rem 'Microsoft Yahei';
+	margin-left: 0.75rem;
+	color: #666666;
+}
+
+.set_column .right_arrow{
+	width: 1rem;
+    height: 1rem;
+    right: 0.65rem;
+    top: 0.75rem;
+    position: absolute;
+    opacity: 0.6;
+}
+
+.items_phone2{
+	width: 100%;
+	position: relative;
+}
+.phone2_middle{
+	background-color: #FFF;
+	width: 100%;
+	height: 2.5rem;
+	padding:0 0.75rem;
+	border-bottom: solid 0.025rem #f3f3f3;
+}
+.middle_content{
+	padding-top: 0.65rem;
+	width: 100%;
+	height: 1.5rem;
+}
+.middle_content .code{
+	font-size: 0.75rem;
+	color: #666666;
+}
+.middle_content input{
+	padding-left: 3.3rem;
+    height: 1.2rem;
+	font-size: 0.75rem;
+	border: 0;
+	text-align: left;
+	width: 12rem;
+}
+.middle_content .procedures{
+	font-size: 0.8rem;
+    padding-left: 3.6rem;
+    color: #fd4d4c;
+}
+.middle_content .dollar{
+	font-size: 0.8rem;
+    color: #fd4d4c;
+    padding-left: 0.8rem;
+}
+
+.phone2_bottom{
+	margin-top: 1.75rem;
+	padding: 0 0.75rem;
+}
+.bt_return{
+	border-radius: 0.2rem; 
+	height: 2.25rem;
+	text-align: center;
+	background-color: #fd4d4c;
+	color: #fff6f6;
+	font: 400 0.65rem/2.25rem 'Microsoft Yahei';
+}
+
+/*part5*/
+.phone1_bottom{
+	margin-top: 1.75rem;
+	padding: 0 0.675rem;
+}
+.bt_return{
+	border-radius: 0.2rem; 
+	height: 2.25rem;
+	text-align: center;
+	background-color: #fd4d4c;
+	color: #fff6f6;
+	font: 400 0.65rem/2.25rem 'Microsoft Yahei';
+}
+
+select{
+	height: 2rem;
+	width: 12.1rem;
+	border: 0;
+	outline-style:none;
+	padding-left: 3rem;
+    font: 400 0.75rem/1rem "Helvetica Neue", Helvetica, Tahoma, Arial, Sans-serif !important;
+    color: #ccc;
+}

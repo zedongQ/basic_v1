@@ -1,0 +1,26 @@
+body{
+	background-color: #f3f3f3;
+	background-size: 100%;	
+}
+.new_person{
+	height: 9rem;
+	background-color: #FFF;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	margin: 0.5rem;
+}
+.new_person .plate{
+	width: 16.75rem;
+	height: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+.new_person .banner{
+	width: 16.75rem;
+	height: 7.25rem;
+}
+.new_person .actTime{
+	opacity: 0.6;
+	font-size: 0.6rem;	
+	margin-top: 0.5rem;
+}

@@ -1,0 +1,184 @@
+*{
+    margin:0;
+    padding:0;
+}
+img,button{
+    border:none;
+    outline:none;
+}
+li{
+    list-style:none;
+}
+h1,h2,h3,h4,h5,h6{
+    padding:0;
+    margin:0;
+}
+/**************************主体部分*************************/
+.partCont{
+    font-family:"Microsoft Yahei";
+    font-size:14px;
+    color:#666;
+}
+i,em{
+    font-style:normal;
+}
+.traders_list {
+    font: 12px "Microsoft YaHei",sans-serif;
+    padding: 16px;
+    border: 1px solid #d6d6d6;
+    width: 538px;
+    /*height: 164px;*/
+    margin-top: 28px;
+    background: #fff;
+    float: left;
+}
+.traders_list a{
+    text-decoration:none;
+}
+.traders_list .list_left {
+    display: inline-block;
+    width: 158px;
+    text-align: center;
+    float: left;
+}
+.fy_box {
+    width: 103px;
+    height: 103px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 28px;
+}
+.fy_box .flip {
+    border-radius: 50%;
+    width: 103px;
+    height: 103px;
+    display: block;
+}
+.list_left .fy_box .dask {
+    height: 103px;
+    width: 104px;
+    background: url("../images/jys_blue.gif") no-repeat 0 -1px;
+}
+.fy_box .dask {
+    width: 102px;
+    height: 102px;
+    line-height: 102px;
+    filter: alpha(opacity=0);
+    -moz-opacity: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+}
+.fy_box .dask a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+.list_left p {
+    font-size: 16px;
+    margin-top: 5px;
+}
+.list_right {
+    background: url(../images/bg_13.jpg) left center no-repeat;
+    float: right;
+    padding-left: 20px;
+    width: 360px;
+    position: relative;
+}
+.currency_1{
+    overflow:hidden;
+}
+.currency_1 span {
+    font-size: 12px;
+    font-weight: bold;
+    font-family: "宋体";
+    color: #6b6b6b;
+    background: #f8f8f8;
+    border: 1px solid #ededed;
+    padding: 0 4px;
+    margin-left: 7px;
+    height: 35px;
+    line-height: 35px;
+    display: block;
+    float: left;
+}
+.currency_1 strong {
+    display: block;
+    float: left;
+    font-weight: bold;
+}
+.currency_1 b {
+    color: #d40003;
+    font-size: 26px;
+    float: left;
+    display: block;
+    font-family:"微软雅黑";
+    font-weight:normal;
+}
+.list_right .golden {
+    color: #bca580;
+    font-size:14px;
+}
+.list_rightB{
+    color: #6e6e6e;
+    line-height: 24px;
+    padding: 25px 0 0 14px;
+    overflow:hidden;
+}
+.iWantAcount,
+.iWantAcountStop{
+    display: block;
+    font-size: 15px;
+    background: url(../images/btn.jpg) repeat-x;
+    border: 1px solid #957747;
+    color: #fff;
+    width: 122px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    cursor: pointer;
+    margin-left:17px;
+    margin-top:8px;
+}
+.iWantAcountStop{
+    border: 1px solid #d6d6d6;
+    color: #bca580;
+    cursor: default;
+    text-decoration: none;
+    background: none;
+}
+.listBLeft{
+    float:left;
+    width:144px;
+}
+.listBRight{
+    float:left;
+    width:200px;
+}
+.nameTitle{
+    overflow:hidden;
+    padding-bottom:9px;
+    border-bottom:1px solid #ebe5d9;
+    margin-bottom:9px;
+}
+.listBRName{
+    float:left;
+    color:#cdba9c;
+    text-decoration:underline;
+    font-weight:bold;
+}
+.listBRTime{
+    float:right;
+}
+.listBTCont{
+    overflow:hidden;
+}
+.listBTCont span{
+    float:left;
+}
+.listFirSp{
+    width:108px;
+}

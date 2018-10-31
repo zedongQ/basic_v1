@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+	
+    <!-- 业务数据库使用配置管理 -->
+ 	<import resource="classpath:spring-mybatis.xml"/>
+	<!-- ehcache配置管理 -->
+	<import resource="classpath:spring-ehcache.xml"/>
+	
+	<!-- redis数据库使用配置管理 -->
+	<!-- <import resource="classpath:spring-redis.xml"/> -->
+</beans>

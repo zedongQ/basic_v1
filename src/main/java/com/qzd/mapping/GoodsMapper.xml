@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.GoodsMapper">
+
+	<resultMap type="org.ieforex.entity.Goods" id="list"></resultMap>
+
+	<sql id="sql_where">
+		<if test="dataStatus != null and dataStatus != '' ">
+			AND data_status =#{dataStatus}
+		</if>
+	</sql>
+
+	<!--查询-->
+	<select id="select" parameterType="java.util.Map" resultMap="list">
+		SELECT * FROM w_goods 
+		<where>
+			<include refid="sql_where" />
+		</where>
+		ORDER BY sort_no DESC
+	</select>
+	
+	<select id="selectById" resultType="org.ieforex.entity.Goods">
+		SELECT * FROM w_goods WHERE data_status = '0' AND total_number > 0 AND goods_id =#{goodsId}
+	</select>
+	
+	<update id="updateNumber" parameterType="org.ieforex.entity.Goods">
+		UPDATE w_goods
+		<set>
+			<if test="totalNumber != null and totalNumber != '' ">
+			`total_number` = IFNULL(total_number, 0) + #{totalNumber}
+			</if>
+		</set>
+		WHERE goods_id =#{goodsId}
+	</update>
+
+</mapper>

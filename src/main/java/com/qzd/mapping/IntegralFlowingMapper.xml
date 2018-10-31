@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.IntegralFlowingMapper">
+
+	<!--新增-->
+	<insert id="insert" parameterType="org.ieforex.entity.IntegralFlowing">
+		insert into w_integral_flowing(
+			flowing_id,
+			customer_id,
+			amount,
+			type,
+			describes,
+			insert_date
+		)values(
+			#{flowingId},
+			#{customerId},
+			#{amount},
+			#{type},
+			#{describes},
+			#{insertDate}
+		)
+	</insert>
+	
+	<!--查询-->
+	<select id="selectById" resultType="org.ieforex.entity.IntegralFlowing">
+		select * from w_integral_flowing where flowing_id =#{flowingId}
+	</select>
+	
+	<!--查询所有-->
+	<select id="selectAll" resultType="org.ieforex.entity.IntegralFlowing" parameterType="java.util.HashMap">
+		select * from w_integral_flowing 
+		<where>
+			<if test="type==null || type==''">
+				<if test="itglType!=null and itglType!=''">
+					type in (${ itglType })
+				</if>
+			</if>	
+			<if test="type!=null and type!=''">
+				and type = #{ type }
+			</if>
+			<if test="dealerId!=null and dealerId!=''">
+				and dealer_id = #{ dealerId }
+			</if>
+			<if test="customerId!=null and customerId!=''">
+				and customer_id = #{ customerId }
+			</if>
+			<if test="starttime != null and starttime !='' and endtime != null and endtime !=''">
+				and DATE_FORMAT(insert_date,'%Y-%m-%d') >= #{ starttime } AND DATE_FORMAT(insert_date,'%Y-%m-%d') <![CDATA[<=]]>#{ endtime }
+			</if>
+		</where>
+		order by insert_date desc
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	<!--查询流水数量-->
+	<select id="queryTotal" resultType="int">
+		select count(*) from w_integral_flowing 
+		<where>
+			<if test="type==null || type==''">
+				<if test="itglType!=null and itglType!=''">
+					type in (${ itglType })
+				</if>
+			</if>	
+			<if test="type!=null and type!=''">
+				and type = #{ type }
+			</if>
+			<if test="dealerId!=null and dealerId!=''">
+				and dealer_id = #{ dealerId }
+			</if>
+			<if test="customerId!=null and customerId!=''">
+				and customer_id = #{ customerId }
+			</if>
+			<if test="starttime != null and starttime !='' and endtime != null and endtime !=''">
+				and DATE_FORMAT(insert_date,'%Y-%m-%d') >= #{ starttime } AND DATE_FORMAT(insert_date,'%Y-%m-%d') <![CDATA[<=]]>#{ endtime }
+			</if>
+		</where>
+	</select>
+	
+	<select id="customerLog" parameterType="java.util.HashMap" resultType="org.ieforex.entity.IntegralFlowing">
+		SELECT * FROM w_integral_flowing
+		WHERE amount <![CDATA[<=]]> 0 AND type IN('0','1','5')
+		AND customer_id =#{customerId}
+		ORDER BY insert_date DESC
+		<if test="offset != null and limit != null">
+		LIMIT #{offset}, #{limit}
+		</if>
+	</select>
+	
+	<select id="logTotal" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM w_integral_flowing 
+		WHERE amount <![CDATA[<=]]> 0 AND type IN('0','1','5')
+		AND customer_id =#{customerId}
+	</select>
+	
+	
+</mapper>

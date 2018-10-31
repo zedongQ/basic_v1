@@ -1,0 +1,86 @@
+body{
+	background-color: #f3f3f3;
+	background-size: 100%;	
+}
+/*part1*/
+.topSelectTime{
+	width: 100%;
+	height: 2.15rem;
+	background:#FFF;
+	position: relative;
+	border-bottom: solid 0.025rem #f3f3f3;
+}
+.topSelectTime .shijian{
+	width: 1.25rem;
+	height: 1.25rem;
+	padding-left: 0.5rem;
+    padding-top: 0.5rem;
+    position: absolute;	
+}
+.topSelectTime .timeText{
+	font:400 0.65rem/2.35rem 'Microsoft Yahei';	
+	padding-left: 2rem;
+}
+.topSelectTime .shuaixuan{
+	width: 3.25rem;
+	height: 1.25rem;
+	position: absolute;
+	right: 0.5rem;
+    top: 0.5rem;
+}
+
+
+
+/*part2*/
+
+.set_column{
+	width: 100%;
+	height: 3.5rem;
+	background:#FFF;
+	position: relative;
+	border-bottom: solid 0.025rem #f3f3f3;
+}
+.set_columnContent{
+	height: 100%;
+	overflow: hidden;
+}
+.set_column .icon{
+	width: 2.5rem;
+    height: 2.5rem;
+    margin: 0.5rem;
+    float: left;
+	border-radius: 1.25rem;
+}
+.set_columnContent .firstColumnText{
+	padding-top: 1rem;
+    font-size: 0.65rem;
+}
+.firstColumnText .leftText{
+    font-weight: 600;
+    font-size: 0.75rem;
+    position: absolute;
+    top: 1.4rem;
+}
+.firstColumnText .rightText{
+	right: 0.5rem;
+    position: absolute;
+}
+.firstColumnText .rightTime{
+	right: 0.5rem;
+    position: absolute;
+    opacity: 0.6;
+    top: 2.1rem;
+}
+.firstColumnText .reward{
+	color: #fd4d4c;
+}
+.firstColumnText .exchange{
+	color: #3897e6;
+}
+
+
+/*.border_bottom{
+	width: 100%;
+	height: 0.05rem;
+	background-color: #f3f3f3;
+}*/

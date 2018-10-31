@@ -1,0 +1,203 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+}
+.ttbody{
+	width: 100%;
+	margin: 0 auto;
+	overflow-x: hidden; 
+}
+/*********�����������������Ĵ�С��ʽ*************************/
+.spreadInner{
+    width: 1170px;
+    min-height: 300px;
+    margin: 100px auto;
+}
+/***********���񶥲�����м����ʽ******************/
+.tCrumbs{
+    font-size: 12px ;
+	font-family: "\5B8B\4F53";
+    color: #666;
+    height: 35px;
+
+}
+.dealerName{
+    color: #bca580;
+
+}
+/************������Ŀ**************/
+.tableName{
+    font-size: 26px;
+    color: #666;
+    text-align: center;
+    height: 50px;
+	font-family: "Microsoft Yahei";
+	font-weight: bold;
+}
+.halftitle{
+    color: #e60012;
+
+}
+.littleHalf{
+    font-size: 12px;
+	font-family: "Arial";
+    color: #999999;
+}
+.subTitle{
+    font-size: 14px;
+	font-family: "Microsoft Yahei";
+    color: #666;
+    text-align: center;
+}
+.moreDealer{
+    width: 100%;
+    text-align: right;
+    font-size: 12px ;
+	font-family: "\5B8B\4F53";
+    height: 24px;
+}
+.moreDealer a{
+    text-decoration: underline;
+    color: #a08861;
+	font-family: 'SimSun';
+}
+.gaps1{
+    padding-left: 29px;
+}
+.learning{
+    padding: 3px 20px;
+    background: #dbedff;
+    border-radius: 5px;
+    font-size: 14px;
+	font-family: "AdobeHeitiStd";
+    color: #024590;
+}
+/**********��������*****************/
+.tableBox{
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 200px;
+    border: 3px solid #eff7ff;
+}
+.gaps2{
+    height: 36px;
+}
+/**************��ʽ����������ʽ******************************/
+.tDetails{
+    width: 45%;
+    border-collapse: collapse;
+    display: inline-table;
+    margin-left: 3.3%;
+}
+th,td{
+    border: 1px solid #ddd;
+    text-align: center;
+}
+th{
+    height: 42px;
+    font-size: 14px;
+	font-family: "Microsoft Yahei";
+    color: #4B85B9;
+	font-weight: bold;
+}
+.oneTh{
+    width: 142px;
+    color: #454444;
+}
+.twoTh{
+    width: 138px;
+}
+.threeTh{
+    width: 148px;
+}
+tr:nth-child(even){
+    height: 33px;
+}
+tr:nth-child(odd){
+    height: 33px;
+    background: #fafafa;
+}
+.oneTd,.fourTd{
+    color: #666;
+	font-family: "Arial";
+}
+
+.twoTd{
+    color: #3b8415;
+    font-family: "Arial";
+}
+.threeTd{
+    color: #dd292c;
+	font-family: "Arial";
+}
+.gaps3{
+    height: 28px;
+}
+/*********�����ײ���ɫ��������ʽ*************/
+.tableFoot{
+    height: 53px;
+    background: #bca580;
+    line-height: 53px;
+    text-align: center;
+   font-size: 14px;
+    color: #151515;
+    font-family: "Microsoft YaHei";
+}
+.ttSignIn{
+    color: #7b5b27;
+    font-size: 18px;
+}
+/*************��ҹ��Ϣҵ������ʽ**********************/
+.oneTh1{
+    width: 130px;
+}
+.twoTh1{
+    width: 153px;
+}
+.threeTh1{
+    width: 157px;
+}
+
+.mynewbody{
+	font-family: "Microsoft Yahei";
+}
+
+
+/*****************�����ǽ����¼ҵ���ʽŶ********************************************/
+/********ҳ�����ײ�����ʽ************/
+.bottomSide{
+    font-size: 12px;
+    text-align: right;
+    padding-top: 53px;
+	padding-right: 20px;
+    padding-bottom: 12px;
+	color: #333;
+}
+/******�������ײ�����ʽ*******/
+.ttprompt{
+    width: 550px;
+    height: 55px;
+    background: #d9cdb8;
+    margin-left: 20px;
+    margin-top: 13px;
+    text-align: center;
+    font-size: 14px;
+    
+    line-height: 55px;
+}
+.ttprompt a{
+    color: #7b5b27;
+    font-size: 18px;
+
+}
+.boxRight{
+    display: inline-table;
+}
+/*xinjiade css*/
+.another{
+	font-family: "Arial";
+}

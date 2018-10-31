@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.ActivityMapper">
+
+	<!--查询-->
+	<select id="selectNew" resultType="org.ieforex.entity.Activity">
+		SELECT *,(SELECT integral FROM e_integral_rule WHERE integral_channel = '3') AS attendance_integral 
+		FROM w_activity WHERE DATE_FORMAT(start_date,'%Y-%m-%d') <![CDATA[<= DATE_FORMAT(NOW(),'%Y-%m-%d')]]> 
+		AND DATE_FORMAT(end_date,'%Y-%m-%d') <![CDATA[>= DATE_FORMAT(NOW(),'%Y-%m-%d')]]>
+		ORDER BY start_date ASC,activity_id ASC LIMIT 0,1
+	</select>
+
+	<!--查询-->
+	<select id="selectById" resultType="org.ieforex.entity.Activity">
+		SELECT * FROM w_activity WHERE activity_id =#{activityId}
+	</select>
+	
+	<!--  -->
+	<select id="selectLast" resultType="org.ieforex.entity.Activity">
+		SELECT *,(SELECT integral FROM e_integral_rule WHERE integral_channel = '3') AS attendance_integral 
+		FROM w_activity ORDER BY end_date DESC,activity_id DESC LIMIT 0,1
+	</select>
+
+</mapper>

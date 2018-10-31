@@ -1,0 +1,642 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>外汇交易商实时点差对比表格</title>
+<link rel="shortcut icon" href="/r/cms/favicon.ico" />
+<meta http-equiv="keywords" content="外汇,外汇开户,外汇返佣,ib外汇返佣网,外汇交易,外汇交易商,返佣" />
+<meta http-equiv="description" content="ib外汇返佣网，提供最全的交易商介绍，外汇开户指南以及FXCM福汇、IFX/FXSOL、ACFX、KVB、Easy-Forex、Trading-Point、XEMarkets、NordFX、欧福市场、LMAX等长期外汇开户和外汇返佣服务的平台。" />
+<link type="text/css" rel="stylesheet" href="/r/cms/www/red/css/v2.0/common.css?version=4.3">
+<link type="text/css" rel="stylesheet" href="/r/cms/www/red/css/v2.0/news.css">
+<link type="text/css" rel="stylesheet" href="/r/cms/www/red/css/v2.0/other.css"> 
+<script src="/r/cms/front.js" type="text/javascript"></script>
+<script src="/r/cms/www/red/js/v2.0/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="/r/cms/www/red/js/v2.0/common.js" type="text/javascript"></script>
+<script src = "js/initSelHead.js"></script>
+</head>
+
+<body id="top">
+<!-- <script type="text/javascript" src="/r/cms/www/red/js/simplefoucs.js"
+	language="javascript"></script> -->
+<script type="text/javascript">
+
+//var baseUrl='https://www.ibrebates.com/home/';
+var baseUrl='https://www.ibrebates.com/home/';
+
+function validate_required(field,alerttxt)
+{
+with (field)
+  {
+  if (value==null||value=="")
+    {alert(alerttxt);return false}
+  else {return true}
+  }
+}
+
+function validate_form(thisform)
+{
+with (thisform)
+  {
+  if (validate_required(q,"请输入查询条件!")==false)
+    {q.focus();return false}
+  }
+}
+
+function loadUserInfo(){
+	var url = baseUrl+'front/getUserForJsonp';
+	$.ajax({
+        type: "GET", 
+        dataType: "jsonp",
+        jsonp: "callbackparam", //服务端用于接收callback调用的function名的参数
+        jsonpCallback: "success_jsonpCallback", //callback的function名称,服务端会把名称和data一起传递回来
+        url: url,
+        success: function (data) {
+        	if(data.data && data.data.id){
+        		var urltemp = baseUrl+"html/personalcenter/personal.html";
+        		$("#sitenotice").addClass('none');
+        		$("#userState").removeClass('none');
+	        	$("#userStateInfo")[0].innerHTML = '欢迎，'+data.detail;	
+				$("#amount")[0].innerHTML = '账户余额：'+'<a href="'+urltemp+'">'+data.data.amount+'</a>';	
+				$("#integral")[0].innerHTML = ' 当前积分：'+'<a href="'+urltemp+'">'+data.data.integral+'</a>';
+	        	$(".mine").css("display","block");
+	        	$(".denglu_btn").css("display","none");
+	        	
+				$.ajax({
+	                type: "GET", 
+	                dataType: "jsonp",
+	                jsonp: "callbackparam", //服务端用于接收callback调用的function名的参数
+	                jsonpCallback: "getMessageCount", //callback的function名称,服务端会把名称和data一起传递回来
+	                url: baseUrl+'front/getMesgCountForJsonp?userId='+data.data.id
+	            });
+        	}else{
+        		$("#userState").addClass('none');
+	        	$(".mine").css("display","none");
+	        	$(".denglu_btn").css("display","block");	
+        	}
+        },error: function (data){
+        	$(".mine").css("display","none");
+        	$(".denglu_btn").css("display","block");
+        }
+    });
+}	
+
+  function getMessageCount(data) {
+	  if(data.data){
+			$("#mesg").text("消息 "+data.data);
+		}else{
+			$("#mesg").text("消息 0");
+		}
+	}
+
+function exit(){
+	var uuu=baseUrl+"front/cleanSessionForJsonp";
+	//mAjax(uuu, "", 'clean');
+	//loadUserInfo();
+	
+	$.ajax({
+        type: "GET", 
+        dataType: "jsonp",
+        jsonp: "callbackparam", //服务端用于接收callback调用的function名的参数
+        jsonpCallback: "clean", //callback的function名称,服务端会把名称和data一起传递回来
+        url: uuu
+    });
+}
+
+function clean(data){
+	$("#userState").addClass('none');
+	window.location.reload();
+}
+
+function mAjax(url,param,method){
+	$.ajax({
+        type: "POST",
+        dataType: "json",
+        url: url,
+        data:param,
+        success: function (data) {
+        	window[method](data);
+        	//loadUserInfo();
+        },error: function (data){
+        	szwrnoty("登录异常");
+        }
+    });
+}
+
+loadUserInfo();
+/*Mrbin添加*/
+$(function(){
+    //placeholder¸的控制代码。
+    var $input=$(".search2 .search_text");
+    $input.focus(function(){
+        $input.removeClass("back");
+    });
+    $input.blur(function(){
+        if($input.val()==""){
+            $input.addClass("back");
+        }
+    });
+});
+</script>
+	
+	
+<div class="top">
+	<div class="wrap">
+		<div class="con_left"><a href="/">IB外汇返现网</a> ｜ <a href="/">全球投资者的外汇返现平台</a></div>	<div id="sitenotice" style="float:right"><span><img src="/r/cms/www/red/img/v2.0/phone.png" style="vertical-align:middle;" width="14" height="13"/>-400-6630-601</span> ｜ <a href="http://www.ibrebates.com//faq_list/" target="_blank">常见问题</a> ｜ <a href="http://en.ibrebates.com/"><img src="/r/cms/www/red/img/v2.0/english.png"  style="vertical-align:middle;" width="21" height="13"/>  English</a></div>
+		<div class="con_right none" id="userState">
+		<span id="userStateInfo">您好，13400161698</span>
+		<a style="color:red" id="mesg" href="https://www.ibrebates.com/home/html/personalcenter/mesg.html"></a>
+		<span id="amount"></span>
+		<span id="integral"></span>		
+		<span><img src="/r/cms/www/red/img/v2.0/phone.png" style="vertical-align:middle;" width="14" height="13"/>-400-6630-601</span> ｜ <a href="http://www.ibrebates.com/faq_list/" target="_blank">常见问题</a> ｜ <a href="http://en.ibrebates.com/"><img src="/r/cms/www/red/img/v2.0/english.png"  style="vertical-align:middle;" width="21" height="13"/>  English</a>
+		<a href="javascript:;" onclick="exit()" style="text-decoration:none;color:#bca580">【退出】</a></div>
+		
+	</div>
+</div>
+ <div class="header wrap">
+	<div class="head logo left"><a href="/"><img src="/r/cms/www/red/img/v2.0/logo.jpg" width="224" height="36"/></a></div>
+	<div class="head right">
+		<a target="_blank" href="http://www.ibrebates.com/normals/integral/invite.html"><img src="/r/cms/www/red/img/v2.0/1.gif" /></a>
+	</div>
+</div> 
+<div class="fy_nav">
+	<div class="wrap">
+		<ul class="menu">
+			<li class="focusa" id="index"><a  href="/">首页</a></li>
+			<li id="jys_list"><a href="javascript:;">外汇交易商</a>
+				<ul>
+					<li><a href="/jys_list/">交易商列表</a></li>
+					<li><a href="/whjysdb_list/">交易商对比</a></li>
+					<li><a href="/compTable/cpTable123.html">交易商点差</a></li>
+				</ul>
+			</li>
+			<li id="yhhd_list"><a href="/yhhd_list/">优惠活动</a></li>
+			<li id="news_list"><a href="javascript:;">外汇资讯</a>
+				<ul>
+					<li><a href="/whxw_list/">外汇新闻</a></li>
+					<li><a href="/hydt_list/">行业动态</a></li>
+				</ul>
+			</li>
+			<li id="whxx_list"><a href="javascript:;">外汇学习</a>
+				<ul>
+					<li><a href="/jczs_list/">外汇常识</a></li>
+					<li><a href="/xxjl_list/">学习交流</a></li>
+				</ul>
+			</li>
+			<li><a href="http://www.talkforex.com"  target="_blank">论坛社区</a></li>
+			<li id="integral_mall"><a href="https://www.ibrebates.com/home/ecomm/html/index.html">积分商城</a>
+				<ul>
+					<li><a href="https://www.ibrebates.com/home/ecomm/html/index.html">返现商城</a></li>
+					<li><a href="http://www.ibrebates.com/normals/integral/invite.html">邀请有奖</a></li>
+				</ul>
+				<!-- <img src="/r/cms/www/red/img/v2.0/hot.png" class="hot"/> -->
+			</li>
+			<li id="faq_list">
+				<a target="_blank" href="http://www.talkforex.com/analysis.php?mod=welcome">投资管家</a>
+				<img src="/r/cms/www/red/img/v2.0/hot.png" class="hot"/>
+			</li>			
+		</ul>
+		<ul class="mine" >
+		   <li><a target="_blank" href="https://www.ibrebates.com/home/html/personalcenter/personal.html">我的账户</a></li>
+		</ul>
+		<div class="denglu_btn"><a href="https://www.ibrebates.com/home/html/login/login.html"><input type="button" value="登录" onclick="this.parentNode.click()"></a><a href="https://www.ibrebates.com/home/html/login/register.html"><input type="button" value="注册" class="bg_zc"  onclick="this.parentNode.click()"></a></div>
+	</div>
+</div>
+<div class="fy_bg">
+	<div class="wrap main"> 
+    <iframe id="compIframe" src="" width="1190px"frameborder="0"></iframe>
+		</div>
+</div>	
+<!--底部开始-->
+<div class="clear"></div>
+<div class="footer"> 
+<!--风险提示-->
+	<div class="prompt"><div class="wrap"><b>风险提醒：</b>外汇交易尤其是保证金交易具有很大的风险,未必适合所有的投资者。使用杠杆比例进行外汇操作对交易者有利有弊。阁下在决定投资外汇市场前，应当仔细考虑自身的投资目标、经验水平和承担风险的能力。由于存在遭受一部分或全部初始投资损失的可能性,建议阁下不要以不能全部损失的资金用作投资。此外，阁下还应关注所有与外汇投资相关的风险。若存在任何疑问，应及时向独立财务顾问咨询。<br/>
+<br/>
+<b>公告：</b>IB返现网不对任何信用卡入金的账户进行返现，敬请谅解！ </div></div>
+	
+	
+<!--外汇新闻。。。等等-->
+	<div class="f_bottom">
+		<div class="f_link01">
+			<div class="wrap">
+				<div class="f_01">
+					<div class="ul01 left" > <b ><a style="margin-left:5px;" target="_blank" href="http://www.ieforex.com/whzx/index.htm">外汇新闻</a></b>
+						<ul style="padding-left:0px;">
+							<li><a target="_blank" href="http://www.ieforex.com/gjcj/index.htm">国际财经</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=外汇储备">外汇储备</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/jrgs/index.htm">金融股市</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=全球股市">全球股市</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/zgjj/index.htm">中国经济</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/rmbhlyj/index.htm">人民币汇率</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/jjgc/index.htm">经济观察</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=量化宽松政策">量化宽松政策</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/zyyh/index.htm">中央银行</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=央行利率">央行利率</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/whgy/index.htm">外汇官员</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=IMF">IMF</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/cjmt/index.htm">财经媒体</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=纽约时报">纽约时报</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/szpl/index.htm">时政评论</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=货币战争">货币战争</a></li>
+						</ul>
+					</div>
+					<div class="ul01 left"> <b><a target="_blank" href="http://www.ieforex.com/hsfx/index.htm">外汇分析</a></b>
+						<ul>
+							<li><a target="_blank" href="http://www.ieforex.com/jgfx/index.htm">机构分析</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/whzl/index.htm">外汇专栏</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=操盘手">操盘手</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/whsp/index.htm">外汇视频</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/whbjzs/index.htm">外汇走势</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/whzl/index.htm">外汇专题</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=美国经济">美国经济</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/hjby/index.htm">黄金白银</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=黄金投资">黄金投资</a></li>
+						</ul>
+					</div>
+					<div class="ul01 left" style=" width:230px;"> <b><a target="_blank" href="http://www.ieforex.com/jjsj/index.htm">经济数据</a></b>
+						<ul>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=数据预告">数据预告</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=欧元区">欧元区</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/sjsd/index.htm">数据速递</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/rmb/">人民币外汇牌价</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/yhhy/index.htm">央行会议</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=央行加息">央行加息</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/scjq/index.htm">市场假期</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=美国假期">美国假期</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/sjjd/index.htm">数据解读</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=国内生产总值">国内生产总值</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/rmbhlsd/index.htm">人民币汇率</a></li>
+						</ul>
+					</div>
+					<div class="left"> <b><a target="_blank" href="http://www.ieforex.com/hqzj/index.htm">外汇行情</a></b>
+						<ul >
+							<li><a target="_blank" href="http://www.ieforex.com/rmb/index.htm">人民币</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/whpj/index.htm">外汇牌价</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/whtb/index.htm">外汇图表</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/gpzs/index.htm">股票走势</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/qhhq/index.htm">期货行情</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/jjsjtx/index.htm">基金数据</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/hbhs/index.htm">货币换算</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/hjzs/index.htm">黄金走势</a></li>
+						</ul>
+					</div>
+					<div class="left"> <b><a target="_blank" href="http://www.ieforex.com/search.jspx?q=外汇交易">外汇交易</a></b>
+						<ul>
+							<li><a target="_blank" href="http://www.ieforex.com/whjg/index.htm">外汇监管</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/whpt/index.htm">外汇平台</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=外汇保证金">外汇保证金</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=外汇风险">外汇风险</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=远期外汇交易">远期外汇交易</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=外汇期权交易">外汇期权交易</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/whpj/index.htm">外汇牌价表</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/search.jspx?q=外汇保证金交易">外汇保证金交易</a></li>
+						</ul>
+					</div>
+					<div class="left"> <b><a target="_blank" rel="nofollow" href="http://www.talkforex.com/forum.php?gid=104">外汇培训</a></b>
+						<ul >
+							<li><a target="_blank" href="http://www.ieforex.com/whxx/index.htm">外汇学习</a></li>
+							<li><a target="_blank" rel="nofollow" href="http://www.talkforex.com/forum-111-1.html">外汇图书</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/whsp/index.htm">外汇视频</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/jczs/index.htm">外汇知识</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/whrm/index.htm">外汇入门</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/whrm/index.html">外汇交易入门</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/whrmjczs/index.htm">什么是外汇</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/whbk/index.htm">外汇百科</a></li>
+						</ul>
+					</div>
+					<div class="left" > <b><a target="_blank" href="http://www.talkforex.com/" rel="nofollow">韬客论坛</a></b>
+						<ul style="border-right:0px;padding-right:0px;">
+							<li><a target="_blank" rel="nofollow" href="http://talkforex.com">外汇博客</a></li>
+							<li><a target="_blank" rel="nofollow" href="http://www.rentou.net">外汇返现</a></li>
+							<li><a target="_blank" rel="nofollow" href="http://www.talkforex.com">外汇论坛</a></li>
+							<li><a target="_blank" rel="nofollow" href="http://www.talkforex.com">外汇社区</a></li>
+							<li><a target="_blank" href="http://www.ieforex.com/whpt/index.htm">外汇平台</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="clear"></div>
+				<div class="f_02">
+					<div class="f_a">
+						<p>©Copyright Information Goes Here. All Rights Reserved.备案号：苏ICP备13060608号-1.</p>
+					</div>
+					<div class="contact">
+						<p><a href="mailto:ad@ieforex.com" target="_blank">广告联系 Email: ad@ieforex.com </a>|<a href="mailto:info@ieforex.com"  target="_blank">联系我们 Email: info@ieforex.com</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--底部导航-->
+	<div class="footer_nav"> </div>
+	<!--返回顶部-->
+	<p id="back-to-top"><a  href="javascript:goTop();"><img src="/r/cms/www/red/img/v2.0/bg_01.jpg" width="72" height="84" /></a></p>
+	
+	<!--百度统计-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?73ebdfb89d02c20b96d406869861a8ed";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<!--[if IE 7]> 
+<style>
+	.f_link01 .ul01 ul li{
+		padding:0;
+		margin-left:0;
+		display:inline;
+		float:none;
+		padding-right:10px;
+	}
+</style>
+<![endif]--><style>
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+img {
+	border: 0;
+}
+
+.main-im {
+	position: fixed;
+	right: 0px;
+	top: 200px;
+	z-index: 999;
+	/* width: 110px; 
+	height: 272px;*/
+}
+
+.main-im .qq-a {
+	display: block;
+	width: 106px;
+	height: 116px;
+	font-size: 14px;
+	color: #0484cd;
+	text-align: center;
+	position: relative;
+	left:10px;
+}
+
+.main-im .qq-a span {
+	bottom: 5px;
+	position: absolute;
+	width: 90px;
+	left: 10px;
+}
+
+.main-im .qq-hover-c {
+	width: 70px;
+	height: 70px;
+	border-radius: 35px;
+	position: absolute;
+	left: 18px;
+	top: 10px;
+	overflow: hidden;
+	z-index: 9;
+}
+
+.main-im .qq-container {
+	z-index: 99;
+	position: absolute;
+	width: 109px;
+	height: 118px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background:
+		url(/r/cms/www/red/img/v2.0/qq-icon-bg.png)
+		no-repeat center 8px;
+	top:0;
+    left:0;
+}
+
+.main-im .img-qq {
+	max-width: 60px;
+	display: block;
+	position: absolute;
+	left: 6px;
+	top: 3px;
+	-moz-transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.main-im .im-qq:hover .img-qq {
+	max-width: 70px;
+	left: 1px;
+	top: 8px;
+	position: absolute;
+}
+
+.main-im .im_main {
+	background: #F9FAFB;
+	border: 1px solid #dddddd;
+	border-radius: 10px;
+	background: #F9FAFB;
+	display: none;
+}
+
+.main-im .close-im {
+	position: absolute;
+	right: 10px;
+	top: -12px;
+	z-index: 100;
+	width: 24px;
+	height: 24px;
+}
+
+.main-im .close-im a {
+	display: block;
+	width: 24px;
+	height: 24px;
+	background:
+		url(/r/cms/www/red/img/v2.0/close_im.png)
+		no-repeat left top;
+}
+
+.main-im .close-im a:hover {
+	text-decoration: none;
+}
+
+.main-im .open-im {
+	cursor: pointer;
+	width: 50px;
+	height: 123px;
+	background: url(/r/cms/www/red/img/v2.0/open_im.png) no-repeat left top;
+}
+
+.sidetop {
+	background: #4c5465;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	margin-left: 80px;
+	margin-top: 2px;
+}
+
+.sidetop .sidebox {
+	color: #fff;
+	font-size: 18px;
+	position: absolute;
+	width: 0px;
+	height: 50px;
+	line-height: 50px;
+	top: 0;
+	right: 50px;
+	background: #4c5465;
+	opacity: 0;
+	filter: Alpha(opacity = 0);
+	color: #fff;
+	font-size: 18px;
+	text-align: center;
+	top: 0
+}
+
+.sidetop img {
+	margin: 15px 10px;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	z-index: 999;
+}
+
+.ewm{ background: #efefef; padding:10px 12px; border:1px solid #ddd; font-size: 14px; margin-top:2px;}
+.ewm_tit{position: relative;}
+.ewm_tit span{ position: absolute; background:#f7f7f7; right:0; top:0px; display: block; width:20px;height:20px; line-height:20px; color: #a7a7a7; font-size:16px; text-align: center; cursor:pointer;}
+.ewm img{ margin:10px 0;}
+/*解决ie7和ie8以及TT浏览器qq圆角不出现的问题*/
+#im_main{
+    *background:url(/r/cms/www/red/img/v2.0/qqBack.gif) no-repeat 0 0;
+    *border:none;
+    *height:119px;
+    *width:130px;
+}
+/*解决IE7出现莫名其妙的下画线问题*/
+.sidetop>a:hover{
+    text-decoration:none;
+}
+</style>
+<div class="main-im">
+	<div id="open_im" class="open-im"></div>
+	<div class="im_main" id="im_main">
+		<div id="close_im" class="close-im">
+			<a href="javascript:void(0);" title="点击关闭"></a>
+		</div>
+		<a href="http://wpa.b.qq.com/cgi/wpa.php?ln=1&key=XzgwMDAyNzczN18zNTg2NjVfODAwMDI3NzM3XzJf"
+			class="im-qq qq-a" title="在线QQ客服" target="_blank" rel="nofollw">
+			<div class="qq-container"></div>
+			<div class="qq-hover-c">
+				<img class="img-qq"
+					src="/r/cms/www/red/img/v2.0/qq.png">
+			</div> <span> QQ在线咨询</span>
+		</a>
+
+
+	</div>
+	<div class="sidetop">
+		<a href="javascript:goTop();"><img
+			src="/r/cms/www/red/img/v2.0/side_top.png">
+			<div class="sidebox">顶部</div></a>
+	</div>
+	
+	<div class="ewm">
+	 <div class="ewm_tit">客户端下载<span >X</span></div>
+	 <img src="/r/cms/www/red/img/v2.0/ewm.jpg"/>
+	 <p>扫描二维码下载</p>
+	</div>
+</div>
+
+<!-- <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script> -->
+<script>
+	$(function() {
+		$('#close_im').bind('click', function() {
+			$('#main-im').css("height", "0");
+			$('#im_main').hide();
+			$('#open_im').show();
+		});
+		$('#open_im').bind('click', function(e) {
+			$('#main-im').css("height", "272");
+			$('#im_main').show();
+			$(this).hide();
+		});
+
+		$(".sidetop").hover(function() {
+			$(this).find(".sidebox").stop().animate({
+				"width" : "60px"
+			}, 200).css({
+				"opacity" : "1",
+				"filter" : "Alpha(opacity=100)",
+				"background" : "#4c5465"
+			})
+		}, function() {
+			$(this).find(".sidebox").stop().animate({
+				"width" : "0px"
+			}, 200).css({
+				"opacity" : "0",
+				"filter" : "Alpha(opacity=0)",
+				"background" : "#4c5465"
+			})
+		});
+		
+		$(".ewm_tit span").click(function(){
+			$(".ewm").hide();
+			
+		})
+	});
+	
+	//回到顶部
+	function goTop() {
+		$('html,body').animate({
+			'scrollTop' : 0
+		}, 600); //滚回顶部的时间，越小滚的速度越快~
+	}
+</script>
+
+<!--只为IE8写的样式-->
+<!--[if IE 8]>
+<style>
+    #im_main{
+        background:url("/r/cms/www/red/img/v2.0/qqBack.gif") no-repeat 0 0;
+        border:none;
+        height:119px;
+        width:130px;
+    }
+</style>
+<![endif]-->
+<!--[if gte IE 7]>
+<script>
+    $(".qq-container").hover(function() {
+        $(this).parent().find(".img-qq").stop().animate({
+            "width" : "68px",
+            "left":"3px"
+        }, 400)
+    }, function() {
+        $(this).parent().find(".img-qq").stop().animate({
+            "width" : "60px"
+        }, 400).css({
+            "left":"6px"
+        });
+    });
+</script>
+<![endif]-->
+<!-- Mrbin改兼容性加的样式 -->
+<style>
+	.main-im{
+		height:0;
+		width:126px;
+	}
+	.main-im .open-im{
+		position:relative;
+		left:80px;
+		margin-left:0;
+	}
+</style></div>
+<!--底部结束-->
+</body>
+</html>

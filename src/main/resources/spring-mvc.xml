@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+                        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+                        http://www.springframework.org/schema/context  
+                        http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+                        http://www.springframework.org/schema/mvc  
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+                        http://www.springframework.org/schema/aop
+                        http://www.springframework.org/schema/aop/spring-aop.xsd">
+	<!-- 它背后注册了很多用于解析注解的处理器,其中就包括<context:annotation-config/>配置的注解所使用的处理器 -->  
+    <!-- 所以配置了<context:component-scan base-package="">之后,便无需再配置<context:annotation-config> --> 
+    <!-- 自动扫描该包，使SpringMVC认为包下用了@controller注解的类是控制器 -->
+	<context:component-scan base-package="org.ieforex.controller" />
+	<context:component-scan base-package="org.ieforex.dao" />
+	<context:component-scan base-package="org.ieforex.service" />
+	<mvc:default-servlet-handler />
+	
+	<!-- 启用SpringMVC的注解功能,它会自动注册HandlerMapping、HandlerAdapter、ExceptionResolver的相关实例 -->  
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+            <bean class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+                <property name="features">
+                    <list>
+                        <!-- Fastjson的SerializerFeature序列化属性
+							QuoteFieldNames———-输出key时是否使用双引号,默认为true
+							WriteMapNullValue——–是否输出值为null的字段,默认为false
+							WriteNullNumberAsZero—-数值字段如果为null,输出为0,而非null
+							WriteNullListAsEmpty—–List字段如果为null,输出为[],而非null
+							WriteNullStringAsEmpty—字符类型字段如果为null,输出为”“,而非null
+							WriteNullBooleanAsFalse–Boolean字段如果为null,输出为false,而非null
+                         -->
+                        <value>WriteMapNullValue</value>
+                        <value>QuoteFieldNames</value>
+                        <value>WriteDateUseDateFormat</value>
+                    </list>
+                </property>
+            </bean>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">  
+	            <property name="supportedMediaTypes">  
+	                <list>  
+	                    <value>text/plain;charset=utf-8</value>  
+	                    <value>text/html;charset=UTF-8</value>  
+	                </list>  
+	            </property>  
+	        </bean>
+        </mvc:message-converters>
+	</mvc:annotation-driven>
+    
+	<!-- 对静态资源的访问 -->
+	<mvc:resources mapping="/file/**" location="file:/Users/cuiyuguo/Desktop/data/"/> 
+	<mvc:resources mapping="/statics/**" location="/statics/" />
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<mvc:resources mapping="/pages/**" location="/pages/" />
+	
+	<!-- JSP视图解析器  -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/" />
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- 配置文件上传，如果没有使用文件上传可以不用配置，当然如果不配，那么配置文件中也不必引入上传组件包 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 默认编码 -->
+		<property name="defaultEncoding" value="UTF-8" />
+		<!-- 文件大小最大值 -->
+		<property name="maxUploadSize" value="10485760000" />
+		<!-- 内存中的最大值 -->
+		<property name="maxInMemorySize" value="40960" />
+	</bean>
+	
+    <!--  kisso 注入初始化，也支持使用 web.xml 初始化 -->
+	<bean id="kissoInit" class="org.bcics.sso.web.WebKissoConfigurer" init-method="initKisso">
+		<property name="ssoPropPath" value="classpath:sso.properties" />
+		<!-- 测试模式 ，不同环境配置选择设置 -->
+		<property name="runMode" value="test_mode" />
+	</bean>
+	
+	<mvc:interceptors>
+		<!-- SSO 拦截器 -->
+		<!-- path 对所有的请求拦截使用/**，对某个模块下的请求拦截使用：/myPath/* -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="org.bcics.sso.web.interceptor.SSOSpringInterceptor" />
+		</mvc:interceptor>
+		<!-- SSO 系统权限拦截器 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="org.bcics.sso.web.interceptor.SSOPermissionInterceptor">
+				<property name="authorization">
+					<bean class="org.ieforex.auth.SysAuthorization" />
+				</property>
+				<property name="illegalUrl" value="error/error" />
+			</bean>
+		</mvc:interceptor>
+ 		<!-- 国际化操作拦截器 如果采用基于（请求/Session/Cookie）则必需配置 -->   
+	    <bean class="org.ieforex.language.LanguageCookieInterceptor"></bean> 
+	</mvc:interceptors>
+	
+	<!-- 框架异常处理Handler：springmvc中配置自定义处理器的时候id注意下不要写错，这个id是 handlerExceptionResolver -->
+	<bean id="handlerExceptionResolver" class="org.ieforex.exception.ExceptionResolver"/>
+
+	<!--接口入参的sql注入、XSS攻击过滤的aop执行类-->
+    <aop:aspectj-autoproxy proxy-target-class="true" />
+    <bean id="wafRequestAOP" class="org.bcics.sso.web.WafRequestAOP"/>
+    
+</beans>

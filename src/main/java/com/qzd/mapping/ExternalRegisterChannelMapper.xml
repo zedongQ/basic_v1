@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.ExternalRegisterChannelMapper">
+	<resultMap id="ResultMap" type="org.ieforex.entity.ExternalRegisterChannel" >
+		<id column="channel_source" property="channelSource"/>
+		<result column="is_incentive" property="isIncentive"/>
+	</resultMap>
+	
+	<insert id="insert" parameterType="org.ieforex.entity.ExternalRegisterChannel">
+		INSERT INTO w_external_register_channel 
+		(channel_source, 
+		is_incentive
+		)
+		VALUES
+		(#{channelSource}, 
+		#{isIncentive}
+		);
+	</insert>
+	
+	<update id="update" parameterType="org.ieforex.entity.ExternalRegisterChannel">
+	UPDATE w_external_register_channel 
+	SET
+	<if test="channelSource != null and channelSource !=''">
+		channel_source = #{channelSource} , 
+	</if>
+	<if test="isIncentive   != null and isIncentive !=''">
+		is_incentive = #{isIncentive}
+	</if>
+	WHERE
+		channel_source = #{channelSource} ;
+	</update>
+	
+	<select id="getIncentiveChannel" resultType="org.ieforex.entity.ExternalRegisterChannel">
+		SELECT * 
+		FROM 
+			w_external_register_channel 
+		WHERE 
+			channel_source = #{channelSource} 
+		AND 
+			is_incentive ='1'
+	</select>
+	
+</mapper>

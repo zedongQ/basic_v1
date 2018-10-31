@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.ECustomerMapper">
+    <!-- 数据表e_customer所有字段名称及类型 -->
+	<resultMap id="ResultMap" type="org.ieforex.entity.ECustomer" >
+		<id column="customer_id" property="customerId"/>
+		<result column="trade_name" property="tradeName"/>
+		<result column="pwd" property="pwd"/>
+		<result column="with_draw_pwd" property="withDrawPwd"/>
+		<result column="user_name" property="userName"/>
+		<result column="login_phone" property="loginPhone"/>
+		<result column="login_email" property="loginEmail"/>
+		<result column="login_ip" property="loginIp"/>
+		<result column="login_date" property="loginDate"/>
+		<result column="forum_name" property="forumName"/>
+		<result column="user_qq" property="userQq"/>
+		<result column="user_card_no" property="userCardNo"/>
+		<result column="rebate_count" property="rebateCount"/>
+		<result column="security_level" property="securityLevel"/>
+		<result column="status" property="status"/>
+		<result column="user_type" property="userType"/>
+		<result column="amount" property="amount"/>
+		<result column="available" property="available"/>
+		<result column="freeze" property="freeze"/>
+		<result column="uncollected" property="uncollected"/>
+		<result column="rebate_amount" property="rebateAmount"/>
+		<result column="rebate_amount_ex" property="rebateAmountEx"/>
+		<result column="with_draw_amount" property="withDrawAmount"/>
+		<result column="invite_id" property="inviteId"/>
+		<result column="create_user_id" property="createUserId"/>
+		<result column="create_date" property="createDate"/>
+		<result column="update_user_id" property="updateUserId"/>
+		<result column="update_date" property="updateDate"/>
+		<result column="level_id" property="levelId"/>
+		<result column="is_aut" property="isAut"/>
+		<result column="calculate_level_id" property="calculateLevelId"/>
+		<result column="start_date" property="startDate"/>
+		<result column="end_date" property="endDate"/>
+		<result column="is_ib" property="isIb"/>
+		<result column="level_name" property="levelName"/>
+		<result column="acct_name" property="acctName"/>
+		<result column="nationality" property="nationality"/>
+		<result column="login_count" property="loginCount"/>
+		<result column="change_info_date" property="changeInfoDate"/>
+		<result column="latest_lock_time" property="latestLockTime"/>
+		<result column="verify_code" property="verifyCode"/>
+		<result property="tradeAcctCounts" column="trade_acct_counts" />
+		<collection property="inviteNum"  ofType="int" javaType="int"
+		            column="customer_id" select="getInviteNum"/>
+		<collection property="inviteIntegral"  ofType="int" javaType="int"
+		            column="customer_id" select="getInviteIntegral"/> 
+	</resultMap>
+	
+	<!-- 修改验证码 -->
+	<update id="updateVerifyCode" parameterType="org.ieforex.entity.ECustomer">
+		update e_customer set verify_code=#{verifyCode} where customer_id=#{customerId}
+	</update>
+	
+	<update id="updateStatus" parameterType="java.util.HashMap">
+		update e_customer set status=#{status} where customer_id=#{customerId}
+	</update>
+	
+	<update id="updateLoginCount" parameterType="java.util.HashMap">
+		update e_customer set login_count=#{loginCount}
+		<if test="status!=null and status!=''">
+			,status=#{status}
+		</if> 
+		<if test="latestLockTime!=null and latestLockTime!=''">
+			,latest_lock_time=#{latestLockTime}
+		</if>  
+		<if test="loginIp!=null and loginIp!=''">
+			 ,login_ip=#{loginIp}
+		</if> 
+		<if test="loginDate!=null and loginDate!=''">
+			 ,login_date=#{loginDate} 
+		</if> 
+		where customer_id=#{customerId}
+	</update>
+	<insert id="insert" parameterType="org.ieforex.entity.ECustomer" useGeneratedKeys="true" keyProperty="customerId">
+		insert into e_customer
+		(
+			customer_id,
+			forum_name,
+			trade_name,
+			login_email,
+			login_phone,
+			login_date,
+			pwd,
+			user_type,
+			create_date,
+			integral,
+			invite_id,
+			status
+		) 
+		values
+		(
+			#{customerId},
+			#{forumName},
+			#{tradeName},
+			#{loginEmail},
+			#{loginPhone},
+			#{loginDate},
+			#{pwd},
+			#{userType},
+			#{createDate},
+			#{integral},
+			#{inviteId},
+			#{status}
+		)
+	</insert>
+	<!-- 修改个人信息 绑定邮箱 密码-->
+	<update id="updatePwdOrEmail" parameterType="org.ieforex.entity.ECustomer">
+		update e_customer 
+		<set>
+			<if test="pwd!=null and pwd!=''">
+				pwd=#{pwd} ,
+			</if>
+			<if test="loginEmail!=null and loginEmail!=''">
+				login_email=#{loginEmail},
+			</if>
+			<if test="loginPhone!=null and loginPhone!=''">
+				login_phone=#{loginPhone} ,
+			</if>
+			<if test="changeInfoDate!=null and changeInfoDate!=''">
+				change_info_date=#{changeInfoDate}
+			</if>
+		</set>
+		where customer_id=#{customerId}
+	</update>
+	
+	<!-- 验证邮箱是否重复 -->
+	<select id="repeatEmail" resultType="int">
+		select count(*) from e_customer where login_email=#{loginEmail} 
+	</select>
+	
+	<!-- 验证用户名是否重复 -->
+	<select id="repeatName" resultType="int">
+		select count(*) from e_customer where forum_name=#{forumName}
+	</select>
+	
+	<!-- 未读消息数量 -->
+	<select id="msgUnReadNum" resultType="int">
+		select count(*) from w_customer_message where status=0 and customer_id=#{customerId}
+	</select>
+	
+	<!-- 手机号是否重复 -->
+	<select id="repeatPhone" resultType="int">
+		select count(*) from e_customer where login_phone=#{loginPhone}
+	</select>
+	
+	<!--通过用户ID查找用户-->
+	<select id="queryUserById" resultType="org.ieforex.entity.ECustomer">
+		SELECT e.*,a.withdrawl_counts,b.trade_acct_counts,c.flowing_counts,d.rebate_amount_sum,f.income_amount_sum,g.withdrawl_amount_sum FROM e_customer e,
+		(SELECT COUNT(*) AS withdrawl_counts FROM e_customer_account_info WHERE customer_id = #{customerId} AND data_status = 0) a,
+		(SELECT COUNT(*) AS trade_acct_counts FROM e_trade_acct WHERE customer_id = #{customerId}) b,
+		(SELECT COUNT(*) AS flowing_counts FROM w_all_customer_fund_flowing  WHERE STATUS = 1 AND customer_id = #{customerId}) c,
+		<!-- 从流水中查返佣总计 -->
+		(SELECT SUM(a.amount) AS rebate_amount_sum FROM w_all_customer_fund_flowing a WHERE a.customer_id = #{customerId}  AND a.status = 0 AND a.trade_type = 0) d,
+		<!-- 从流水中查收入总计 -->
+		(SELECT SUM(a.amount) AS income_amount_sum FROM w_all_customer_fund_flowing a 
+			LEFT JOIN e_customer_account_basic b 
+			ON a.customer_id = b.customer_id 
+			WHERE a.customer_id = #{customerId} AND a.trade_type IN (0,2,4,5) AND (a.status != 0 OR a.status IS NULL)
+		) f,
+		<!-- 从流水中查提现总计 -->
+		(SELECT  SUM(a.amount) AS withdrawl_amount_sum FROM w_all_customer_fund_flowing a WHERE a.customer_id = #{customerId} AND a.status = 3) g
+		WHERE e.customer_id = #{customerId}
+	</select>
+	
+	<!--通过用户名和密码查找用户信息-->
+	<select id="queryUser" resultType="org.ieforex.entity.ECustomer">
+		select * from e_customer where (forum_name=#{username} or login_email=#{email} or login_phone=#{loginPhone})
+	</select>
+	
+	<!-- 近三个月活跃用户 -->
+	<select id="threeMonthLogin" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM e_customer WHERE customer_id=#{customerId}
+		AND DATE_FORMAT(login_date,'%Y-%m-%d') <![CDATA[<=]]> DATE_FORMAT(DATE_SUB(NOW(),INTERVAL 3 MONTH),'%Y-%m-%d')
+	</select>
+	
+	<!-- 更新提现验证码 -->
+	<update id="updateCode" parameterType="java.util.HashMap">
+		UPDATE e_customer c SET 
+		c.with_draw_code = #{withDrawCode} ,c.code_date = #{ codeDate }
+		where c.customer_id=#{customerId}
+	</update>
+	
+	<!-- 更新客户信息（金额、积分等） -->
+	<update id="updateAmount" parameterType="org.ieforex.entity.ECustomer">
+		update e_customer
+		<set>
+			<if test="amount != null">`amount` = IFNULL(amount, 0) + #{amount},</if>
+			<if test="available != null">`available` = IFNULL(available, 0) + #{available},</if>
+			<if test="freeze != null">`freeze` = IFNULL(freeze, 0) + #{freeze},</if>
+			<if test="updateDate != null">`update_date` = #{updateDate},</if>
+			<if test="updateUserId != null">`update_user_id` = #{updateUserId},</if>
+			<if test="lotteryNumber != null">`lottery_number` = IFNULL(lottery_number, 0) + #{lotteryNumber},</if>
+			<if test="integral != null">`integral` = IFNULL(integral, 0) + #{integral}</if>
+		</set>
+		where customer_id = #{customerId}
+	</update>
+	
+	<!-- 更新客户基本信息 -->
+	<update id="updateBasic" parameterType="org.ieforex.entity.ECustomer">
+		update e_customer
+		<set>
+			<if test="headImg != null">`head_img` =  #{headImg},</if>
+			<if test="tradeName != null">`trade_name` =  #{tradeName},</if>
+			<if test="userName != null">`user_name` =  #{userName},</if>
+			<if test="userCardNo != null">`user_card_no` =  #{userCardNo},</if>
+		</set>
+		where customer_id = #{customerId}
+	</update>
+	
+	<select id="inviteAllCounts" parameterType="Long" resultType="java.util.HashMap">
+	SELECT a.invite_counts as inviteCounts,b.open_acct_counts as openAcctCounts,c.invite_success_counts as inviteSuccessCounts FROM 
+	(SELECT COUNT(*) AS invite_counts FROM e_customer WHERE invite_id = #{customerId} AND status!=2) a ,
+	(SELECT COUNT(*) AS open_acct_counts FROM e_customer WHERE invite_id = #{customerId} AND status!=2 AND rebate_count>0) b ,
+	(SELECT COUNT(*) AS invite_success_counts FROM e_customer WHERE invite_id = #{customerId} AND status!=2 AND rebate_amount>0 AND rebate_count>0) c
+	</select>
+	
+	<!-- 	获取邀请人数 -->
+	<select id="getInviteNum" resultType="int">
+		select count(*) from e_customer where invite_id = #{customerId} and status!=2
+	</select>
+	
+	<select id="getInviteIntegral" resultType="int">
+		SELECT CASE WHEN SUM(amount)IS NULL THEN 0 ELSE SUM(amount) END AS integral FROM w_integral_flowing WHERE TYPE=3 AND customer_id=#{customerId}
+	</select>
+	
+	<select id="queryInviteInfo" resultMap="ResultMap">
+		select * from e_customer where customer_id=#{customerId}
+	</select>
+	
+	<select id="queryIntegral" resultType="Long">
+		select integral from e_integral_rule where integral_channel=#{type}
+	</select>
+	
+	<select id="queryInviteAll" resultType="java.util.HashMap">
+		 SELECT a.trade_name, b.invite_num,invite_amount,c.integrals
+		 FROM (SELECT invite_id,COUNT(*) AS invite_num FROM e_customer WHERE invite_id IN (SELECT customer_id FROM e_customer) AND STATUS!=2 GROUP BY invite_id) b 
+		 	LEFT JOIN e_customer a 
+		 	ON a.customer_id=b.invite_id LEFT JOIN (SELECT customer_id,SUM(amount) AS integrals FROM w_integral_flowing WHERE TYPE=3 GROUP BY customer_id) c ON a.customer_id=c.customer_id where a.trade_name is not null
+		 	ORDER BY b.invite_num DESC
+	</select>
+	
+	<!-- 邀请奖励排行榜 -->
+	<select id="queryInviteWithAmount" resultType="org.ieforex.entity.ECustomer">
+		SELECT a.trade_name,b.invit_count as invite_num,a.invite_amount
+		FROM e_customer a
+		LEFT JOIN (SELECT invite_id,COUNT(customer_id) AS invit_count 
+				FROM e_customer WHERE invite_id IS NOT NULL AND invite_amount IS NOT NULL 
+				GROUP BY invite_id
+		) b ON a.customer_id = b.invite_id
+		WHERE a.invite_amount IS NOT NULL AND a.status!=2
+		ORDER BY a.invite_amount  DESC 
+		LIMIT 0,30
+	</select>	
+	
+	<update id="updateFeeRate">
+		UPDATE e_customer SET fee_rate = #{ feeRate } WHERE customer_id = #{ customerId };
+	</update>
+</mapper>

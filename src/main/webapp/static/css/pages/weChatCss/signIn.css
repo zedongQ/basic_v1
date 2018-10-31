@@ -1,0 +1,26 @@
+.signIn{position: relative}
+.signInBg{
+   position: relative;
+    z-index: 1;
+}
+.signInBg img{display: block}
+.signInContent{position: absolute;top:0 ;left:0;z-index: 2;width:7.5rem;}
+.signTitle{
+    font-size: 0.54rem;color: #fff;text-align: center;width: 7.5rem;padding-top: 0.3rem;padding-bottom: 0.3rem;
+}
+.ruleTip{ font-size: 0.26rem;color: #fff;text-align: center;width: 7.5rem;}
+.flowRule{width: 6.3rem;margin: 0 auto;font-size: 0.34rem;color: #fd4d4c;padding-top: 0.5rem;}
+.flowRule ul{padding-bottom: 0.3rem;border-bottom: 1px solid #dddddd;}
+.flowRule ul li{height: 0.9rem;line-height: 0.9rem;position: relative}
+.flowRule ul li i{position: absolute;top: -0.4rem;  left: 0.15rem;  height: 0.7rem;border-left: 1px solid red;z-index: 3}
+.flowRule ul li i.weidao{border-left: 1px solid #BD9987;}
+.flowRule .lf img{width: 0.34rem;height: 0.34rem;margin-right: 0.3rem;position: relative;z-index: 5}
+.flowRule .rt span{display: inline-block;width: 1.2rem;text-align: center;}
+.flowRule .rt a{display: inline-block;width: 1.2rem;height: 0.6rem;line-height: 0.6rem ;border-radius:15px;text-align: center;color:#ffffff;background-color: #fd4d4c; }
+.flowRule .bottonJifen{color: #a00801;padding-top: 0.36rem;padding-right: 0.2rem}
+.explain{width: 7.5rem;text-align: center;clear: both;font: 400 0.5rem/1.2rem 'Microsoft Yahei'	}
+.explain span{font-size: 0.3rem;color: #ffffff;cursor: pointer;display: inline-block;width: 3rem;height: 0.6rem;line-height: 0.6rem;}
+.sign_bottom{border-bottom: 8px solid #f0f2f5;border-top: 8px solid #f0f2f5;text-align: center;margin-top: -0.1rem}
+.sign_bottom a{}
+.sign_bottom img{width: 7.49rem;height: 1.6rem;}
+#dlg-sign-in{display: none;}

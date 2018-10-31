@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.ETradeAcctMapper">
+   
+   <select id="selectCount" resultType="java.lang.Integer">
+   		SELECT COUNT(*) FROM e_trade_acct WHERE customer_id =#{customerId} AND data_status != '1'
+   </select>
+   
+   <!-- 解绑 -->
+	<update id="cancelBindAcctNo" parameterType="Long">
+		update e_trade_acct set  `customer_id` = NULL,`unbind_date` = NOW()
+		where trade_acct_id = #{tradeAcctId} and customer_id = #{ customerId }
+	</update>
+	
+	<!-- 是否是代理 -->
+	<select id="getIsSameNameOrIsAgency" resultType="org.ieforex.entity.ETradeAcct">
+		SELECT * FROM e_trade_acct WHERE customer_id = #{ customerId } AND (is_same_name = 1 OR is_agency = 1) AND data_status != '1'
+	</select>
+	
+	<!-- 判断账号存在不存在 -->
+	<select id="isExistAcctNo" resultType="org.ieforex.entity.ETradeAcct" parameterType="java.util.Map">
+		SELECT * FROM e_trade_acct WHERE acct_no = #{ acctNo } AND dealer_id = #{ dealerId } AND customer_id IS NOT NULL AND data_status != '1'
+	</select>
+</mapper>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.ieforex.dao.ECustomerFlowingMapper">
+
+	<!--新增-->
+	<insert id="save" parameterType="org.ieforex.entity.ECustomerFlowing">
+		insert into e_customer_flowing(
+			flowing_id,
+			customer_id,
+			trade_name,
+			pwd,
+			with_draw_pwd,
+			user_name,
+			login_phone,
+			login_email,
+			login_ip,
+			login_date,
+			forum_name,
+			nationality,
+			is_ib,
+			user_qq,
+			user_card_no,
+			rebate_count,
+			security_level,
+			status,
+			user_type,
+			amount,
+			available,
+			freeze,
+			uncollected,
+			rebate_amount,
+			rebate_amount_ex,
+			with_draw_amount,
+			invite_amount,
+			invite_id,
+			level_id,
+			is_aut,
+			calculate_level_id,
+			start_date,
+			end_date,
+			with_draw_code,
+			code_date,
+			login_count,
+			change_info_date,
+			head_img,
+			oper_type,
+			info_type,
+			oper_user_id,
+			oper_date,
+			oper_task_id,
+			create_user_id,
+			create_date,
+			update_user_id,
+			update_date
+		)values(
+			#{flowingId},
+			#{customerId},
+			#{tradeName},
+			#{pwd},
+			#{withDrawPwd},
+			#{userName},
+			#{loginPhone},
+			#{loginEmail},
+			#{loginIp},
+			#{loginDate},
+			#{forumName},
+			#{nationality},
+			#{isIb},
+			#{userQq},
+			#{userCardNo},
+			#{rebateCount},
+			#{securityLevel},
+			#{status},
+			#{userType},
+			#{amount},
+			#{available},
+			#{freeze},
+			#{uncollected},
+			#{rebateAmount},
+			#{rebateAmountEx},
+			#{withDrawAmount},
+			#{inviteAmount},
+			#{inviteId},
+			#{levelId},
+			#{isAut},
+			#{calculateLevelId},
+			#{startDate},
+			#{endDate},
+			#{withDrawCode},
+			#{codeDate},
+			#{loginCount},
+			#{changeInfoDate},
+			#{headImg},
+			#{operType},
+			#{infoType},
+			#{operUserId},
+			#{operDate},
+			#{operTaskId},
+			#{createUserId},
+			#{createDate},
+			#{updateUserId},
+			#{updateDate}
+		)
+	</insert>
+	
+	<!--删除-->
+	<delete id="deleteById">
+		delete from e_customer_flowing where flowing_id =#{flowingId}
+	</delete>
+	
+	<!--更新-->
+	<update id="updateById" parameterType="org.ieforex.entity.ECustomerFlowing">
+		update e_customer_flowing
+		<set>
+			<if test="flowingId != null">flowing_id =#{flowingId},</if>
+			<if test="customerId != null">customer_id =#{customerId},</if>
+			<if test="tradeName != null">trade_name =#{tradeName},</if>
+			<if test="pwd != null">pwd =#{pwd},</if>
+			<if test="withDrawPwd != null">with_draw_pwd =#{withDrawPwd},</if>
+			<if test="userName != null">user_name =#{userName},</if>
+			<if test="loginPhone != null">login_phone =#{loginPhone},</if>
+			<if test="loginEmail != null">login_email =#{loginEmail},</if>
+			<if test="loginIp != null">login_ip =#{loginIp},</if>
+			<if test="loginDate != null">login_date =#{loginDate},</if>
+			<if test="forumName != null">forum_name =#{forumName},</if>
+			<if test="nationality != null">nationality =#{nationality},</if>
+			<if test="isIb != null">is_ib =#{isIb},</if>
+			<if test="userQq != null">user_qq =#{userQq},</if>
+			<if test="userCardNo != null">user_card_no =#{userCardNo},</if>
+			<if test="rebateCount != null">rebate_count =#{rebateCount},</if>
+			<if test="securityLevel != null">security_level =#{securityLevel},</if>
+			<if test="status != null">status =#{status},</if>
+			<if test="userType != null">user_type =#{userType},</if>
+			<if test="amount != null">amount =#{amount},</if>
+			<if test="available != null">available =#{available},</if>
+			<if test="freeze != null">freeze =#{freeze},</if>
+			<if test="uncollected != null">uncollected =#{uncollected},</if>
+			<if test="rebateAmount != null">rebate_amount =#{rebateAmount},</if>
+			<if test="rebateAmountEx != null">rebate_amount_ex =#{rebateAmountEx},</if>
+			<if test="withDrawAmount != null">with_draw_amount =#{withDrawAmount},</if>
+			<if test="inviteAmount != null">invite_amount =#{inviteAmount},</if>
+			<if test="inviteId != null">invite_id =#{inviteId},</if>
+			<if test="levelId != null">level_id =#{levelId},</if>
+			<if test="isAut != null">is_aut =#{isAut},</if>
+			<if test="calculateLevelId != null">calculate_level_id =#{calculateLevelId},</if>
+			<if test="startDate != null">start_date =#{startDate},</if>
+			<if test="endDate != null">end_date =#{endDate},</if>
+			<if test="withDrawCode != null">with_draw_code =#{withDrawCode},</if>
+			<if test="codeDate != null">code_date =#{codeDate},</if>
+			<if test="loginCount != null">login_count =#{loginCount},</if>
+			<if test="changeInfoDate != null">change_info_date =#{changeInfoDate},</if>
+			<if test="headImg != null">head_img =#{headImg},</if>
+			<if test="operType != null">oper_type =#{operType},</if>
+			<if test="infoType != null">info_type =#{infoType},</if>
+			<if test="operUserId != null">oper_user_id =#{operUserId},</if>
+			<if test="operDate != null">oper_date =#{operDate},</if>
+			<if test="operTaskId != null">oper_task_id =#{operTaskId},</if>
+			<if test="createUserId != null">create_user_id =#{createUserId},</if>
+			<if test="createDate != null">create_date =#{createDate},</if>
+			<if test="updateUserId != null">update_user_id =#{updateUserId},</if>
+			<if test="updateDate != null">update_date =#{updateDate},</if>
+		</set>
+		where flowing_id =#{flowingId}
+	</update>
+	
+	<!--更新部分-->
+	<update id="updatePartById" parameterType="java.util.Map">
+		update e_customer_flowing
+		<set>
+			<if test="flowingId != null">flowing_id =#{flowingId},</if>
+			<if test="customerId != null">customer_id =#{customerId},</if>
+			<if test="tradeName != null">trade_name =#{tradeName},</if>
+			<if test="pwd != null">pwd =#{pwd},</if>
+			<if test="withDrawPwd != null">with_draw_pwd =#{withDrawPwd},</if>
+			<if test="userName != null">user_name =#{userName},</if>
+			<if test="loginPhone != null">login_phone =#{loginPhone},</if>
+			<if test="loginEmail != null">login_email =#{loginEmail},</if>
+			<if test="loginIp != null">login_ip =#{loginIp},</if>
+			<if test="loginDate != null">login_date =#{loginDate},</if>
+			<if test="forumName != null">forum_name =#{forumName},</if>
+			<if test="nationality != null">nationality =#{nationality},</if>
+			<if test="isIb != null">is_ib =#{isIb},</if>
+			<if test="userQq != null">user_qq =#{userQq},</if>
+			<if test="userCardNo != null">user_card_no =#{userCardNo},</if>
+			<if test="rebateCount != null">rebate_count =#{rebateCount},</if>
+			<if test="securityLevel != null">security_level =#{securityLevel},</if>
+			<if test="status != null">status =#{status},</if>
+			<if test="userType != null">user_type =#{userType},</if>
+			<if test="amount != null">amount =#{amount},</if>
+			<if test="available != null">available =#{available},</if>
+			<if test="freeze != null">freeze =#{freeze},</if>
+			<if test="uncollected != null">uncollected =#{uncollected},</if>
+			<if test="rebateAmount != null">rebate_amount =#{rebateAmount},</if>
+			<if test="rebateAmountEx != null">rebate_amount_ex =#{rebateAmountEx},</if>
+			<if test="withDrawAmount != null">with_draw_amount =#{withDrawAmount},</if>
+			<if test="inviteAmount != null">invite_amount =#{inviteAmount},</if>
+			<if test="inviteId != null">invite_id =#{inviteId},</if>
+			<if test="levelId != null">level_id =#{levelId},</if>
+			<if test="isAut != null">is_aut =#{isAut},</if>
+			<if test="calculateLevelId != null">calculate_level_id =#{calculateLevelId},</if>
+			<if test="startDate != null">start_date =#{startDate},</if>
+			<if test="endDate != null">end_date =#{endDate},</if>
+			<if test="withDrawCode != null">with_draw_code =#{withDrawCode},</if>
+			<if test="codeDate != null">code_date =#{codeDate},</if>
+			<if test="loginCount != null">login_count =#{loginCount},</if>
+			<if test="changeInfoDate != null">change_info_date =#{changeInfoDate},</if>
+			<if test="headImg != null">head_img =#{headImg},</if>
+			<if test="operType != null">oper_type =#{operType},</if>
+			<if test="infoType != null">info_type =#{infoType},</if>
+			<if test="operUserId != null">oper_user_id =#{operUserId},</if>
+			<if test="operDate != null">oper_date =#{operDate},</if>
+			<if test="operTaskId != null">oper_task_id =#{operTaskId},</if>
+			<if test="createUserId != null">create_user_id =#{createUserId},</if>
+			<if test="createDate != null">create_date =#{createDate},</if>
+			<if test="updateUserId != null">update_user_id =#{updateUserId},</if>
+			<if test="updateDate != null">update_date =#{updateDate},</if>
+		</set>
+		where flowing_id =#{flowingId}
+	</update>	
+	
+	<!--查询-->
+	<select id="selectById" resultType="org.ieforex.entity.ECustomerFlowing">
+		select * from e_customer_flowing where flowing_id =#{flowingId}
+	</select>
+
+</mapper>
